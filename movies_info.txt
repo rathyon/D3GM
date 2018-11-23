@@ -1,0 +1,32 @@
+Max Title Length: 62
+
+Score in ## formate (needs to be divided by 10)
+
+Sales are in millions of dollars, I think there are a few whose sales = 0
+
+Starts at 1916 and ends at 2017 (only 1 movie at 2017)
+
+Check if there is a movie whose genre1 is 0 or null, same for (title) length
+
+Genres:20
+
+Drama
+Romance
+War
+Science Fiction
+Thriller
+Music
+Action
+History
+Comedy
+Adventure
+Fantasy
+Animation
+Family
+Mystery
+Western
+Crime
+Horror
+TV Movie
+Foreign
+Documentary
