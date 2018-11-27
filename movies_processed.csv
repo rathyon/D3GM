@@ -18,7 +18,7 @@ year,title,length,score,sales,genre
 1985,A Room with a View,18,69,20,Drama
 1985,The Color Purple,16,77,146,Drama
 1985,Out of Africa,13,70,128,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1986,Invaders from Mars,18,55,4,Sci-Fi
 1986,Nine 1/2 Weeks,14,58,6,Drama
 1986,Highlander,10,68,5,Adventure
 1986,Top Gun,7,67,356,Action
@@ -32,7 +32,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1986,Peggy Sue Got Married,21,59,41,Comedy
 1986,The Color of Money,18,67,52,Drama
 1986,The Wraith,10,59,3,Romance
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1986,Star Trek IV: The Voyage Home,29,69,133,Sci-Fi
 1986,The Golden Child,16,56,79,Action
 1986,Platoon,7,75,138,Drama
 1986,Little Shop of Horrors,22,66,38,Horror
@@ -42,7 +42,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1987,Ishtar,6,42,14,Action
 1987,Beverly Hills Cop II,20,61,299,Action
 1987,The Untouchables,16,76,76,Crime
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1987,Predator,8,73,98,Sci-Fi
 1987,Spaceballs,10,67,38,Comedy
 1987,The Living Daylights,20,62,191,Action
 1987,Jaws: The Revenge,17,35,51,Adventure
@@ -73,7 +73,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1988,A Nightmare on Elm Street 4: The Dream Master,45,58,72,Horror
 1988,Halloween 4: The Return of Michael Myers,40,59,17,Horror
 1988,Child's Play,12,63,44,Horror
-Family,Family,Family,Family,Family,Family
+1988,The Land Before Time,20,70,84,Family
 1988,Scrooged,8,67,60,Fantasy
 1988,They Live,9,71,13,Action
 1988,Twins,5,57,216,Comedy
@@ -87,7 +87,7 @@ Family,Family,Family,Family,Family,Family
 1989,Road House,10,63,30,Action
 1989,Indiana Jones and the Last Crusade,34,76,474,Adventure
 1989,Dead Poets Society,18,81,235,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1989,Star Trek V: The Final Frontier,31,56,70,Sci-Fi
 1989,Batman,6,70,411,Fantasy
 1989,Do the Right Thing,18,76,37,Drama
 1989,Licence to Kill,15,59,156,Adventure
@@ -101,7 +101,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1989,Halloween 5: The Revenge of Michael Myers,41,52,11,Horror
 1989,Back to the Future Part II,26,74,332,Adventure
 1989,Driving Miss Daisy,18,70,145,Comedy
-Action,Action,Action,Action,Action,Action
+1989,Glory,5,74,26,Action
 1989,Born on the Fourth of July,26,67,161,Drama
 1989,Tango & Cash,12,61,63,Action
 1990,Tremors,7,66,48,Action
@@ -123,14 +123,14 @@ Action,Action,Action,Action,Action,Action
 1990,Home Alone,10,71,476,Comedy
 1990,Dances with Wolves,18,76,424,Adventure
 1990,Child's Play 2,14,58,35,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1990,Predator 2,10,59,57,Sci-Fi
 1990,Edward Scissorhands,19,75,53,Fantasy
 1990,Kindergarten Cop,16,58,201,Comedy
 1990,The Godfather: Part III,23,71,136,Crime
 1991,White Fang,10,65,34,Action
 1991,The Silence of the Lambs,24,81,272,Crime
 1991,The Doors,9,67,34,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1991,Teenage Mutant Ninja Turtles II: The Secret of the Ooze,55,58,78,Sci-Fi
 1991,Hudson Hawk,11,54,17,Action
 1991,Robin Hood: Prince of Thieves,29,66,390,Adventure
 1991,The Naked Gun 2½: The Smell of Fear,36,66,86,Comedy
@@ -144,24 +144,24 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1991,The Fisher King,15,72,41,Comedy
 1991,Cape Fear,9,70,182,Crime
 1991,The Addams Family,17,67,191,Horror
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1991,Star Trek VI: The Undiscovered Country,38,67,96,Sci-Fi
 1991,Hook,4,66,300,Adventure
 1991,JFK,3,75,205,Drama
 1991,The Prince of Tides,19,59,74,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+1992,Wayne's World,13,65,121,Drama
 1992,Radio Flyer,11,66,4,Drama
 1992,Memoirs of an Invisible Man,27,57,14,Comedy
 1992,The Lawnmower Man,17,54,32,Horror
 1992,My Cousin Vinny,15,73,64,Comedy
 1992,Howards End,11,69,25,Drama
 1992,Lethal Weapon 3,15,64,321,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1992,Alien³,7,62,159,Sci-Fi
 1992,Patriot Games,13,63,178,Drama
 1992,Batman Returns,14,66,280,Action
 1992,Boomerang,9,54,70,Comedy
 1992,A League of Their Own,21,67,107,Comedy
 1992,Death Becomes Her,17,63,149,Fantasy
-Action,Action,Action,Action,Action,Action
+1992,Unforgiven,10,77,159,Action
 1992,Raising Cain,12,59,37,Drama
 1992,The Crying Game,15,69,62,Romance
 1992,Reservoir Dogs,14,80,14,Crime
@@ -174,7 +174,7 @@ Action,Action,Action,Action,Action,Action
 1992,Malcolm X,9,72,48,Drama
 1992,Home Alone 2: Lost in New York,30,63,358,Comedy
 1992,The Bodyguard,13,61,411,Thriller
-Family,Family,Family,Family,Family,Family
+1992,Aladdin,7,74,504,Family
 1992,The Muppet Christmas Carol,26,72,27,Comedy
 1992,A Few Good Men,14,71,243,Drama
 1993,Alive,5,67,36,Action
@@ -201,7 +201,7 @@ Family,Family,Family,Family,Family,Family
 1993,Dazed and Confused,18,74,7,Comedy
 1993,Cool Runnings,13,68,154,Comedy
 1993,Ruby in Paradise,16,56,1,Drama
-Action,Action,Action,Action,Action,Action
+1993,Gettysburg,10,66,25,Action
 1993,The Remains of the Day,22,75,23,Drama
 1993,The Nutcracker,14,56,2,Family
 1993,Mrs. Doubtfire,14,70,441,Comedy
@@ -243,7 +243,7 @@ Action,Action,Action,Action,Action,Action
 1994,New Nightmare,13,64,18,Horror
 1994,The Santa Clause,16,63,189,Fantasy
 1994,Interview with the Vampire,26,72,223,Horror
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1994,Star Trek: Generations,22,64,120,Sci-Fi
 1994,A Low Down Dirty Shame,22,60,29,Action
 1994,Highlander: The Final Dimension,31,45,36,Action
 1994,Disclosure,10,59,214,Drama
@@ -271,7 +271,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1995,Congo,5,50,152,Action
 1995,Pocahontas,10,67,346,Adventure
 1995,Apollo 13,9,73,355,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1995,Species,7,55,113,Sci-Fi
 1995,First Knight,12,59,127,Action
 1995,Under Siege 2: Dark Territory,29,56,104,Action
 1995,Babe,4,60,254,Fantasy
@@ -283,7 +283,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1995,Mortal Kombat,13,54,122,Action
 1995,Desperado,9,68,25,Thriller
 1995,Hackers,7,62,7,Action
-Action,Action,Action,Action,Action,Action
+1995,The Horseman on the Roof,24,67,15,Action
 1995,Showgirls,9,49,20,Drama
 1995,Se7en,5,81,327,Crime
 1995,Halloween: The Curse of Michael Myers,37,50,15,Horror
@@ -294,7 +294,7 @@ Action,Action,Action,Action,Action,Action
 1995,Get Shorty,10,64,115,Comedy
 1995,Vampire in Brooklyn,19,45,19,Comedy
 1995,Leaving Las Vegas,17,71,49,Drama
-Family,Family,Family,Family,Family,Family
+1995,Toy Story,9,77,373,Family
 1995,Home for the Holidays,21,63,17,Comedy
 1995,Ace Ventura: When Nature Calls,30,61,212,Crime
 1995,GoldenEye,9,66,352,Adventure
@@ -305,7 +305,7 @@ Family,Family,Family,Family,Family,Family
 1995,Sense and Sensibility,21,72,135,Drama
 1995,Nixon,5,71,13,History
 1995,Cutthroat Island,16,57,10,Action
-Drama,Drama,Drama,Drama,Drama,Drama
+1995,Mr. Holland's Opus,18,69,106,Drama
 1995,Dead Man Walking,16,73,39,Drama
 1996,From Dusk Till Dawn,19,69,25,Horror
 1996,The Funeral,11,73,1,Crime
@@ -362,9 +362,9 @@ Drama,Drama,Drama,Drama,Drama,Drama
 1996,Set It Off,10,69,41,Drama
 1996,Ransom,6,64,309,Action
 1996,The English Patient,19,70,231,Drama
-Family,Family,Family,Family,Family,Family
+1996,Space Jam,9,65,250,Family
 1996,Jingle All the Way,18,55,129,Family
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1996,Star Trek: First Contact,24,70,150,Sci-Fi
 1996,Jerry Maguire,13,67,273,Comedy
 1996,Daylight,8,58,159,Action
 1996,Mars Attacks!,13,61,101,Comedy
@@ -380,13 +380,13 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1997,The Devil's Own,15,59,140,Crime
 1997,Selena,6,70,60,Drama
 1997,Liar Liar,9,64,181,Comedy
-Family,Family,Family,Family,Family,Family
+1997,Cats Don't Dance,16,71,3,Family
 1997,The Saint,9,59,118,Thriller
 1997,Chasing Amy,11,67,12,Comedy
 1997,Grosse Pointe Blank,19,69,28,Action
 1997,Anaconda,8,47,136,Adventure
 1997,Breakdown,9,66,50,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1997,Austin Powers: International Man of Mystery,43,65,67,Sci-Fi
 1997,The Fifth Element,17,73,263,Adventure
 1997,The Sweet Hereafter,19,68,3,Drama
 1997,The Lost World: Jurassic Park,29,62,229,Adventure
@@ -405,7 +405,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1997,Def Jam's How to Be a Player,28,53,13,Comedy
 1997,Conspiracy Theory,17,65,136,Action
 1997,The Full Monty,14,68,257,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1997,Steel,5,43,1,Sci-Fi
 1997,Event Horizon,13,65,26,Horror
 1997,Cop Land,8,66,44,Action
 1997,G.I. Jane,9,60,48,Action
@@ -425,12 +425,12 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1997,Switchback,10,58,6,Action
 1997,Starship Troopers,17,67,121,Adventure
 1997,Mad City,8,59,10,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1997,Alien: Resurrection,19,59,162,Sci-Fi
 1997,The Man Who Knew Too Little,27,65,13,Comedy
 1997,The Jackal,10,61,159,Action
 1997,Titanic,7,75,1845,Drama
 1997,The Rainmaker,13,67,45,Drama
-Family,Family,Family,Family,Family,Family
+1997,Anastasia,9,74,139,Family
 1997,Mortal Kombat: Annihilation,27,38,51,Action
 1997,Midnight in the Garden of Good and Evil,39,63,25,Crime
 1997,Flubber,7,53,177,Comedy
@@ -452,14 +452,14 @@ Family,Family,Family,Family,Family,Family
 1998,Zero Effect,11,60,1,Comedy
 1998,Deep Rising,11,60,11,Adventure
 1998,The Replacement Killers,23,60,19,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
-Drama,Drama,Drama,Drama,Drama,Drama
+1998,Sphere,6,58,13,Sci-Fi
+1998,Dark City,9,72,27,Drama
 1998,"Lock, Stock and Two Smoking Barrels",35,75,3,Comedy
 1998,A Civil Action,14,61,56,Drama
 1998,The Big Lebowski,16,78,46,Comedy
 1998,Wild Things,11,63,67,Crime
 1998,The Newton Boys,15,59,76,Crime
-Family,Family,Family,Family,Family,Family
+1998,Meet the Deedles,16,41,4,Family
 1998,Lost in Space,13,50,136,Adventure
 1998,City of Angels,14,64,198,Drama
 1998,The Object of My Affection,26,56,46,Comedy
@@ -475,25 +475,25 @@ Family,Family,Family,Family,Family,Family
 1998,The Truman Show,15,78,264,Comedy
 1998,Six Days Seven Nights,21,56,164,Action
 1998,Can't Hardly Wait,17,61,25,Comedy
-Family,Family,Family,Family,Family,Family
-Drama,Drama,Drama,Drama,Drama,Drama
+1998,Mulan,5,76,304,Family
+1998,The X Files,11,66,189,Drama
 1998,Doctor Dolittle,15,54,294,Comedy
 1998,Out of Sight,12,65,77,Romance
 1998,Armageddon,10,64,553,Action
 1998,Small Soldiers,14,62,54,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+1998,Pi,2,71,3,Drama
 1998,Lethal Weapon 4,15,63,285,Action
 1998,There's Something About Mary,28,65,369,Romance
 1998,The Mask of Zorro,17,63,250,Action
 1998,Saving Private Ryan,19,79,481,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+1998,Disturbing Behavior,19,55,17,Drama
 1998,The Negotiator,14,68,44,Action
 1998,Ever After: A Cinderella Story,30,68,65,Drama
 1998,Snake Eyes,10,58,103,Crime
 1998,How Stella Got Her Groove Back,30,60,37,Comedy
 1998,Run Lola Run,12,72,7,Action
 1998,Blade,5,65,131,Horror
-Drama,Drama,Drama,Drama,Drama,Drama
+1998,54,2,55,16,Drama
 1998,The Red Violin,14,73,9,Drama
 1998,Very Bad Things,15,62,9,Comedy
 1998,Simon Birch,11,65,18,Comedy
@@ -516,12 +516,12 @@ Drama,Drama,Drama,Drama,Drama,Drama
 1998,The Siege,9,60,116,Drama
 1998,Meet Joe Black,14,69,142,Fantasy
 1998,I Still Know What You Did Last Summer,37,51,40,Horror
-Family,Family,Family,Family,Family,Family
+1998,The Rugrats Movie,17,57,100,Family
 1998,Enemy of the State,18,67,250,Action
 1998,Home Fries,10,48,10,Drama
 1998,Babe: Pig in the City,21,52,69,Adventure
 1998,A Bug's Life,12,68,363,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1998,Star Trek: Insurrection,23,63,118,Sci-Fi
 1998,Shakespeare in Love,19,68,289,Romance
 1998,The Prince of Egypt,19,68,218,Adventure
 1998,You've Got Mail,15,63,250,Comedy
@@ -543,7 +543,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1999,The Rage: Carrie 2,18,51,17,Horror
 1999,The Deep End of the Ocean,25,59,28,Drama
 1999,The Corruptor,13,60,15,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+1999,Baby Geniuses,13,33,36,Sci-Fi
 1999,Tea with Mussolini,18,58,21,Comedy
 1999,The Matrix,10,79,463,Action
 1999,10 Things I Hate About You,26,73,53,Comedy
@@ -570,7 +570,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 1999,American Pie,12,64,235,Comedy
 1999,The Blair Witch Project,23,63,248,Horror
 1999,Muppets from Space,18,58,16,Fantasy
-Drama,Drama,Drama,Drama,Drama,Drama
+1999,Eyes Wide Shut,14,71,162,Drama
 1999,Lake Placid,11,55,56,Horror
 1999,The Wood,8,71,25,Comedy
 1999,The Haunting,12,52,91,Horror
@@ -580,7 +580,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 1999,Dick,4,57,27,Comedy
 1999,Universal Soldier: The Return,29,42,10,Action
 1999,The Thomas Crown Affair,23,66,124,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+1999,The Sixth Sense,15,77,672,Drama
 1999,The Iron Giant,14,76,23,Adventure
 1999,Mystery Men,11,57,29,Adventure
 1999,Detroit Rock City,17,67,4,Comedy
@@ -610,7 +610,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 1999,The Best Man,12,68,34,Drama
 1999,The Insider,11,73,60,Drama
 1999,House on Haunted Hill,21,55,40,Horror
-Family,Family,Family,Family,Family,Family
+1999,Toy Story 2,11,73,497,Family
 1999,The Bone Collector,18,65,151,Drama
 1999,The World Is Not Enough,23,60,361,Adventure
 1999,Dogma,5,68,30,Fantasy
@@ -625,8 +625,8 @@ Family,Family,Family,Family,Family,Family
 1999,Deuce Bigalow: Male Gigolo,26,55,65,Comedy
 1999,Godzilla 2000,13,59,10,Adventure
 1999,Any Given Sunday,16,68,100,Drama
-Family,Family,Family,Family,Family,Family
-Family,Family,Family,Family,Family,Family
+1999,Stuart Little,13,58,300,Family
+1999,Fantasia 2000,13,70,90,Family
 1999,Bicentennial Man,16,69,93,Comedy
 1999,Man on the Moon,15,69,47,Comedy
 1999,Galaxy Quest,12,69,90,Comedy
@@ -638,7 +638,7 @@ Family,Family,Family,Family,Family,Family
 2000,The Broken Hearts Club: A Romantic Comedy,41,63,1,Comedy
 2000,Scream 3,8,57,161,Horror
 2000,Gun Shy,7,54,1,Action
-Family,Family,Family,Family,Family,Family
+2000,The Tigger Movie,16,63,45,Family
 2000,The Beach,9,63,144,Drama
 2000,Hanging Up,10,50,36,Comedy
 2000,The Whole Nine Yards,20,62,106,Comedy
@@ -648,7 +648,7 @@ Family,Family,Family,Family,Family,Family
 2000,3 Strikes,9,59,9,Action
 2000,The Next Best Thing,19,43,24,Comedy
 2000,Drowning Mona,13,54,15,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2000,Mission to Mars,15,57,60,Sci-Fi
 2000,The Perfect Storm,17,62,325,Drama
 2000,Final Destination,17,64,53,Horror
 2000,High Fidelity,13,70,47,Comedy
@@ -665,7 +665,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2000,Love & Basketball,17,74,27,Action
 2000,Gossip,6,55,5,Drama
 2000,Where the Heart Is,18,69,33,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2000,The Flintstones in Viva Rock Vegas,34,44,59,Sci-Fi
 2000,Frequency,9,70,68,Crime
 2000,Gladiator,9,79,457,Action
 2000,Michael Jordan to the Max,25,75,21,Documentary
@@ -675,16 +675,16 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2000,Dancer in the Dark,18,76,40,Drama
 2000,Billy Elliot,12,74,110,Drama
 2000,Road Trip,9,59,119,Comedy
-Family,Family,Family,Family,Family,Family
+2000,Dinosaur,8,62,354,Family
 2000,Mission: Impossible II,22,59,546,Adventure
 2000,Shanghai Noon,13,62,56,Adventure
 2000,Big Momma's House,17,56,173,Crime
 2000,Gone in Sixty Seconds,21,61,237,Action
 2000,Shaft,5,55,107,Action
-Family,Family,Family,Family,Family,Family
+2000,Titan A.E.,10,63,36,Family
 2000,Boys and Girls,14,54,20,Comedy
 2000,Amores perros,13,76,20,Drama
-Family,Family,Family,Family,Family,Family
+2000,Chicken Run,11,65,224,Family
 2000,"Me, Myself & Irene",18,61,149,Comedy
 2000,The Patriot,11,68,215,Drama
 2000,The Adventures of Rocky & Bullwinkle,36,39,35,Action
@@ -714,7 +714,7 @@ Family,Family,Family,Family,Family,Family
 2000,Meet the Parents,16,66,330,Comedy
 2000,Get Carter,10,48,19,Action
 2000,102 Dalmatians,14,51,183,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2000,Memento,7,81,39,Drama
 2000,Pay It Forward,14,70,55,Drama
 2000,The Ladies Man,14,57,13,Comedy
 2000,Bedazzled,9,56,90,Fantasy
@@ -723,8 +723,8 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2000,The Legend of Bagger Vance,26,63,39,Fantasy
 2000,Charlie's Angels,16,56,264,Action
 2000,Red Planet,10,54,33,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2000,Unbreakable,11,69,248,Sci-Fi
+2000,The 6th Day,11,57,96,Sci-Fi
 2000,How the Grinch Stole Christmas,30,62,345,Family
 2000,Quills,6,68,7,Drama
 2000,Vertical Limit,14,59,215,Action
@@ -745,7 +745,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2001,Donnie Darko,12,77,1,Fantasy
 2001,L.I.E.,6,67,1,Drama
 2001,The Wedding Planner,19,55,94,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2001,Recess: School's Out,20,66,44,Sci-Fi
 2001,Head Over Heels,15,53,10,Comedy
 2001,Saving Silverman,16,54,19,Comedy
 2001,The Tailor of Panama,20,62,28,Drama
@@ -756,12 +756,12 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2001,15 Minutes,10,57,56,Action
 2001,Moulin Rouge!,13,74,179,Drama
 2001,Exit Wounds,11,53,79,Action
-Action,Action,Action,Action,Action,Action
+2001,Enemy at the Gates,18,72,96,Action
 2001,Spy Kids,8,55,147,Action
 2001,Tomcats,7,49,23,Comedy
 2001,Blow,4,74,83,Crime
 2001,Along Came a Spider,19,61,105,Crime
-Drama,Drama,Drama,Drama,Drama,Drama
+2001,Joe Dirt,8,55,30,Drama
 2001,The Other Side of Heaven,24,67,4,Action
 2001,Crocodile Dundee in Los Angeles,31,47,39,Adventure
 2001,Bridget Jones's Diary,21,65,281,Comedy
@@ -776,7 +776,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2001,Mulholland Drive,16,76,20,Thriller
 2001,Pearl Harbor,12,66,449,History
 2001,The Animal,10,46,84,Action
-Family,Family,Family,Family,Family,Family
+2001,Atlantis: The Lost Empire,25,67,186,Family
 2001,Swordfish,9,61,147,Action
 2001,Y Tu Mamá También,19,73,33,Drama
 2001,Lara Croft: Tomb Raider,23,57,274,Adventure
@@ -811,7 +811,7 @@ Family,Family,Family,Family,Family,Family
 2001,Ghosts of Mars,14,48,14,Action
 2001,O,1,58,16,Drama
 2001,Lovely & Amazing,16,63,4,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2001,Rock Star,9,60,16,Drama
 2001,The Musketeer,13,52,27,Action
 2001,Knockaround Guys,16,59,12,Crime
 2001,Hearts in Atlantis,18,64,24,Drama
@@ -825,16 +825,16 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2001,The Royal Tenenbaums,20,74,71,Comedy
 2001,Serendipity,11,66,77,Comedy
 2001,Max Keeble's Big Move,21,54,17,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2001,Joy Ride,8,63,36,Drama
 2001,Corky Romano,12,41,23,Action
 2001,Bandits,7,62,67,Action
 2001,The Last Castle,15,70,27,Action
 2001,Riding in Cars with Boys,24,65,35,Comedy
 2001,From Hell,9,66,74,Horror
 2001,K-PAX,5,71,50,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2001,Domestic Disturbance,20,54,54,Drama
 2001,Shallow Hal,11,57,141,Comedy
-Family,Family,Family,Family,Family,Family
+2001,"Monsters, Inc.",14,75,562,Family
 2001,The One,7,57,72,Action
 2001,Gosford Park,12,68,87,Drama
 2001,Monster's Ball,14,65,44,Drama
@@ -876,9 +876,9 @@ Family,Family,Family,Family,Family,Family
 2002,My Big Fat Greek Wedding,24,62,368,Comedy
 2002,Dragonfly,9,61,52,Drama
 2002,We Were Soldiers,16,67,114,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2002,The Time Machine,16,58,123,Sci-Fi
 2002,All About the Benjamins,23,58,25,Action
-Family,Family,Family,Family,Family,Family
+2002,Ice Age,7,71,383,Family
 2002,Resident Evil,13,64,102,Horror
 2002,Clockstoppers,13,49,38,Adventure
 2002,Blade II,8,62,155,Fantasy
@@ -900,7 +900,7 @@ Family,Family,Family,Family,Family,Family
 2002,Star Wars: Episode II - Attack of the Clones,44,64,649,Adventure
 2002,Raising Victor Vargas,21,78,2,Drama
 2002,The Spanish Apartment,21,70,3,Drama
-Action,Action,Action,Action,Action,Action
+2002,Spirit: Stallion of the Cimarron,32,74,122,Action
 2002,Insomnia,8,68,113,Crime
 2002,Enough,6,62,51,Drama
 2002,Undercover Brother,18,55,41,Action
@@ -908,9 +908,9 @@ Action,Action,Action,Action,Action,Action
 2002,Bad Company,11,54,65,Action
 2002,Windtalkers,11,58,77,Drama
 2002,The Bourne Identity,19,73,214,Action
-Drama,Drama,Drama,Drama,Drama,Drama
+2002,Scooby-Doo,10,54,275,Drama
 2002,Minority Report,15,71,358,Action
-Family,Family,Family,Family,Family,Family
+2002,Lilo & Stitch,13,71,145,Family
 2002,Mr. Deeds,9,56,171,Comedy
 2002,Halloween: Resurrection,23,45,37,Horror
 2002,Men in Black II,15,60,441,Action
@@ -936,7 +936,7 @@ Family,Family,Family,Family,Family,Family
 2002,Far from Heaven,15,69,29,Drama
 2002,Swimfan,7,50,34,Drama
 2002,City By The Sea,15,57,22,Crime
-Action,Action,Action,Action,Action,Action
+2002,The Four Feathers,17,65,29,Action
 2002,Phone Booth,11,67,97,Thriller
 2002,Moonlight Mile,14,65,10,Romance
 2002,Igby Goes Down,14,65,4,Comedy
@@ -969,7 +969,7 @@ Action,Action,Action,Action,Action,Action
 2002,Equilibrium,11,69,5,Action
 2002,Analyze That,12,57,55,Comedy
 2002,Adaptation.,11,73,32,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2002,Star Trek: Nemesis,18,61,67,Sci-Fi
 2002,Maid in Manhattan,17,56,154,Comedy
 2002,Drumline,8,62,57,Drama
 2002,About Schmidt,13,67,105,Drama
@@ -987,7 +987,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2003,Oldboy,6,80,14,Drama
 2003,Just Married,12,53,101,Comedy
 2003,A Guy Thing,11,53,17,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2003,Tupac: Resurrection,19,80,7,Drama
 2003,The Station Agent,17,74,8,Drama
 2003,Whale Rider,11,71,41,Drama
 2003,Final Destination 2,19,59,90,Horror
@@ -1014,7 +1014,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2003,Basic,5,62,42,Action
 2003,X2,2,68,407,Adventure
 2003,The Lizzie McGuire Movie,24,57,55,Family
-Drama,Drama,Drama,Drama,Drama,Drama
+2003,Identity,8,71,90,Drama
 2003,Daddy Day Care,14,56,164,Comedy
 2003,The Matrix Reloaded,19,67,738,Adventure
 2003,Swimming Pool,13,64,22,Thriller
@@ -1022,7 +1022,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2003,Bruce Almighty,14,64,484,Fantasy
 2003,Wrong Turn,10,60,28,Horror
 2003,The Italian Job,15,66,176,Action
-Family,Family,Family,Family,Family,Family
+2003,Finding Nemo,12,76,940,Family
 2003,2 Fast 2 Furious,16,62,236,Action
 2003,Mambo Italiano,14,56,3,Comedy
 2003,Hollywood Homicide,18,50,51,Action
@@ -1051,7 +1051,7 @@ Family,Family,Family,Family,Family,Family
 2003,American Splendor,17,71,6,Comedy
 2003,Thirteen,8,67,4,Crime
 2003,Marci X,7,33,1,Comedy
-Action,Action,Action,Action,Action,Action
+2003,Open Range,10,70,68,Action
 2003,Lost in Translation,19,73,119,Drama
 2003,Girl with a Pearl Earring,25,64,31,Drama
 2003,Intolerable Cruelty,19,58,119,Crime
@@ -1076,7 +1076,7 @@ Action,Action,Action,Action,Action,Action
 2003,The Matrix Revolutions,22,64,424,Adventure
 2003,Shattered Glass,15,66,2,Drama
 2003,Master and Commander: The Far Side of the World,47,69,212,Adventure
-Family,Family,Family,Family,Family,Family
+2003,Looney Tunes: Back in Action,28,56,68,Family
 2003,Monster,7,70,60,Crime
 2003,Gothika,7,58,141,Horror
 2003,Honey,5,60,62,Romance
@@ -1097,7 +1097,7 @@ Family,Family,Family,Family,Family,Family
 2004,Along Came Polly,16,58,171,Comedy
 2004,Super Size Me,13,66,28,Documentary
 2004,Barbershop 2:  Back in Business,31,56,65,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2004,The Butterfly Effect,20,73,96,Sci-Fi
 2004,Win a Date with Tad Hamilton!,29,55,16,Comedy
 2004,The Big Bounce,14,50,6,Comedy
 2004,Miracle,7,70,64,Drama
@@ -1113,19 +1113,19 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2004,The Passion of the Christ,25,69,611,Drama
 2004,Club Dread,10,51,5,Comedy
 2004,Starsky & Hutch,15,56,170,Comedy
-Action,Action,Action,Action,Action,Action
+2004,Hidalgo,7,65,108,Action
 2004,Secret Window,13,64,92,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2004,Eternal Sunshine of the Spotless Mind,37,79,72,Sci-Fi
 2004,Dawn of the Dead,16,68,102,Fantasy
-Drama,Drama,Drama,Drama,Drama,Drama
+2004,Scooby-Doo 2: Monsters Unleashed,32,54,181,Drama
 2004,Jersey Girl,11,58,36,Comedy
 2004,Walking Tall,12,60,57,Adventure
-Family,Family,Family,Family,Family,Family
+2004,Home on the Range,17,57,103,Family
 2004,Hellboy,7,65,99,Fantasy
 2004,Laws of Attraction,18,56,30,Action
 2004,Two Brothers,12,69,62,Adventure
 2004,The Whole Ten Yards,19,55,26,Comedy
-Action,Action,Action,Action,Action,Action
+2004,The Alamo,9,58,25,Action
 2004,Johnson Family Vacation,23,47,31,Comedy
 2004,The Girl Next Door,18,63,30,Comedy
 2004,Shaun of the Dead,17,75,30,Horror
@@ -1138,7 +1138,7 @@ Action,Action,Action,Action,Action,Action
 2004,Man on Fire,11,73,130,Action
 2004,Mean Girls,10,69,129,Comedy
 2004,Godsend,7,47,30,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2004,Mindhunters,11,63,21,Drama
 2004,Troy,4,69,497,Adventure
 2004,Shrek 2,7,67,919,Adventure
 2004,House of Flying Daggers,23,71,92,Adventure
@@ -1149,7 +1149,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2004,Harold & Kumar Go to White Castle,33,66,23,Comedy
 2004,Harry Potter and the Prisoner of Azkaban,40,77,789,Adventure
 2004,The Stepford Wives,18,54,102,Action
-Family,Family,Family,Family,Family,Family
+2004,Garfield,8,52,200,Family
 2004,The Chronicles of Riddick,25,63,115,Action
 2004,Napoleon Dynamite,17,67,46,Comedy
 2004,Mr. 3000,8,50,21,Comedy
@@ -1176,7 +1176,7 @@ Family,Family,Family,Family,Family,Family
 2004,The Princess Diaries 2: Royal Engagement,40,60,95,Comedy
 2004,Open Water,10,54,54,Drama
 2004,Little Black Book,17,52,22,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2004,Raise Your Voice,16,60,14,Drama
 2004,AVP: Alien vs. Predator,23,55,171,Adventure
 2004,Without a Paddle,16,53,69,Action
 2004,Exorcist: The Beginning,23,47,78,Horror
@@ -1192,13 +1192,13 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2004,Resident Evil: Apocalypse,25,61,129,Horror
 2004,Hotel Rwanda,12,75,38,Drama
 2004,Wimbledon,9,60,41,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
-Family,Family,Family,Family,Family,Family
+2004,Sky Captain and the World of Tomorrow,37,57,57,Drama
+2004,Shark Tale,10,58,367,Family
 2004,Woman Thou Art Loosed,21,50,6,Drama
 2004,Layer Cake,10,70,11,Drama
 2004,Saw,3,72,103,Horror
 2004,Ladder 49,9,62,74,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2004,Team America: World Police,26,66,50,Drama
 2004,Shall We Dance?,15,59,170,Drama
 2004,Finding Neverland,17,72,116,Drama
 2004,The Grudge,10,58,183,Horror
@@ -1212,15 +1212,15 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2004,Seed of Chucky,14,49,24,Drama
 2004,Veer-Zaara,10,74,29,Drama
 2004,After the Sunset,16,60,61,Action
-Family,Family,Family,Family,Family,Family
+2004,The SpongeBob SquarePants Movie,31,67,140,Family
 2004,National Treasure,17,64,347,Adventure
 2004,Howl's Moving Castle,20,82,234,Fantasy
-Action,Action,Action,Action,Action,Action
+2004,Alexander,9,56,167,Action
 2004,The Work and the Glory,22,61,3,Drama
 2004,Closer,6,67,115,Drama
 2004,Agent Cody Banks 2: Destination London,38,52,28,Comedy
 2004,The Phantom of the Opera,24,70,154,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2004,Blade: Trinity,14,57,128,Sci-Fi
 2004,Ocean's Twelve,14,64,362,Thriller
 2004,The Life Aquatic with Steve Zissou,34,71,34,Adventure
 2004,Million Dollar Baby,19,77,216,Drama
@@ -1252,11 +1252,11 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2005,The Pacifier,12,58,113,Action
 2005,The Jacket,10,68,21,Drama
 2005,Be Cool,7,54,95,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
-Family,Family,Family,Family,Family,Family
+2005,Hostage,7,62,77,Drama
+2005,Robots,6,60,260,Family
 2005,The Ring Two,12,54,161,Drama
 2005,Ice Princess,12,59,27,Drama
-Family,Family,Family,Family,Family,Family
+2005,Valiant,7,52,19,Family
 2005,Guess Who,9,55,68,Comedy
 2005,Sin City,8,72,158,Action
 2005,Sahara,6,57,119,Action
@@ -1271,7 +1271,7 @@ Family,Family,Family,Family,Family,Family
 2005,Monster-in-Law,14,56,154,Romance
 2005,Kicking & Screaming,19,56,56,Romance
 2005,A Sound of Thunder,18,48,5,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2005,Star Wars: Episode III - Revenge of the Sith,44,71,850,Sci-Fi
 2005,The Longest Yard,16,62,190,Comedy
 2005,Madagascar,10,66,532,Family
 2005,The Sisterhood of the Traveling Pants,37,63,39,Drama
@@ -1306,7 +1306,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2005,Supercross,10,54,3,Action
 2005,Tsotsi,6,69,9,Crime
 2005,The Cave,8,51,15,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2005,Serenity,8,74,38,Sci-Fi
 2005,Undiscovered,12,45,1,Comedy
 2005,The Brothers Grimm,18,56,105,Adventure
 2005,The Constant Gardener,21,68,82,Drama
@@ -1321,7 +1321,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2005,Corpse Bride,12,72,117,Romance
 2005,An Unfinished Life,18,67,18,Drama
 2005,Harsh Times,11,63,5,Crime
-Drama,Drama,Drama,Drama,Drama,Drama
+2005,Slow Burn,9,55,1,Drama
 2005,Dave Chappelle's Block Party,28,64,11,Comedy
 2005,Walk the Line,13,73,186,Drama
 2005,Romance & Cigarettes,20,60,2,Comedy
@@ -1352,7 +1352,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2005,Match Point,11,73,85,Drama
 2005,Saw II,6,63,152,Horror
 2005,Jarhead,7,66,96,Drama
-Family,Family,Family,Family,Family,Family
+2005,Chicken Little,14,56,314,Family
 2005,Harry Potter and the Goblet of Fire,35,75,895,Adventure
 2005,Zathura: A Space Adventure,26,61,64,Family
 2005,Joyeux Noël,12,72,17,Romance
@@ -1365,7 +1365,7 @@ Family,Family,Family,Family,Family,Family
 2005,Memoirs of a Geisha,19,73,162,Drama
 2005,"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",62,67,748,Adventure
 2005,King Kong,9,66,550,Adventure
-Family,Family,Family,Family,Family,Family
+2005,Hoodwinked!,11,59,51,Family
 2005,Fun with Dick and Jane,22,59,202,Comedy
 2005,Cheaper by the Dozen 2,22,57,129,Comedy
 2005,Munich,6,69,130,Drama
@@ -1390,7 +1390,7 @@ Family,Family,Family,Family,Family,Family
 2006,Madea's Family Reunion,22,60,57,Drama
 2006,Lucky Number Slevin,19,74,56,Drama
 2006,16 Blocks,9,62,65,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2006,Ultraviolet,11,48,31,Sci-Fi
 2006,Aquamarine,10,58,23,Fantasy
 2006,American Dreamz,15,49,7,Comedy
 2006,The Shaggy Dog,14,45,61,Comedy
@@ -1401,10 +1401,10 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2006,Volver,6,73,85,Comedy
 2006,Renaissance,11,67,1,Action
 2006,Find Me Guilty,14,65,2,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2006,Take the Lead,13,66,34,Drama
 2006,She's the Man,13,64,33,Comedy
 2006,Inside Man,10,73,184,Crime
-Family,Family,Family,Family,Family,Family
+2006,Ice Age: The Meltdown,21,65,660,Family
 2006,Stay Alive,10,53,27,Horror
 2006,Basic Instinct 2,16,46,38,Crime
 2006,ATL,3,60,21,Drama
@@ -1424,12 +1424,12 @@ Family,Family,Family,Family,Family,Family
 2006,X-Men: The Last Stand,21,63,459,Adventure
 2006,Marie Antoinette,16,65,60,Drama
 2006,Clerks II,9,69,26,Comedy
-Family,Family,Family,Family,Family,Family
+2006,A Scanner Darkly,16,68,7,Family
 2006,Pan's Labyrinth,15,76,83,Fantasy
 2006,The Break-Up,12,56,204,Romance
 2006,The Fast and the Furious: Tokyo Drift,37,61,158,Action
-Family,Family,Family,Family,Family,Family
-Family,Family,Family,Family,Family,Family
+2006,Cars,4,66,461,Family
+2006,Garfield: A Tail of Two Kitties,31,51,141,Family
 2006,The Lake House,14,65,114,Romance
 2006,Nacho Libre,11,56,80,Comedy
 2006,Pirates of the Caribbean: Dead Man's Chest,42,70,1065,Adventure
@@ -1440,7 +1440,7 @@ Family,Family,Family,Family,Family,Family
 2006,Bon Cop Bad Cop,15,65,12,Action
 2006,"You, Me and Dupree",18,54,130,Comedy
 2006,Stormbreaker,12,51,23,Adventure
-Family,Family,Family,Family,Family,Family
+2006,Monster House,13,63,140,Family
 2006,Lady in the Water,17,53,42,Drama
 2006,Little Miss Sunshine,20,75,100,Comedy
 2006,The Host,8,67,88,Horror
@@ -1448,11 +1448,11 @@ Family,Family,Family,Family,Family,Family
 2006,Scoop,5,64,31,Comedy
 2006,Who Killed the Electric Car?,28,72,1,Documentary
 2006,Talladega Nights: The Ballad of Ricky Bobby,43,62,162,Comedy
-Family,Family,Family,Family,Family,Family
+2006,Barnyard,8,53,72,Family
 2006,Snakes on a Plane,17,51,62,Action
 2006,World Trade Center,18,59,162,Drama
 2006,Zoom,4,49,12,Family
-Drama,Drama,Drama,Drama,Drama,Drama
+2006,Step Up,7,67,114,Drama
 2006,Pulse,5,50,29,Horror
 2006,Kabhi Alvida Naa Kehna,22,61,17,Drama
 2006,Half Nelson,11,65,4,Drama
@@ -1476,7 +1476,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2006,All the King's Men,18,57,9,Drama
 2006,This Is England,15,74,8,Drama
 2006,Perfume: The Story of a Murderer,32,71,132,Crime
-Family,Family,Family,Family,Family,Family
+2006,Happily N'Ever After,20,46,38,Family
 2006,The Queen,9,68,123,Drama
 2006,The Black Dahlia,16,57,49,Drama
 2006,Gridiron Gang,13,65,41,Action
@@ -1496,7 +1496,7 @@ Family,Family,Family,Family,Family,Family
 2006,One Night with the King,23,61,13,Drama
 2006,The Hoax,8,64,11,Comedy
 2006,The Astronaut Farmer,20,62,11,Adventure
-Action,Action,Action,Action,Action,Action
+2006,Flags of Our Fathers,20,67,65,Action
 2006,The Prestige,12,80,109,Drama
 2006,Night at the Museum,19,63,574,Action
 2006,Flicka,6,61,21,Drama
@@ -1507,7 +1507,7 @@ Action,Action,Action,Action,Action,Action
 2006,Borat: Cultural Learnings of America for Make Benefit Glorious,62,65,261,Comedy
 2006,Casino Royale,13,73,599,Adventure
 2006,Infamous,8,64,1,Drama
-Family,Family,Family,Family,Family,Family
+2006,Happy Feet,10,59,384,Family
 2006,Let's Go to Prison,18,55,4,Comedy
 2006,For Your Consideration,22,59,5,Comedy
 2006,Deck the Halls,14,51,47,Comedy
@@ -1515,7 +1515,7 @@ Family,Family,Family,Family,Family,Family
 2006,Blood Diamond,13,73,170,Drama
 2006,Apocalypto,10,73,120,Action
 2006,The Holiday,11,67,194,Comedy
-Action,Action,Action,Action,Action,Action
+2006,The Good German,15,59,5,Action
 2006,Black Snake Moan,16,66,10,Drama
 2006,Smokin' Aces,12,64,57,Action
 2006,300,3,70,422,Action
@@ -1555,7 +1555,7 @@ Action,Action,Action,Action,Action,Action
 2007,Reign Over Me,13,71,22,Drama
 2007,Once,4,73,20,Drama
 2007,The Reaping,11,54,62,Horror
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2007,Sunshine,8,70,32,Sci-Fi
 2007,Grindhouse,10,68,25,Thriller
 2007,[REC],5,71,30,Horror
 2007,Disturbia,9,66,117,Thriller
@@ -1568,7 +1568,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2007,My Blueberry Nights,19,60,21,Drama
 2007,Shrek the Third,15,60,798,Fantasy
 2007,Sicko,5,73,24,Documentary
-Drama,Drama,Drama,Drama,Drama,Drama
+2007,U2 3D,5,67,22,Drama
 2007,Pirates of the Caribbean: At World's End,40,69,961,Adventure
 2007,The Diving Bell and the Butterfly,33,74,19,Drama
 2007,We Own the Night,16,65,54,Drama
@@ -1576,18 +1576,18 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2007,Knocked Up,10,62,219,Comedy
 2007,Gracie,6,60,2,Drama
 2007,Ocean's Thirteen,16,65,311,Crime
-Family,Family,Family,Family,Family,Family
+2007,Surf's Up,9,59,149,Family
 2007,Hostel: Part II,15,56,35,Horror
 2007,Evan Almighty,13,53,173,Fantasy
 2007,Fantastic 4: Rise of the Silver Surfer,38,54,289,Adventure
 2007,Live Free or Die Hard,21,64,383,Action
-Family,Family,Family,Family,Family,Family
+2007,Ratatouille,11,75,623,Family
 2007,Transformers,12,66,709,Adventure
 2007,Harry Potter and the Order of the Phoenix,41,74,938,Adventure
 2007,License to Wed,14,52,69,Comedy
 2007,1408,4,65,94,Horror
 2007,Hairspray,9,65,90,Family
-Family,Family,Family,Family,Family,Family
+2007,The Simpsons Movie,18,69,527,Family
 2007,No Reservations,15,61,92,Comedy
 2007,No End in Sight,15,72,1,Documentary
 2007,The Bourne Ultimatum,20,73,442,Action
@@ -1595,7 +1595,7 @@ Family,Family,Family,Family,Family,Family
 2007,Rush Hour 3,11,61,258,Action
 2007,Daddy Day Camp,14,44,18,Comedy
 2007,Stardust,8,71,135,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2007,The Invasion,12,57,15,Sci-Fi
 2007,Superbad,8,70,121,Comedy
 2007,High School Musical 2,21,61,7,Comedy
 2007,The Kingdom,11,65,86,Thriller
@@ -1607,7 +1607,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2007,Death Sentence,14,65,16,Action
 2007,The Assassination of Jesse James by the Coward Robert Ford,58,70,14,Action
 2007,"Run, Fatboy, Run",16,62,33,Comedy
-Action,Action,Action,Action,Action,Action
+2007,3:10 to Yuma,12,69,70,Action
 2007,Rendition,9,62,24,Drama
 2007,Diary of the Dead,17,54,5,Horror
 2007,Elizabeth: The Golden Age,25,66,74,Drama
@@ -1637,7 +1637,7 @@ Action,Action,Action,Action,Action,Action
 2007,No Country for Old Men,22,77,171,Crime
 2007,P.S. I Love You,15,69,156,Drama
 2007,Enchanted,9,66,340,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2007,The Mist,8,67,57,Sci-Fi
 2007,Hitman,6,59,99,Action
 2007,August Rush,11,71,66,Drama
 2007,Awake,5,63,14,Thriller
@@ -1672,7 +1672,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2008,"Definitely, Maybe",17,67,55,Comedy
 2008,Jumper,6,59,222,Adventure
 2008,The Spiderwick Chronicles,25,63,162,Adventure
-Drama,Drama,Drama,Drama,Drama,Drama
+2008,Step Up 2: The Streets,22,65,150,Drama
 2008,Dolphins and Whales: Tribes of the Ocean,40,80,7,Documentary
 2008,Taken,5,72,226,Action
 2008,The Bank Job,12,66,64,Thriller
@@ -1697,7 +1697,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2008,Iron Man,8,74,585,Action
 2008,Made of Honor,13,60,84,Comedy
 2008,What Happens in Vegas,21,58,170,Comedy
-Action,Action,Action,Action,Action,Action
+2008,The Boy in the Striped Pyjamas,30,77,20,Action
 2008,Speed Racer,11,57,93,Action
 2008,Slumdog Millionaire,19,76,377,Drama
 2008,Blindness,9,64,19,Drama
@@ -1706,11 +1706,11 @@ Action,Action,Action,Action,Action,Action
 2008,Kung Fu Panda,13,69,631,Adventure
 2008,You Don't Mess with the Zohan,29,55,201,Comedy
 2008,The Happening,13,49,163,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2008,The Incredible Hulk,19,61,163,Sci-Fi
 2008,Wanted,6,64,258,Action
 2008,Get Smart,9,60,230,Action
 2008,The Love Guru,13,43,41,Comedy
-Family,Family,Family,Family,Family,Family
+2008,WALL·E,7,78,521,Family
 2008,Waltz with Bashir,17,78,11,Drama
 2008,The Mummy: Tomb of the Dragon Emperor,37,52,401,Adventure
 2008,Hancock,7,62,624,Fantasy
@@ -1722,8 +1722,8 @@ Family,Family,Family,Family,Family,Family
 2008,Journey to the Center of the Earth,34,58,101,Action
 2008,Hellboy II: The Golden Army,27,65,160,Adventure
 2008,The Dark Knight,15,82,1004,Drama
-Family,Family,Family,Family,Family,Family
-Family,Family,Family,Family,Family,Family
+2008,Space Chimps,12,52,63,Family
+2008,Ponyo,5,75,187,Family
 2008,The X Files: I Want to Believe,30,55,68,Drama
 2008,Step Brothers,13,65,128,Comedy
 2008,Man on Wire,11,75,2,Thriller
@@ -1731,7 +1731,7 @@ Family,Family,Family,Family,Family,Family
 2008,The Sisterhood of the Traveling Pants 2,39,60,44,Adventure
 2008,Pineapple Express,17,66,101,Action
 2008,Bottle Shock,12,66,4,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2008,The Midnight Meat Train,23,60,3,Drama
 2008,Tropic Thunder,14,65,188,Action
 2008,Vicky Cristina Barcelona,24,67,96,Drama
 2008,Mirrors,7,60,72,Horror
@@ -1757,7 +1757,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2008,My Best Friend's Girl,21,54,36,Romance
 2008,Lakeview Terrace,16,59,27,Drama
 2008,The Class,9,68,28,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2008,Eagle Eye,9,63,178,Drama
 2008,Fireproof,9,70,33,Drama
 2008,Choke,5,60,3,Comedy
 2008,How to Lose Friends & Alienate People,37,62,17,Comedy
@@ -1775,13 +1775,13 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2008,What Just Happened,18,52,6,Comedy
 2008,W.,2,61,29,Drama
 2008,Saw V,5,59,113,Horror
-Family,Family,Family,Family,Family,Family
+2008,Roadside Romeo,14,67,1,Family
 2008,Quantum of Solace,17,61,586,Adventure
 2008,Madagascar: Escape 2 Africa,27,62,603,Family
 2008,Australia,9,63,49,Drama
 2008,Two Lovers,10,66,3,Drama
 2008,Twilight,8,58,392,Adventure
-Family,Family,Family,Family,Family,Family
+2008,Bolt,4,63,309,Family
 2008,The Curious Case of Benjamin Button,35,73,333,Fantasy
 2008,Milk,4,71,54,History
 2008,Four Christmases,16,53,163,Comedy
@@ -1806,7 +1806,7 @@ Family,Family,Family,Family,Family,Family
 2009,Dead Snow,9,61,1,Horror
 2009,Bride Wars,10,59,114,Comedy
 2009,Paul Blart: Mall Cop,20,52,183,Action
-Drama,Drama,Drama,Drama,Drama,Drama
+2009,My Bloody Valentine,19,53,100,Drama
 2009,Hotel for Dogs,14,57,73,Comedy
 2009,Brooklyn's Finest,17,62,29,Crime
 2009,I Love You Phillip Morris,25,64,10,Comedy
@@ -1814,7 +1814,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2009,Brothers,8,68,43,Drama
 2009,New in Town,11,52,29,Comedy
 2009,The International,17,60,60,Drama
-Family,Family,Family,Family,Family,Family
+2009,Coraline,8,73,124,Family
 2009,My Life in Ruins,16,56,20,Comedy
 2009,He's Just Not That Into You,27,62,177,Comedy
 2009,Cheri,5,59,9,Drama
@@ -1828,7 +1828,7 @@ Family,Family,Family,Family,Family,Family
 2009,The Last House on the Left,26,62,32,Crime
 2009,The Twilight Saga: New Moon,27,56,709,Adventure
 2009,Drag Me to Hell,15,62,90,Horror
-Family,Family,Family,Family,Family,Family
+2009,Monsters vs Aliens,18,60,381,Family
 2009,Knowing,7,59,155,Action
 2009,Duplicity,9,57,60,Romance
 2009,12 Rounds,9,57,17,Action
@@ -1843,8 +1843,8 @@ Family,Family,Family,Family,Family,Family
 2009,City of Life and Death,22,76,10,Drama
 2009,The Soloist,11,66,31,Drama
 2009,X-Men Origins: Wolverine,24,62,373,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
-Family,Family,Family,Family,Family,Family
+2009,Star Trek,9,74,385,Sci-Fi
+2009,Up,2,77,735,Family
 2009,Angels & Demons,15,65,356,Thriller
 2009,Fish Tank,9,69,2,Drama
 2009,Agora,5,69,39,Adventure
@@ -1857,13 +1857,13 @@ Family,Family,Family,Family,Family,Family
 2009,Tidal Wave,10,65,11,Action
 2009,A Perfect Getaway,17,62,22,Thriller
 2009,The Taking of Pelham 1 2 3,26,62,150,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2009,Moon,4,76,9,Sci-Fi
 2009,Hachi: A Dog's Tale,19,77,47,Drama
 2009,Year One,8,46,62,Comedy
 2009,Whatever Works,14,68,35,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2009,Transformers: Revenge of the Fallen,35,60,836,Sci-Fi
 2009,My Sister's Keeper,18,71,95,Drama
-Family,Family,Family,Family,Family,Family
+2009,Ice Age: Dawn of the Dinosaurs,30,65,886,Family
 2009,Public Enemies,14,65,214,History
 2009,Harry Potter and the Half-Blood Prince,38,74,933,Adventure
 2009,(500) Days of Summer,20,72,60,Comedy
@@ -1874,7 +1874,7 @@ Family,Family,Family,Family,Family,Family
 2009,Funny People,12,57,61,Comedy
 2009,Aliens in the Attic,19,53,57,Adventure
 2009,G.I. Joe: The Rise of Cobra,27,56,302,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2009,District 9,10,73,210,Sci-Fi
 2009,Julie & Julia,13,66,129,Romance
 2009,Bandslam,8,54,5,Comedy
 2009,The Secret in Their Eyes,24,78,33,Crime
@@ -1904,7 +1904,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2009,Ondine,6,65,1,Drama
 2009,[REC]²,7,64,18,Thriller
 2009,The Box,7,54,33,Thriller
-Family,Family,Family,Family,Family,Family
+2009,Cloudy with a Chance of Meatballs,33,65,242,Family
 2009,The Informant!,14,60,35,Drama
 2009,Love Happens,12,56,36,Drama
 2009,Jennifer's Body,15,53,31,Comedy
@@ -1918,7 +1918,7 @@ Family,Family,Family,Family,Family,Family
 2009,Zombieland,10,72,102,Comedy
 2009,2012,4,56,769,Action
 2009,Law Abiding Citizen,19,72,126,Drama
-Family,Family,Family,Family,Family,Family
+2009,Astro Boy,9,61,44,Family
 2009,Where the Wild Things Are,25,64,100,Family
 2009,The Men Who Stare at Goats,26,59,68,Comedy
 2009,Oceans,6,73,19,Documentary
@@ -1927,13 +1927,13 @@ Family,Family,Family,Family,Family,Family
 2009,Cirque du Freak: The Vampire's Assistant,40,55,28,Adventure
 2009,Micmacs,7,68,14,Action
 2009,An Education,12,68,26,Drama
-Family,Family,Family,Family,Family,Family
+2009,A Christmas Carol,17,66,325,Family
 2009,Bright Star,11,68,4,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2009,The Fourth Kind,15,58,42,Drama
 2009,Precious,8,69,47,Drama
 2009,Harry Brown,11,67,10,Thriller
 2009,The Messenger,13,71,1,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2009,Planet 51,9,56,104,Sci-Fi
 2009,The Blind Side,14,72,309,Drama
 2009,The Boondock Saints II: All Saints Day,38,59,10,Action
 2009,Old Dogs,8,52,92,Comedy
@@ -1969,12 +1969,12 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2010,Loose Cannons,13,70,8,Comedy
 2010,Centurion,9,59,6,Adventure
 2010,Shutter Island,14,78,294,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2010,The Crazies,11,62,54,Drama
 2010,Cop Out,7,53,55,Action
 2010,Alice in Wonderland,19,64,1025,Family
 2010,How to Train Your Dragon,24,75,494,Fantasy
 2010,She's Out of My League,22,59,49,Comedy
-Action,Action,Action,Action,Action,Action
+2010,Green Zone,10,64,94,Action
 2010,Our Family Wedding,18,57,21,Comedy
 2010,The Bounty Hunter,17,55,136,Action
 2010,Space Dogs,10,63,6,Family
@@ -1983,7 +1983,7 @@ Action,Action,Action,Action,Action,Action
 2010,Diary of a Wimpy Kid,20,59,75,Comedy
 2010,Kick-Ass,8,71,96,Action
 2010,Nanny McPhee and the Big Bang,29,60,93,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2010,Hot Tub Time Machine,20,60,64,Sci-Fi
 2010,The Perfect Game,16,63,3,Drama
 2010,Clash of the Titans,19,56,232,Adventure
 2010,Why Did I Get Married Too?,26,61,60,Comedy
@@ -2011,7 +2011,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2010,Get Him to the Greek,20,59,90,Comedy
 2010,Winter's Bone,13,68,13,Drama
 2010,Knight and Day,14,59,261,Action
-Family,Family,Family,Family,Family,Family
+2010,Toy Story 3,11,76,1066,Family
 2010,Wild Target,11,64,3,Action
 2010,Monsters,8,62,4,Drama
 2010,Jonah Hex,9,44,10,Action
@@ -2020,9 +2020,9 @@ Family,Family,Family,Family,Family,Family
 2010,The Last Airbender,18,47,318,Action
 2010,Predators,9,60,126,Action
 2010,It's Kind of a Funny Story,26,69,6,Comedy
-Family,Family,Family,Family,Family,Family
+2010,Despicable Me,13,71,543,Family
 2010,The Kids Are All Right,22,65,34,Comedy
-Family,Family,Family,Family,Family,Family
+2010,Legend of the Guardians: The Owls of Ga'Hoole,45,65,140,Family
 2010,The Sorcerer's Apprentice,25,58,215,Fantasy
 2010,Inception,9,81,825,Action
 2010,Salt,4,62,293,Action
@@ -2073,7 +2073,7 @@ Family,Family,Family,Family,Family,Family
 2010,Biutiful,8,70,25,Drama
 2010,Saw: The Final Chapter,22,58,136,Horror
 2010,Barney's Version,16,72,8,Comedy
-Family,Family,Family,Family,Family,Family
+2010,Megamind,8,67,321,Family
 2010,Troll Hunter,12,67,4,Fantasy
 2010,Unstoppable,11,63,167,Action
 2010,Due Date,8,62,211,Comedy
@@ -2081,14 +2081,14 @@ Family,Family,Family,Family,Family,Family
 2010,Another Year,12,70,18,Comedy
 2010,127 Hours,9,70,35,Adventure
 2010,Don't Be Afraid of the Dark,27,54,36,Fantasy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2010,Skyline,7,47,66,Sci-Fi
 2010,The Next Three Days,19,69,51,Romance
 2010,Love & Other Drugs,18,66,102,Drama
 2010,Faster,6,61,23,Crime
 2010,Burlesque,9,69,89,Drama
 2010,The Nutcracker: The Untold Story,32,54,16,Fantasy
-Family,Family,Family,Family,Family,Family
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2010,Tangled,7,74,591,Family
+2010,Space Battleship Yamato,23,63,11,Sci-Fi
 2010,The Warrior's Way,17,63,11,Adventure
 2010,Black Swan,10,73,327,Drama
 2010,The Tourist,11,60,278,Action
@@ -2104,7 +2104,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2010,Gulliver's Travels,18,49,237,Comedy
 2010,Blue Valentine,14,69,16,Drama
 2010,The Last Godfather,18,47,16,Action
-Family,Family,Family,Family,Family,Family
+2011,Legend of a Rabbit,18,30,2,Family
 2011,The Green Hornet,16,55,227,Action
 2011,The Mechanic,12,63,51,Action
 2011,The Dilemma,11,52,67,Comedy
@@ -2126,9 +2126,9 @@ Family,Family,Family,Family,Family,Family
 2011,Drive Angry,11,53,28,Fantasy
 2011,The Grace Card,14,65,2,Drama
 2011,Hall Pass,9,54,83,Comedy
-Family,Family,Family,Family,Family,Family
+2011,Rango,5,66,245,Family
 2011,One Day,7,70,59,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2011,The Adjustment Bureau,21,65,127,Sci-Fi
 2011,Take Me Home Tonight,20,62,6,Comedy
 2011,Battle: Los Angeles,19,55,202,Action
 2011,Mars Needs Moms,15,55,38,Adventure
@@ -2139,14 +2139,14 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2011,Sucker Punch,12,59,89,Action
 2011,Diary of a Wimpy Kid: Rodrick Rules,35,63,72,Family
 2011,Source Code,11,71,147,Thriller
-Family,Family,Family,Family,Family,Family
-Family,Family,Family,Family,Family,Family
+2011,Hop,3,55,183,Family
+2011,Rio,3,65,484,Family
 2011,Hanna,5,65,63,Action
 2011,Your Highness,13,52,26,Comedy
 2011,Soul Surfer,11,69,47,Action
 2011,A Lonely Place to Die,21,62,25,Adventure
 2011,Scream 4,8,61,97,Horror
-Family,Family,Family,Family,Family,Family
+2011,Winnie the Pooh,15,68,14,Family
 2011,Fast Five,9,71,626,Action
 2011,Thor,4,66,449,Adventure
 2011,Bridesmaids,11,65,288,Comedy
@@ -2163,10 +2163,10 @@ Family,Family,Family,Family,Family,Family
 2011,The Tree of Life,16,65,54,Drama
 2011,X-Men: First Class,18,71,353,Action
 2011,The Hangover Part II,20,62,254,Comedy
-Family,Family,Family,Family,Family,Family
+2011,Kung Fu Panda 2,15,67,665,Family
 2011,Melancholia,11,70,21,Drama
 2011,Super 8,7,66,260,Thriller
-Family,Family,Family,Family,Family,Family
+2011,Cars 2,6,58,559,Family
 2011,Green Lantern,13,51,219,Adventure
 2011,The Art of Getting By,21,65,1,Drama
 2011,Mr. Popper's Penguins,21,57,187,Comedy
@@ -2183,7 +2183,7 @@ Family,Family,Family,Family,Family,Family
 2011,Captain America: The First Avenger,34,66,370,Action
 2011,Another Earth,13,68,1,Drama
 2011,Colombiana,10,65,60,Action
-Family,Family,Family,Family,Family,Family
+2011,The Smurfs,10,55,563,Family
 2011,"Crazy, Stupid, Love.",20,70,142,Comedy
 2011,Rise of the Planet of the Apes,30,70,482,Thriller
 2011,Headhunters,11,71,15,Thriller
@@ -2242,7 +2242,7 @@ Family,Family,Family,Family,Family,Family
 2011,J. Edgar,8,60,84,Drama
 2011,Immortals,9,57,226,Fantasy
 2011,Jack and Jill,13,41,149,Comedy
-Family,Family,Family,Family,Family,Family
+2011,Happy Feet Two,14,58,150,Family
 2011,The Muppets,11,65,165,Comedy
 2011,Sherlock Holmes: A Game of Shadows,34,70,334,Adventure
 2011,Hugo,4,70,185,Adventure
@@ -2271,7 +2271,7 @@ Family,Family,Family,Family,Family,Family
 2012,The Grey,8,64,77,Action
 2012,One for the Money,17,53,36,Action
 2012,The Woman in Black,18,61,127,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2012,Chronicle,9,66,145,Sci-Fi
 2012,Big Miracle,11,66,24,Adventure
 2012,The Vow,7,70,196,Drama
 2012,Safe House,10,63,208,Action
@@ -2283,8 +2283,8 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2012,John Carter,11,61,284,Action
 2012,A Thousand Words,16,60,22,Drama
 2012,The Raven,9,61,29,Crime
-Family,Family,Family,Family,Family,Family
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2012,The Pirates! In an Adventure with Scientists!,45,64,118,Family
+2012,The Hunger Games,16,69,691,Sci-Fi
 2012,21 Jump Street,14,67,201,Action
 2012,Mirror Mirror,13,55,183,Adventure
 2012,Wrath of the Titans,19,55,301,Adventure
@@ -2299,7 +2299,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2012,Safe,4,63,40,Action
 2012,The Lucky One,13,68,99,Drama
 2012,To Rome with Love,17,56,73,Romance
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2012,The Avengers,12,74,1519,Sci-Fi
 2012,The Five-Year Engagement,24,57,53,Comedy
 2012,Bernie,6,65,9,Comedy
 2012,The Sessions,12,66,9,Drama
@@ -2312,16 +2312,16 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2012,Men in Black 3,14,62,624,Action
 2012,Chernobyl Diaries,17,49,18,Horror
 2012,Snow White and the Huntsman,27,58,396,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2012,Prometheus,10,63,403,Sci-Fi
 2012,For Greater Glory - The True Story of Cristiada,47,64,9,History
-Family,Family,Family,Family,Family,Family
+2012,Madagascar 3: Europe's Most Wanted,34,64,746,Family
 2012,Safety Not Guaranteed,21,68,4,Comedy
 2012,Rock of Ages,12,60,59,Comedy
 2012,That's My Boy,13,55,58,Comedy
 2012,Abraham Lincoln: Vampire Hunter,31,55,112,Action
-Family,Family,Family,Family,Family,Family
+2012,Brave,5,67,538,Family
 2012,Seeking a Friend for the End of the World,41,63,9,Comedy
-Family,Family,Family,Family,Family,Family
+2012,Ice Age: Continental Drift,26,62,877,Family
 2012,The Amazing Spider-Man,22,65,752,Action
 2012,Magic Mike,10,61,167,Drama
 2012,Katy Perry: Part of Me,22,65,32,Documentary
@@ -2332,7 +2332,7 @@ Family,Family,Family,Family,Family,Family
 2012,2016: Obama's America,21,46,33,Documentary
 2012,The Dark Knight Rises,21,76,1084,Action
 2012,The Watch,9,53,68,Comedy
-Drama,Drama,Drama,Drama,Drama,Drama
+2012,Step Up Revolution,18,67,140,Drama
 2012,Diary of a Wimpy Kid: Dog Days,30,60,77,Comedy
 2012,ParaNorman,10,67,107,Family
 2012,Celeste & Jesse Forever,23,64,3,Comedy
@@ -2342,7 +2342,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2012,The Bourne Legacy,17,60,276,Action
 2012,The Campaign,12,56,104,Comedy
 2012,The Odd Life of Timothy Green,29,65,51,Fantasy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2012,Robot & Frank,13,68,3,Sci-Fi
 2012,Sparkle,7,58,24,Drama
 2012,Hit & Run,9,55,14,Action
 2012,The Apparition,14,45,9,Horror
@@ -2365,7 +2365,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2012,Arbitrage,9,61,35,Drama
 2012,The Perks of Being a Wallflower,31,77,33,Drama
 2012,Killing Them Softly,19,58,37,Crime
-Family,Family,Family,Family,Family,Family
+2012,Hotel Transylvania,18,68,358,Family
 2012,End of Watch,12,72,48,Crime
 2012,The Collection,14,59,6,Horror
 2012,House at the End of the Street,30,56,44,Horror
@@ -2374,9 +2374,9 @@ Family,Family,Family,Family,Family,Family
 2012,Taken 2,7,61,376,Action
 2012,Won't Back Down,15,58,5,Drama
 2012,Pitch Perfect,13,73,115,Comedy
-Family,Family,Family,Family,Family,Family
+2012,Frankenweenie,13,66,35,Family
 2012,Silent Hill: Revelation 3D,26,50,52,Thriller
-Family,Family,Family,Family,Family,Family
+2012,The Snow Queen,14,51,12,Family
 2012,Here Comes the Boom,19,60,73,Comedy
 2012,Argo,4,71,232,Drama
 2012,Paranormal Activity 4,21,52,142,Horror
@@ -2393,7 +2393,7 @@ Family,Family,Family,Family,Family,Family
 2012,Life of Pi,10,72,609,Adventure
 2012,Rise of the Guardians,21,71,306,Fantasy
 2012,The Hobbit: An Unexpected Journey,33,70,1021,Adventure
-Family,Family,Family,Family,Family,Family
+2012,Ernest & Celestine,18,76,8,Family
 2012,Les Misérables,15,71,441,Drama
 2012,Zero Dark Thirty,16,67,132,Thriller
 2012,The Guilt Trip,14,54,41,Comedy
@@ -2419,7 +2419,7 @@ Family,Family,Family,Family,Family,Family
 2013,Safe Haven,10,69,97,Romance
 2013,Identity Thief,14,56,173,Comedy
 2013,Beautiful Creatures,19,56,60,Fantasy
-Family,Family,Family,Family,Family,Family
+2013,Escape from Planet Earth,24,57,74,Family
 2013,Snitch,6,58,42,Thriller
 2013,Jack the Giant Slayer,21,55,197,Action
 2013,Hard to Be a God,16,67,1,Drama
@@ -2449,38 +2449,38 @@ Family,Family,Family,Family,Family,Family
 2013,Mud,3,70,21,Drama
 2013,Star Trek Into Darkness,23,74,467,Action
 2013,The Great Gatsby,16,73,351,Drama
-Family,Family,Family,Family,Family,Family
+2013,Epic,4,64,268,Family
 2013,Frances Ha,10,72,4,Comedy
 2013,The Great Beauty,16,73,8,Comedy
 2013,Now You See Me,14,73,117,Thriller
 2013,Only God Forgives,17,56,10,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,After Earth,11,50,243,Sci-Fi
 2013,Yeh Jawaani Hai Deewani,23,72,46,Romance
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,The Purge,9,60,89,Sci-Fi
 2013,The East,8,65,2,Drama
 2013,The Way Way Back,16,71,23,Comedy
 2013,The Internship,14,61,44,Comedy
 2013,This Is the End,15,63,126,Action
 2013,Man of Steel,12,65,662,Action
-Family,Family,Family,Family,Family,Family
+2013,Legends of Oz: Dorothy's Return,31,59,18,Family
 2013,World War Z,11,67,531,Action
-Family,Family,Family,Family,Family,Family
-Family,Family,Family,Family,Family,Family
+2013,Monsters University,19,70,743,Family
+2013,Despicable Me 2,15,70,970,Family
 2013,White House Down,16,64,205,Action
 2013,The Heat,8,65,158,Action
 2013,The Lone Ranger,15,59,89,Action
 2013,The Immigrant,13,62,5,Drama
 2013,Kevin Hart: Let Me Explain,26,71,32,Comedy
-Family,Family,Family,Family,Family,Family
+2013,Turbo,5,61,282,Family
 2013,Pacific Rim,11,67,407,Action
 2013,Grown Ups 2,11,58,246,Comedy
 2013,Kick-Ass 2,10,63,60,Action
-Family,Family,Family,Family,Family,Family
+2013,Underdogs,9,60,24,Family
 2013,The World's End,15,67,46,Comedy
 2013,The Frozen Ground,17,61,5,Thriller
 2013,The Conjuring,13,74,318,Horror
 2013,R.I.P.D.,8,54,61,Fantasy
-Family,Family,Family,Family,Family,Family
+2013,Khumba,6,58,27,Family
 2013,Instructions Not Included,25,75,99,Comedy
 2013,The Wolverine,13,63,415,Action
 2013,The To Do List,14,55,3,Comedy
@@ -2493,16 +2493,16 @@ Family,Family,Family,Family,Family,Family
 2013,2 Guns,6,66,131,Action
 2013,We're the Millers,17,68,269,Comedy
 2013,Percy Jackson: Sea of Monsters,30,59,174,Adventure
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,Elysium,7,64,286,Sci-Fi
 2013,The Butler,10,72,115,Drama
 2013,About Time,10,78,87,Comedy
 2013,The Mortal Instruments: City of Bones,37,62,90,Action
 2013,Blood Ties,10,60,2,Thriller
 2013,Getaway,7,49,10,Action
 2013,Rush,4,77,90,Drama
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,Riddick,7,62,98,Sci-Fi
 2013,Bad Words,9,64,7,Comedy
-Family,Family,Family,Family,Family,Family
+2013,Space Pirate Captain Harlock,28,65,17,Family
 2013,Dallas Buyers Club,18,79,55,Drama
 2013,Begin Again,11,73,63,Comedy
 2013,Oculus,6,63,44,Horror
@@ -2511,11 +2511,11 @@ Family,Family,Family,Family,Family,Family
 2013,Enough Said,11,66,25,Comedy
 2013,The Lunchbox,12,73,4,Drama
 2013,Nebraska,8,74,17,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2013,Battle of the Year,18,59,16,Drama
 2013,Runner Runner,13,55,62,Crime
-Drama,Drama,Drama,Drama,Drama,Drama
-Family,Family,Family,Family,Family,Family
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,Metallica: Through the Never,28,67,7,Drama
+2013,Cloudy with a Chance of Meatballs 2,35,64,248,Family
+2013,Gravity,7,73,716,Sci-Fi
 2013,Baggage Claim,13,56,22,Comedy
 2013,Nurse 3-D,9,49,10,Horror
 2013,Inside Llewyn Davis,19,72,32,Drama
@@ -2528,11 +2528,11 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2013,All Is Lost,11,66,6,Action
 2013,12 Years a Slave,16,79,187,Drama
 2013,Bad Grandpa,11,60,151,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2013,Ender's Game,12,66,125,Sci-Fi
 2013,The Counselor,13,50,71,Thriller
 2013,Ida,3,71,10,Drama
 2013,Thor: The Dark World,20,68,644,Action
-Family,Family,Family,Family,Family,Family
+2013,Free Birds,10,57,110,Family
 2013,Last Vegas,10,64,134,Comedy
 2013,Philomena,9,74,100,Drama
 2013,The Book Thief,14,74,76,Drama
@@ -2540,14 +2540,14 @@ Family,Family,Family,Family,Family,Family
 2013,The Best Man Holiday,20,67,71,Comedy
 2013,Saving Mr. Banks,16,73,112,Comedy
 2013,Homefront,9,64,43,Action
-Family,Family,Family,Family,Family,Family
+2013,Frozen,6,73,1274,Family
 2013,Black Nativity,14,58,7,Drama
 2013,Out of the Furnace,18,65,15,Thriller
 2013,Mandela: Long Walk to Freedom,29,65,27,Drama
 2013,47 Ronin,8,59,150,Drama
 2013,The Hobbit: The Desolation of Smaug,35,76,958,Adventure
 2013,American Hustle,15,68,251,Drama
-Family,Family,Family,Family,Family,Family
+2013,Walking With Dinosaurs,22,52,126,Family
 2013,The Secret Life of Walter Mitty,31,70,188,Adventure
 2013,Her,3,79,47,Romance
 2013,Anchorman 2: The Legend Continues,33,60,173,Comedy
@@ -2565,12 +2565,12 @@ Family,Family,Family,Family,Family,Family
 2014,Wish I Was Here,15,64,5,Drama
 2014,The Skeleton Twins,18,67,5,Drama
 2014,"I, Frankenstein",15,50,71,Horror
-Action,Action,Action,Action,Action,Action
+2014,The Monuments Men,17,58,154,Action
 2014,Non-Stop,8,68,222,Action
 2014,That Awkward Moment,19,61,26,Comedy
 2014,RoboCop,7,57,242,Action
 2014,The Lego Movie,14,75,469,Adventure
-Family,Family,Family,Family,Family,Family
+2014,Mr. Peabody & Sherman,21,67,272,Family
 2014,Endless Love,12,67,34,Drama
 2014,Winter's Tale,13,60,30,Drama
 2014,About Last Night,16,60,49,Comedy
@@ -2582,7 +2582,7 @@ Family,Family,Family,Family,Family,Family
 2014,Need for Speed,14,61,203,Action
 2014,Under the Skin,14,60,5,Thriller
 2014,Divergent,9,69,288,Adventure
-Family,Family,Family,Family,Family,Family
+2014,Rio 2,5,63,500,Family
 2014,Noah,4,56,362,Drama
 2014,Muppets Most Wanted,19,62,80,Comedy
 2014,Captain America: The Winter Soldier,35,76,714,Action
@@ -2600,19 +2600,19 @@ Family,Family,Family,Family,Family,Family
 2014,Million Dollar Arm,18,66,38,Drama
 2014,X-Men: Days of Future Past,26,75,747,Action
 2014,The Fault in Our Stars,22,76,307,Romance
-Action,Action,Action,Action,Action,Action
+2014,The Homesman,12,64,3,Action
 2014,Blended,7,66,123,Comedy
 2014,Edge of Tomorrow,16,76,370,Action
 2014,Maleficent,10,70,758,Fantasy
-Drama,Drama,Drama,Drama,Drama,Drama
+2014,Jersey Boys,11,68,67,Drama
 2014,Boyhood,7,75,44,Drama
 2014,22 Jump Street,14,70,188,Crime
 2014,Obvious Child,13,67,3,Comedy
 2014,How to Train Your Dragon 2,26,76,609,Fantasy
 2014,Earth to Echo,13,57,45,Family
 2014,Think Like a Man Too,20,64,70,Comedy
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2014,Transformers: Age of Extinction,31,58,1091,Sci-Fi
+2014,Dawn of the Planet of the Apes,30,73,710,Sci-Fi
 2014,Tammy,5,50,100,Comedy
 2014,Lucy,4,63,126,Action
 2014,The Purge: Anarchy,18,66,108,Horror
@@ -2625,7 +2625,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2014,The Expendables 3,17,61,206,Action
 2014,The Hundred-Foot Journey,24,73,88,Drama
 2014,Into the Storm,14,58,160,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2014,Teenage Mutant Ninja Turtles,28,58,477,Sci-Fi
 2014,The Giver,9,64,66,Drama
 2014,Let's Be Cops,13,64,136,Comedy
 2014,"As Above, So Below",18,61,40,Horror
@@ -2635,22 +2635,22 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2014,The Prince,10,46,266,Thriller
 2014,The November Man,16,60,32,Crime
 2014,Birdman,7,74,103,Drama
-Drama,Drama,Drama,Drama,Drama,Drama
+2014,Before I Go to Sleep,20,62,15,Drama
 2014,The Green Inferno,17,50,6,Action
 2014,Black or White,14,65,21,Drama
 2014,Miss Julie,10,59,5,Drama
 2014,This Is Where I Leave You,25,65,41,Drama
 2014,The Maze Runner,15,70,348,Action
-Family,Family,Family,Family,Family,Family
+2014,The Boxtrolls,13,66,108,Family
 2014,No Good Deed,12,56,53,Crime
 2014,Beyond the Lights,17,70,14,Romance
 2014,Dolphin Tale 2,14,67,52,Family
 2014,A Walk Among the Tombstones,27,62,53,Crime
 2014,Tusk,4,51,1,Comedy
 2014,The Equalizer,13,71,192,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2014,Mutant World,12,26,1,Sci-Fi
 2014,The Book of Life,16,73,97,Romance
-Drama,Drama,Drama,Drama,Drama,Drama
+2014,Gone Girl,9,79,369,Drama
 2014,Dracula Untold,14,62,215,Horror
 2014,Annabelle,9,56,255,Horror
 2014,Left Behind,11,37,19,Thriller
@@ -2660,7 +2660,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2014,Kill the Messenger,18,66,2,Thriller
 2014,Whiplash,8,83,13,Drama
 2014,Escobar: Paradise Lost,22,61,3,Thriller
-Action,Action,Action,Action,Action,Action
+2014,Fury,4,74,211,Action
 2014,The Best of Me,14,72,35,Drama
 2014,Nightcrawler,12,76,38,Crime
 2014,Ouija,5,49,103,Horror
@@ -2669,7 +2669,7 @@ Action,Action,Action,Action,Action,Action
 2014,Interstellar,12,81,675,Adventure
 2014,Dumb and Dumber To,18,54,169,Comedy
 2014,The Imitation Game,18,80,233,History
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2014,The Hunger Games: Mockingjay - Part 1,37,66,752,Sci-Fi
 2014,Penguins of Madagascar,22,65,373,Family
 2014,The Theory of Everything,24,78,123,Drama
 2014,Horrible Bosses 2,17,61,107,Comedy
@@ -2678,7 +2678,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2014,Wild,4,70,52,Drama
 2014,Still Alice,11,75,43,Drama
 2014,The Hobbit: The Battle of the Five Armies,41,71,956,Action
-Action,Action,Action,Action,Action,Action
+2014,American Sniper,15,74,542,Action
 2014,Top Five,8,63,25,Drama
 2014,Seventh Son,11,52,114,Adventure
 2014,Taken 3,7,61,325,Thriller
@@ -2686,7 +2686,7 @@ Action,Action,Action,Action,Action,Action
 2014,Annie,5,60,133,Comedy
 2014,Big Eyes,8,68,28,Drama
 2014,Unbroken,8,73,163,Drama
-Action,Action,Action,Action,Action,Action
+2014,The Water Diviner,17,68,15,Action
 2014,The Interview,13,61,12,Action
 2014,The Gambler,11,57,39,Thriller
 2014,Selma,5,74,66,History
@@ -2698,10 +2698,10 @@ Action,Action,Action,Action,Action,Action
 2015,Ex Machina,10,76,36,Drama
 2015,The Boy Next Door,17,41,52,Thriller
 2015,The Lazarus Effect,18,51,64,Thriller
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2015,Project Almanac,15,64,32,Sci-Fi
+2015,Jupiter Ascending,17,52,183,Sci-Fi
 2015,It Follows,10,66,14,Horror
-Family,Family,Family,Family,Family,Family
+2015,The SpongeBob Movie: Sponge Out of Water,40,58,311,Family
 2015,Fifty Shades of Grey,20,52,571,Drama
 2015,Demonic,7,49,3,Thriller
 2015,The Gunman,10,55,13,Action
@@ -2742,14 +2742,14 @@ Family,Family,Family,Family,Family,Family
 2015,Minions,7,64,1156,Family
 2015,Paper Towns,11,61,85,Drama
 2015,Dope,4,72,17,Crime
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2015,Terminator Genisys,18,58,440,Sci-Fi
 2015,Ted 2,5,62,217,Comedy
 2015,Max,3,68,43,Adventure
 2015,Magic Mike XXL,14,63,122,Comedy
 2015,The Gallows,11,49,42,Horror
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2015,Self/less,9,63,30,Sci-Fi
 2015,Baahubali: The Beginning,24,75,100,Action
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2015,Ant-Man,7,70,519,Sci-Fi
 2015,Pixels,6,56,243,Action
 2015,Trainwreck,10,59,140,Comedy
 2015,Mission: Impossible - Rogue Nation,34,71,682,Action
@@ -2776,7 +2776,7 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2015,90 Minutes in Heaven,20,54,4,Drama
 2015,Sicario,7,72,84,Action
 2015,Captive,7,56,2,Crime
-Family,Family,Family,Family,Family,Family
+2015,Hotel Transylvania 2,20,67,473,Family
 2015,The Intern,10,71,194,Comedy
 2015,Pan,3,59,128,Adventure
 2015,The Walk,8,69,61,Adventure
@@ -2790,7 +2790,7 @@ Family,Family,Family,Family,Family,Family
 2015,Brooklyn,8,72,62,Drama
 2015,The Last Witch Hunter,21,57,146,Fantasy
 2015,Spectre,7,63,880,Action
-Family,Family,Family,Family,Family,Family
+2015,The Peanuts Movie,17,65,246,Family
 2015,Spotlight,9,78,88,Drama
 2015,Victor Frankenstein,19,56,34,Drama
 2015,Love the Coopers,16,54,24,Comedy
@@ -2807,10 +2807,10 @@ Family,Family,Family,Family,Family,Family
 2015,Alvin and the Chipmunks: The Road Chip,38,58,233,Adventure
 2015,Ip Man 3,8,65,156,Action
 2015,Joy,3,64,101,Drama
-Action,Action,Action,Action,Action,Action
+2015,The Revenant,12,73,532,Action
 2015,The Hateful Eight,17,76,155,Crime
 2015,Daddy's Home,12,58,242,Comedy
-Family,Family,Family,Family,Family,Family
+2015,Anomalisa,9,70,5,Family
 2016,Jane Got a Gun,14,54,1,Action
 2016,The Forest,10,48,40,Horror
 2016,13 Hours: The Secret Soldiers of Benghazi,41,70,69,Action
@@ -2830,7 +2830,7 @@ Family,Family,Family,Family,Family,Family
 2016,Deadpool,8,74,783,Action
 2016,Midnight Special,16,62,6,Adventure
 2016,Triple 9,8,56,12,Action
-Drama,Drama,Drama,Drama,Drama,Drama
+2016,The Witch,9,63,40,Drama
 2016,Risen,5,57,46,Action
 2016,Race,4,71,24,Action
 2016,Gods of Egypt,13,53,150,Fantasy
@@ -2856,7 +2856,7 @@ Drama,Drama,Drama,Drama,Drama,Drama
 2016,The Angry Birds Movie,21,59,349,Family
 2016,Money Monster,13,65,93,Thriller
 2016,The Conjuring 2,15,70,320,Horror
-Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
+2016,X-Men: Apocalypse,17,64,543,Sci-Fi
 2016,Warcraft,8,63,433,Action
 2016,Alice Through the Looking Glass,31,65,299,Fantasy
 2016,The BFG,7,60,183,Adventure
@@ -2865,10 +2865,10 @@ Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi,Sci-Fi
 2016,Me Before You,13,76,207,Drama
 2016,The Neon Demon,14,64,1,Thriller
 2016,Central Intelligence,20,62,216,Action
-Family,Family,Family,Family,Family,Family
+2016,The Secret Life of Pets,23,59,875,Family
 2016,Independence Day: Resurgence,28,49,389,Action
 2016,The Shallows,12,62,119,Horror
-Action,Action,Action,Action,Action,Action
+2016,Free State of Jones,19,66,25,Action
 2016,The Purge: Election Year,24,61,118,Action
 2016,The Legend of Tarzan,20,55,356,Action
 2016,Star Trek Beyond,16,66,343,Action
@@ -2876,7 +2876,7 @@ Action,Action,Action,Action,Action,Action
 2016,The Infiltrator,15,66,15,Crime
 2016,Ghostbusters,12,53,229,Action
 2016,Lights Out,10,63,44,Horror
-Drama,Drama,Drama,Drama,Drama,Drama
+2016,Nerve,5,71,83,Drama
 2016,Jason Bourne,12,59,415,Action
 2016,Bad Moms,8,63,183,Comedy
 2016,Shin Godzilla,13,65,77,Action
