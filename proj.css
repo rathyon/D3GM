@@ -1,21 +1,62 @@
-.ticks {
-    font: 10px sans-serif;
-  }
+body{
+    background-color: #222222 !important; /* overrides bootstrap setting */
+}
 
-div.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: 60px;					
-    height: 16px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
-    background: lightsteelblue;	
-    border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+.container {
+    /** /
+    margin-right: 1px !important;
+    margin-left: 1px !important;
+    /**/
+}
+
+div.tooltip {   
+    position: absolute;         
+    text-align: center;         
+    width: 60px;                    
+    height: 16px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+
+#first-row {
+    padding-bottom: 100px;
+}
+
+/*============== Scatterplot styling ==============*/
+#sale-title{
+    /** /background-color: #ffffff; /**/
+}
+
+#sale-title line{
+    stroke: #eeeeee;
+}
+
+#sale-title path{
+    stroke: #eeeeee;
+}
+
+#sale-title text{
+    fill: #eeeeee;
 }
 
 .bubble {
-    fill: lightsteelblue;
-    stroke: steelblue;
+    fill: #3fbcff;
+    stroke: #325e82;
+}
+
+.tick {
+    font: 12px Helvetica, sans-serif;
+  }
+
+/*============== Heatmap styling ==============*/
+
+#heatmap {
+    font: 12px Helvetica, sans-serif;
+    fill: #eeeeee;
+
+    /** /background-color: #ff0000; /**/
 }

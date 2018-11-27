@@ -14,9 +14,9 @@ d3.csv("scores_by_year.csv").then(function (data){
 
 function gen_heatmap(){
     var margin = {top: 30, right: 50, bottom: 40, left:40};
-    var w = 750 - margin.right - margin.left;
+    var w = 400 - margin.right - margin.left;
     var h = 300 - margin.top - margin.bottom;
-    var gridSize = 15;
+    var gridSize = 28;
     var labels = d3.range(10)
 
     var svg = d3.select("#heatmap")
@@ -117,7 +117,7 @@ function gen_heatmap(){
 
 function gen_scatterplot() {
     var margin = {top: 30, right: 50, bottom: 40, left:40};
-	var width = 700 - margin.left - margin.right;
+	  var width = 600 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
     var radius = 4;
     
@@ -156,13 +156,13 @@ function gen_scatterplot() {
     // adding axes is also simpler now, just translate x-axis to (0,height) and it's alread defined to be a bottom axis. 
 	svg.append('g')
         .attr('transform', 'translate(0,' + height + ')')
-        .attr('class', 'x axis')
+        .attr('class', 'xAxis')
         .call(xAxis);
 
     // y-axis is translated to (0,0)
     svg.append('g')
         .attr('transform', 'translate(0,0)')
-        .attr('class', 'y axis')
+        .attr('class', 'yAxis')
         .call(yAxis);
 
     var bubble = svg.selectAll('.bubble')
