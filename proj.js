@@ -116,8 +116,8 @@ function gen_heatmap(){
 }
 
 function gen_scatterplot() {
-    var margin = {top: 30, right: 50, bottom: 40, left:40};
-	  var width = 600 - margin.left - margin.right;
+    var margin = {top: 30, right: 50, bottom: 40, left:50};
+	var width = 600 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
     var radius = 4;
     
@@ -147,11 +147,11 @@ function gen_scatterplot() {
 
     var xAxis = d3.axisBottom()
         .scale(xScale)
-        .ticks(game_titles.length/2);;
+        .ticks(game_titles.length/4);;
 
 	var yAxis = d3.axisLeft()
         .scale(yScale)
-        .ticks(game_titles.length/2);;
+        .ticks(game_titles.length/8);;
 
     // adding axes is also simpler now, just translate x-axis to (0,height) and it's alread defined to be a bottom axis. 
 	svg.append('g')
@@ -173,6 +173,12 @@ function gen_scatterplot() {
         .attr('cy', function(d){ return yScale(d.Sales); })
         .attr('r', radius)
         .attr("title", function(d) {return d.Sales;})
+        .style('fill', function(d){
+            return d.Type==="Game" ? "#3fbcff" : "#32CD32";
+        })
+        .style('stroke', function(d){
+            return d.Type==="Game" ? "#325e82" : "#008000";
+        })
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		

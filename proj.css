@@ -42,11 +42,11 @@ div.tooltip {
 #sale-title text{
     fill: #eeeeee;
 }
-
+/*
 .bubble {
     fill: #3fbcff;
     stroke: #325e82;
-}
+}*/
 
 .tick {
     font: 12px Helvetica, sans-serif;
