@@ -151,7 +151,7 @@ function gen_scatterplot() {
 
 	var yAxis = d3.axisLeft()
         .scale(yScale)
-        .ticks(game_titles.length/8);;
+        .ticks(game_titles.length/5);;
 
     // adding axes is also simpler now, just translate x-axis to (0,height) and it's alread defined to be a bottom axis. 
 	svg.append('g')
