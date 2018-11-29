@@ -7,6 +7,45 @@ body{
     margin-right: 1px !important;
     margin-left: 1px !important;
     /**/
+    padding: 0px !important;
+}
+
+@media (min-width: 1200px){
+    .container {
+        max-width: 98%;
+    }
+}
+
+#first-row {
+    padding-bottom: 0px;
+}
+
+#col1{
+    padding-left: 0px;
+}
+
+#col3{
+    padding-right: 0px;
+}
+
+#col4{
+    padding-left: 0px;
+}
+
+#col6{
+    padding-right: 0px;
+}
+
+
+
+.col-4 {
+    background-clip: content-box;
+    background-color: #111111;
+    box-shadow: 0 0 0 15px #222222;
+}
+
+div {
+    border-radius: 25px;
 }
 
 div.tooltip {   
@@ -15,11 +54,14 @@ div.tooltip {
     width: 120px;                    
     height: 30px;                   
     padding: 2px;               
-    font: 12px sans-serif;      
-    background: lightsteelblue; 
+    font: 12px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #eeeeee;      
+    background: #111111; 
     border: 0px;        
     border-radius: 8px;         
-    pointer-events: none;           
+    pointer-events: none;
+    overflow: hidden;           
 }
 
 
@@ -29,15 +71,13 @@ div.tip {
     width: 30px;                    
     height: 30px;                   
     padding: 2px;               
-    font: 12px sans-serif;      
-    background: lightsteelblue; 
+    font: 12px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #eeeeee;      
+    background: #111111; 
     border: 0px;        
     border-radius: 8px;         
     pointer-events: none;           
-}
-
-#first-row {
-    padding-bottom: 100px;
 }
 
 /*============== Scatterplot styling ==============*/
@@ -47,10 +87,12 @@ div.tip {
 
 #sale-title line{
     stroke: #eeeeee;
+    stroke-width: 2;
 }
 
 #sale-title path{
     stroke: #eeeeee;
+    stroke-width: 2;
 }
 
 #sale-title text{
@@ -64,12 +106,14 @@ div.tip {
 
 .tick{
     font: 12px Helvetica, sans-serif;
+    font-weight: bold;
   }
 
 /*============== Heatmap styling ==============*/
 
 #heatmap {
-    font: 12px Helvetica, sans-serif;
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
     fill: #eeeeee;
 
     /** /background-color: #ff0000; /**/

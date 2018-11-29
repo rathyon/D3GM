@@ -14,9 +14,9 @@ d3.csv("scores_by_year.csv").then(function (data){
 
 function gen_heatmap(){
     var margin = {top: 40, right: 50, bottom: 40, left:40};
-    var w = 400 - margin.right - margin.left;
-    var h = 400 - margin.top - margin.bottom;
-    var gridSize = 28;
+    var w = 420 - margin.right - margin.left;
+    var h = 440 - margin.top - margin.bottom;
+    var gridSize = 32;
     var labels = d3.range(10)
 
     var svg = d3.select("#heatmap")
@@ -27,7 +27,9 @@ function gen_heatmap(){
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
     var div = d3.select("body").append("div")	
-                .attr("class", "tip")				
+                .attr("class", "tip")
+                .style("left", 0)
+                .style("top", 0)				
                 .style("opacity", 0);
 
     /*var colours = d3.scaleLinear()
@@ -70,6 +72,7 @@ function gen_heatmap(){
         .attr("x", w/2 - 10)
         .attr("y", -margin.bottom + 15)
         .style("font", "14px Helvetica")
+        .style("font-weight", "bold")
         .style("text-anchor", "middle")
         .text("Decimal");
 
@@ -83,6 +86,7 @@ function gen_heatmap(){
         .attr("y", -40)
         .attr("dy", "1.5em")
         .style("font", "14px Helvetica")
+        .style("font-weight", "bold")
         .style("text-anchor", "middle")
         .text("Unit");
 
@@ -141,8 +145,8 @@ function gen_heatmap(){
 
 function gen_scatterplot() {
     var margin = {top: 30, right: 50, bottom: 40, left:70};
-	var width = 600 - margin.left - margin.right;
-    var height = 400 - margin.top - margin.bottom;
+	var width = 620 - margin.left - margin.right;
+    var height = 490 - margin.top - margin.bottom;
     var radius = 4;
     
     game_titles.forEach(function(d) {
@@ -150,8 +154,10 @@ function gen_scatterplot() {
     });
 
     var div = d3.select("body").append("div")	
-    .attr("class", "tooltip")				
-    .style("opacity", 0);
+      .attr("class", "tooltip")
+      .style("left", 0)
+      .style("top", 0)	
+      .style("opacity", 0);
 
 	var svg = d3.select('#sale-title')
 		.append('svg')
