@@ -13,9 +13,9 @@ d3.csv("scores_by_year.csv").then(function (data){
 
 
 function gen_heatmap(){
-    var margin = {top: 30, right: 50, bottom: 40, left:40};
+    var margin = {top: 40, right: 50, bottom: 40, left:40};
     var w = 400 - margin.right - margin.left;
-    var h = 300 - margin.top - margin.bottom;
+    var h = 400 - margin.top - margin.bottom;
     var gridSize = 28;
     var labels = d3.range(10)
 
@@ -27,7 +27,7 @@ function gen_heatmap(){
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     
     var div = d3.select("body").append("div")	
-                .attr("class", "tooltip")				
+                .attr("class", "tip")				
                 .style("opacity", 0);
 
     /*var colours = d3.scaleLinear()
@@ -56,11 +56,35 @@ function gen_heatmap(){
                        .data(labels)
                        .enter()
                        .append("text")
-                       .text(function(d) { return d; })
+                       .text(function(d) { return "." + d; })
                        .attr("x", function(d, i) { return i * gridSize; })
                        .attr("y", 0)
                        .style("text-anchor", "middle")
                        .attr("transform", "translate(" + gridSize / 2 + ", -6)");
+
+    svg.append('g')
+        .attr('transform', 'translate(0,' + h + ')')
+        .attr('class', 'xAxis')
+        .append("text")
+        .classed("label", true)
+        .attr("x", w/2 - 10)
+        .attr("y", -margin.bottom + 15)
+        .style("font", "14px Helvetica")
+        .style("text-anchor", "middle")
+        .text("Decimal");
+
+    svg.append('g')
+        .attr('transform', 'translate(0,0)')
+        .attr('class', 'yAxis')
+        .append("text")
+        .classed("label", true)
+        .attr("transform", "rotate(-90)")
+        .attr("x", -h/2 + 20)
+        .attr("y", -40)
+        .attr("dy", "1.5em")
+        .style("font", "14px Helvetica")
+        .style("text-anchor", "middle")
+        .text("Unit");
 
     scores.forEach(function(d) {
             d.year = +d.year;
@@ -116,7 +140,7 @@ function gen_heatmap(){
 }
 
 function gen_scatterplot() {
-    var margin = {top: 30, right: 50, bottom: 40, left:50};
+    var margin = {top: 30, right: 50, bottom: 40, left:70};
 	var width = 600 - margin.left - margin.right;
     var height = 400 - margin.top - margin.bottom;
     var radius = 4;
@@ -157,13 +181,30 @@ function gen_scatterplot() {
 	svg.append('g')
         .attr('transform', 'translate(0,' + height + ')')
         .attr('class', 'xAxis')
-        .call(xAxis);
+        .call(xAxis)
+        .append("text")
+        .classed("label", true)
+        .attr("x", width / 2)
+        .attr("y", margin.bottom - 5)
+        .style("font", "14px Helvetica")
+        .style("text-anchor", "middle")
+        .text("Length of Title");
 
     // y-axis is translated to (0,0)
     svg.append('g')
         .attr('transform', 'translate(0,0)')
         .attr('class', 'yAxis')
-        .call(yAxis);
+        .call(yAxis)
+        .append("text")
+        .classed("label", true)
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height/2)
+        .attr("y", -75)
+        .attr("dy", "1.5em")
+        .style("font", "14px Helvetica")
+        .style("text-anchor", "middle")
+        .text("Sales (millions of dollars)");   
+        
 
     var bubble = svg.selectAll('.bubble')
         .data(game_titles)
@@ -179,18 +220,42 @@ function gen_scatterplot() {
         .style('stroke', function(d){
             return d.Type==="Game" ? "#325e82" : "#008000";
         })
-        .on("mouseover", function(d) {		
+        .on("mouseover", function(d) {	
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
-            div	.html(d.Sales.toFixed(2))	
+            div	.html("Sales: " + d.Sales.toFixed(2) + "<br>" + "Length: " + d.Average)	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY) + "px");	
-            })					
+            })			
         .on("mouseout", function(d) {		
             div.transition()		
                 .duration(500)		
                 .style("opacity", 0);	
         });
     
+    var legend = svg.selectAll(".legend")
+        .data(["Games", "Movies"])
+        .enter().append("g")
+        .classed("legend", true)
+        .attr("transform", function(d, i) {
+            return "translate(0," + i * 20 + ")";
+        });
+    
+    legend.append("circle")
+        .attr("cx", width - 20)
+        //.attr("width", 12)
+        //.attr("height", 12)
+        .attr('r', radius)
+        .style("fill", function(d){
+            return d==="Games" ? "#3fbcff" : "#32CD32";
+        });
+
+    legend.append("text")
+        .attr("x", width -5)
+        .attr("dy", ".40em")
+        .style("font", "12px Helvetica")
+        .text(function(d) {
+            return d;
+        });
 }

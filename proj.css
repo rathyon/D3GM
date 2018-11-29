@@ -12,8 +12,22 @@ body{
 div.tooltip {   
     position: absolute;         
     text-align: center;         
-    width: 60px;                    
-    height: 16px;                   
+    width: 120px;                    
+    height: 30px;                   
+    padding: 2px;               
+    font: 12px sans-serif;      
+    background: lightsteelblue; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;           
+}
+
+
+div.tip {   
+    position: absolute;         
+    text-align: center;         
+    width: 30px;                    
+    height: 30px;                   
     padding: 2px;               
     font: 12px sans-serif;      
     background: lightsteelblue; 
@@ -48,7 +62,7 @@ div.tooltip {
     stroke: #325e82;
 }*/
 
-.tick {
+.tick{
     font: 12px Helvetica, sans-serif;
   }
 
