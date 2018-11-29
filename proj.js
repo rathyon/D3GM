@@ -214,6 +214,7 @@ function gen_scatterplot() {
         .attr("y", margin.bottom - 5)
         .style("font", "14px Helvetica")
         .style("text-anchor", "middle")
+        .style("font-weight", "bold")
         .text("Length of Title");
 
     // y-axis is translated to (0,0)
@@ -230,6 +231,7 @@ function gen_scatterplot() {
         .attr("dy", "1.5em")
         .style("font", "14px Helvetica")
         .style("text-anchor", "middle")
+        .style("font-weight", "bold")
         .text("Sales (millions of dollars)");   
     
     var points_g = svg.append("g")
@@ -285,6 +287,7 @@ function gen_scatterplot() {
         .attr("x", width -5)
         .attr("dy", ".40em")
         .style("font", "12px Helvetica")
+        .style("font-weight", "bold")
         .text(function(d) {
             return d;
         });
