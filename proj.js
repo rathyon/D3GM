@@ -11,6 +11,7 @@ d3.csv("scores_by_year.csv").then(function (data){
     gen_heatmap();
 })
 
+var score_filters = new Array();
 
 function gen_heatmap(){
     var margin = {top: 40, right: 50, bottom: 40, left:40};
@@ -118,6 +119,9 @@ function gen_heatmap(){
             .data(selectYear.values)
             .enter()
             .append("rect")
+            .attr("id", function(d){
+              return String(d.y) + "." + String(d.x);
+            })
             .attr("x", function(d) { return (d.x) * gridSize; })
             .attr("y", function(d) { return (d.y) * gridSize; })
             .attr("width", gridSize)
@@ -137,15 +141,39 @@ function gen_heatmap(){
                 div.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
+            })
+            .on("click", function(d){
+              // add / remove filter ...
+              var score = this.getAttribute("id"); //format #.#
+              if(!score_filters.includes(score)){
+                score_filters.push(score);
+              }
+              else{
+                score_filters.splice(score_filters.indexOf(score), 1);
+              }
+              console.log(score_filters);
+              // redraw stuff ...
+
             });
           }
         drawHeatmap(years[currentYearIndex]);
 
 }
 
+var scat_movies_enabled = true;
+var scat_games_enabled = true;
+
+var scat_games_color_inner = "#3fbcff";
+var scat_games_color_outer = "#325e82";
+
+var scat_movies_color_inner = "#32CD32";
+var scat_movies_color_outer = "#008000";
+
+var background_color = "#111111";
+
 function gen_scatterplot() {
     var margin = {top: 30, right: 50, bottom: 40, left:70};
-	var width = 620 - margin.left - margin.right;
+	  var width = 620 - margin.left - margin.right;
     var height = 490 - margin.top - margin.bottom;
     var radius = 4;
     
@@ -247,10 +275,10 @@ function gen_scatterplot() {
         .attr('r', radius)
         .attr("title", function(d) {return d.Sales;})
         .style('fill', function(d){
-            return d.Type==="Games" ? "#3fbcff" : "#32CD32";
+            return d.Type==="Games" ? scat_games_color_inner : scat_movies_color_inner;
         })
         .style('stroke', function(d){
-            return d.Type==="Games" ? "#325e82" : "#008000";
+            return d.Type==="Games" ? scat_games_color_outer : scat_movies_color_outer; 
         })
         .on("mouseover", function(d) {	
             div.transition()		
@@ -271,16 +299,51 @@ function gen_scatterplot() {
         .enter().append("g")
         .classed("legend", true)
         .attr("transform", function(d, i) {
-            return "translate(0," + i * 20 + ")";
+            return "translate(0," + i * 26 + ")";
         });
     
     legend.append("circle")
         .attr("cx", width - 20)
         //.attr("width", 12)
         //.attr("height", 12)
-        .attr('r', radius)
+        .attr('r', radius+3)
         .style("fill", function(d){
             return d==="Games" ? "#3fbcff" : "#32CD32";
+        })
+        .on("click", function(d) {
+          // if Games label was clicked
+          if(d === "Games"){
+            scat_games_enabled = !scat_games_enabled;
+            var new_color = scat_games_enabled ? scat_games_color_inner : "#333333";
+
+            this.setAttribute("style", "fill: " + new_color);
+
+            var bubbles = points_g.selectAll('.bubble')
+              .style("visibility", function(d){
+                if(d.Type === "Games"){
+                  return scat_games_enabled ? "visible" : "hidden";
+                }
+                else{
+                  return scat_movies_enabled ? "visible" : "hidden";
+                }
+              });
+          }
+          else {
+            scat_movies_enabled = !scat_movies_enabled;
+            var new_color = scat_movies_enabled ? scat_movies_color_inner : "#333333";
+
+            this.setAttribute("style", "fill: " + new_color);
+
+            var bubbles = points_g.selectAll('.bubble')
+              .style("visibility", function(d){
+                if(d.Type === "Games"){
+                  return scat_games_enabled ? "visible" : "hidden";
+                }
+                else{
+                  return scat_movies_enabled ? "visible" : "hidden";
+                }
+              });
+          }
         });
 
     legend.append("text")
