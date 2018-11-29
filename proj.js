@@ -164,7 +164,13 @@ function gen_scatterplot() {
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
 	    .append('g')
-		.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        
+    svg.append("defs").append("clipPath")
+        .attr("id", "clip")
+        .append("rect")
+        .attr("width", width)
+        .attr("height", height);
 
     var xScale = d3.scaleLinear()
         .domain([0,game_titles[game_titles.length-1].Average])
@@ -177,17 +183,31 @@ function gen_scatterplot() {
 
     var xAxis = d3.axisBottom()
         .scale(xScale)
-        .ticks(game_titles.length/4);;
+        .ticks(game_titles.length/4);
 
 	var yAxis = d3.axisLeft()
         .scale(yScale)
-        .ticks(game_titles.length/5);;
+        .ticks(game_titles.length/5);
+
+    var zoom = d3.zoom()
+        .scaleExtent([0, 2.5])
+        .extent([[0, 0], [500, 300]])
+        .on("zoom", zoomed);
+
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "none")
+        .style("pointer-events", "all")
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+        .call(zoom);
 
     // adding axes is also simpler now, just translate x-axis to (0,height) and it's alread defined to be a bottom axis. 
-	svg.append('g')
+	var gX = svg.append('g')
         .attr('transform', 'translate(0,' + height + ')')
-        .attr('class', 'xAxis')
-        .call(xAxis)
+        .attr('class', 'xAxis');
+
+    gX.call(xAxis)
         .append("text")
         .classed("label", true)
         .attr("x", width / 2)
@@ -197,10 +217,11 @@ function gen_scatterplot() {
         .text("Length of Title");
 
     // y-axis is translated to (0,0)
-    svg.append('g')
+    var gY = svg.append('g')
         .attr('transform', 'translate(0,0)')
-        .attr('class', 'yAxis')
-        .call(yAxis)
+        .attr('class', 'yAxis');
+
+    gY.call(yAxis)
         .append("text")
         .classed("label", true)
         .attr("transform", "rotate(-90)")
@@ -210,9 +231,12 @@ function gen_scatterplot() {
         .style("font", "14px Helvetica")
         .style("text-anchor", "middle")
         .text("Sales (millions of dollars)");   
-        
+    
+    var points_g = svg.append("g")
+        .attr("clip-path", "url(#clip)")
+        .classed("points_g", true);
 
-    var bubble = svg.selectAll('.bubble')
+    var bubble = points_g.selectAll('.bubble')
         .data(game_titles)
         .enter().append('circle')
         .attr('class', 'bubble')
@@ -264,4 +288,17 @@ function gen_scatterplot() {
         .text(function(d) {
             return d;
         });
+    
+    function zoomed() {
+            
+        var new_xScale = d3.event.transform.rescaleX(xScale);
+        var new_yScale = d3.event.transform.rescaleY(yScale);
+            
+        gX.call(xAxis.scale(d3.event.transform.rescaleX(xScale)));
+        gY.call(yAxis.scale(d3.event.transform.rescaleY(yScale)));
+    
+        bubble.data(game_titles)
+                .attr('cx', function(d) {return new_xScale(d.Average)})
+                .attr('cy', function(d) {return new_yScale(d.Sales)});
+        }
 }
