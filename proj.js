@@ -247,10 +247,10 @@ function gen_scatterplot() {
         .attr('r', radius)
         .attr("title", function(d) {return d.Sales;})
         .style('fill', function(d){
-            return d.Type==="Game" ? "#3fbcff" : "#32CD32";
+            return d.Type==="Games" ? "#3fbcff" : "#32CD32";
         })
         .style('stroke', function(d){
-            return d.Type==="Game" ? "#325e82" : "#008000";
+            return d.Type==="Games" ? "#325e82" : "#008000";
         })
         .on("mouseover", function(d) {	
             div.transition()		
