@@ -118,3 +118,49 @@ div.tip {
 
     /** /background-color: #ff0000; /**/
 }
+
+/*============== Timeline styling ==============*/
+
+#timeline {
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+    fill: #eeeeee;
+    border: 1px solid #ccc;
+    color: #eeeeee;
+}
+
+#timeline text{
+    fill: #eeeeee;
+    color: #eeeeee;
+}   
+
+#timeline svg line.track {
+    stroke-opacity: 0.4;
+    stroke: #000;
+    stroke-width: 10px;
+}
+#timeline svg line.track-inset {
+    stroke: steelblue;
+    stroke-width: 8px;
+}
+
+/* this is a hidden element, changing it here won't do anything visually */
+#timeline svg line.track-overlay {
+    stroke: #eeeeee;
+    stroke-width: 40px;
+    stroke-opacity: 0;
+}
+
+#timeline svg line.track-overlay, #timeline svg line.track, #timeline svg line.track-inset {
+    stroke-linecap: round;
+}
+
+#timeline svg #minHandle {
+    fill: #00ff00;
+    stroke: #444444;
+}
+
+#timeline svg #maxHandle {
+    fill: #0000ff;
+    stroke: #444444;
+}

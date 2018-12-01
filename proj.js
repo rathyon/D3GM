@@ -1,9 +1,11 @@
 var game_titles, scores;
 
 d3.csv("average.csv").then(function (data) {
+    gen_timeline();
     game_titles = data;
 
     gen_scatterplot();
+
 });
 
 d3.csv("scores_by_year.csv").then(function (data){
@@ -11,13 +13,18 @@ d3.csv("scores_by_year.csv").then(function (data){
     gen_heatmap();
 })
 
+// utility function
+function clamp(value, min, max){
+  return Math.min(Math.max(value, min), max);
+};
+
 var score_filters = new Array();
 
 function gen_heatmap(){
     var margin = {top: 40, right: 50, bottom: 40, left:40};
-    var w = 420 - margin.right - margin.left;
-    var h = 440 - margin.top - margin.bottom;
-    var gridSize = 32;
+    var w = 400 - margin.right - margin.left;
+    var h = 420 - margin.top - margin.bottom;
+    var gridSize = 30;
     var labels = d3.range(10)
 
     var svg = d3.select("#heatmap")
@@ -174,7 +181,7 @@ var background_color = "#111111";
 function gen_scatterplot() {
     var margin = {top: 30, right: 50, bottom: 40, left:70};
 	  var width = 620 - margin.left - margin.right;
-    var height = 490 - margin.top - margin.bottom;
+    var height = 390 - margin.top - margin.bottom;
     var radius = 4;
     
     game_titles.forEach(function(d) {
@@ -367,4 +374,165 @@ function gen_scatterplot() {
                 .attr('cx', function(d) {return new_xScale(d.Average)})
                 .attr('cy', function(d) {return new_yScale(d.Sales)});
         }
+}
+
+var year_filters = [1985, 2016];
+
+function gen_timeline() {
+  var margin = {left: 30, right: 30},
+    width = 1910,
+    height = 100,
+    range = [1985, 2016],
+    step = 1; // change the step and if null, it'll switch back to a normal slider
+
+
+  var svg = d3.select('#timeline')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  var slider = svg.append("g")
+    .classed('slider', true)
+    .attr('transform', 'translate(' + margin.left +', '+ (height/2) + ')');
+
+    /**/
+
+  // using clamp here to avoid slider exceeding the range limits
+  var xScale = d3.scaleLinear()
+      .domain(range)
+      .range([0, width - margin.left - margin.right])
+      .clamp(true);
+
+  // array useful for step sliders
+  var rangeValues = d3.range(range[0], range[1], step || 1).concat(range[1]);
+
+  var xAxis = d3.axisBottom(xScale).tickValues(rangeValues).tickFormat(function (d) {
+      return d;
+  });
+
+  xScale.clamp(true);
+
+  // this is the main bar with a stroke (applied through CSS)
+  var track = slider.append('line').attr('class', 'track')
+    .attr('x1', xScale.range()[0])
+    .attr('x2', xScale.range()[1]);
+
+  // this is a bar (steelblue) that's inside the main "track" to make it look like a rect with a border
+  var trackInset = d3.select(slider.node().appendChild(track.node().cloneNode())).attr('class', 'track-inset');
+
+ var ticks = slider.append('g').attr('class', 'ticks').attr('transform', 'translate(0, 4)')
+      .call(xAxis);
+
+  // drag handles
+  var minHandle = slider.append('circle').classed('handle', true)
+      .attr('r', 12)
+      .attr("id", "minHandle");
+
+  var maxHandle = slider.append('circle').classed('handle', true)
+      .attr('r', 8)
+      .attr("id", "maxHandle");
+
+  // optional initial transition
+  /** /
+  slider.transition().duration(750)
+      .tween("drag", function () {
+          var i = d3.interpolate(1985, 2005);
+          return function (t) {
+              dragged(xScale(i(t)));
+          }
+      });
+  /**/
+
+  //min starts at first year
+  minHandle.attr('cx', xScale(1985));
+
+  //max starts at latest year
+  maxHandle.attr('cx', xScale(2016));
+
+    // drag behavior initialization
+  var drag = d3.drag()
+    .on('start.interrupt', function () {
+        slider.interrupt();
+    })
+    .on('start', function () {
+        selectHandle(d3.event.x);
+    })
+    .on('drag', function () {
+        dragging(d3.event.x);
+    });
+
+  // this is the bar on top of above tracks with stroke = transparent and on which the drag behaviour is actually called
+  // try removing above 2 tracks and play around with the CSS for this track overlay, you'll see the difference
+  var trackOverlay = d3.select(slider.node().appendChild(track.node().cloneNode())).attr('class', 'track-overlay')
+    .call(drag);
+
+  var handleInUse;
+
+  function selectHandle(value) {
+    var minPos = minHandle.attr('cx');
+    var maxPos = maxHandle.attr('cx');
+
+    var x = xScale.invert(value), index = null, midPoint, cx, xVal;
+    if(step) {
+        // if step has a value, compute the midpoint based on range values and reposition the slider based on the mouse position
+        for (var i = 0; i < rangeValues.length - 1; i++) {
+            if (x >= rangeValues[i] && x <= rangeValues[i + 1]) {
+                index = i;
+                break;
+            }
+        }
+        midPoint = (rangeValues[index] + rangeValues[index + 1]) / 2;
+        if (x < midPoint) {
+            cx = xScale(rangeValues[index]);
+            xVal = rangeValues[index];
+        } else {
+            cx = xScale(rangeValues[index + 1]);
+            xVal = rangeValues[index + 1];
+        }
+    } else {
+        // if step is null or 0, return the drag value as is
+        cx = xScale(x);
+        xVal = x.toFixed(3);
+    }
+
+    handleInUse = Math.abs(minPos - cx) < Math.abs(maxPos - cx) ? minHandle : maxHandle;
+  }
+
+  function dragging(value) {
+    var x = xScale.invert(value), index = null, midPoint, cx, xVal;
+    if(step) {
+        // if step has a value, compute the midpoint based on range values and reposition the slider based on the mouse position
+        for (var i = 0; i < rangeValues.length - 1; i++) {
+            if (x >= rangeValues[i] && x <= rangeValues[i + 1]) {
+                index = i;
+                break;
+            }
+        }
+        midPoint = (rangeValues[index] + rangeValues[index + 1]) / 2;
+        if (x < midPoint) {
+            cx = xScale(rangeValues[index]);
+            xVal = rangeValues[index];
+        } else {
+            cx = xScale(rangeValues[index + 1]);
+            xVal = rangeValues[index + 1];
+        }
+    } else {
+        // if step is null or 0, return the drag value as is
+        cx = xScale(x);
+        xVal = x.toFixed(0);
+    }
+    // use xVal as drag value, e.g YEAR
+    if(handleInUse == minHandle){
+      cx = clamp(cx, xScale(1985), maxHandle.attr('cx'));
+      xVal = clamp(xVal, 1985, year_filters[1]);
+      year_filters[0] = xVal;
+    }
+    else {
+      cx = clamp(cx, minHandle.attr('cx'), xScale(2016));
+      xVal = clamp(xVal, year_filters[0], 2016);
+      year_filters[1] = xVal;
+    }
+
+    handleInUse.attr('cx', cx);
+  }
 }
