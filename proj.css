@@ -44,9 +44,9 @@ body{
     box-shadow: 0 0 1px 1px #222222;
 }
 
-div {
+/*div {
     border-radius: 25px;
-}
+}*/
 
 div.tooltip {   
     position: absolute;         
@@ -164,3 +164,13 @@ div.tip {
     fill: #0000ff;
     stroke: #444444;
 }
+
+#treemap {
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#treemap text{
+    fill: #eeeeee;
+    color: #eeeeee;
+} 

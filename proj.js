@@ -1,4 +1,10 @@
-var game_titles, scores;
+var game_titles, scores, regions;
+var selectedRegion;
+
+d3.csv("region_sales_obj.csv").then(function (data){
+    regions = data;
+    gen_treemap();
+});
 
 d3.csv("average.csv").then(function (data) {
     gen_timeline();
@@ -11,7 +17,7 @@ d3.csv("average.csv").then(function (data) {
 d3.csv("scores_by_year.csv").then(function (data){
     scores = data;
     gen_heatmap();
-})
+});
 
 // utility function
 function clamp(value, min, max){
@@ -530,5 +536,87 @@ function gen_timeline() {
     }
 
     handleInUse.attr('cx', cx);
+  }
+}
+
+function gen_treemap(){
+  var margin = {top: 20, right: 20, bottom: 20, left: 20}
+  var width = 300 - margin.right;
+  var height = 400 - margin.top - margin.bottom;
+
+  var x = d3.scaleLinear()
+  .domain([0, height])
+  .range([0, d3.max(regions, function(d){return d.value})]);
+
+  var y = d3.scaleLinear()
+    .domain([0, height])
+    .range([0, d3.max(regions, function(d){return d.value})]);
+
+  var div = d3.select("body").append("div") 
+    .attr("class", "tooltip")
+    .style("left", 0)
+    .style("top", 0)        
+    .style("opacity", 0);
+
+  var stratify = d3.stratify()
+      .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+  var treemap = d3.treemap()
+      .tile(d3.treemapSlice)
+      .size([width, height]);
+
+  // TODO: select year
+  var root = stratify(regions.slice(120,125))
+      .sum(function(d) { return d.value; })
+      .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
+
+  treemap(root);
+
+      
+  var svg = d3.select("#treemap").append("div")
+      .style("position", "relative")
+      .style("width", (width + margin.left + margin.right) + "px")
+      .style("height", (height + margin.top + margin.bottom) + "px")
+      .style("left", margin.left + "px")
+      .style("top", margin.top + "px");
+      
+      
+  draw(root);  
+
+  function draw(root){
+      var node = svg.selectAll(".node")
+          .data(root.leaves())
+          .enter().append("div")
+          .attr("class", "node")
+          .style("left", function(d) { return d.x0 + "px"; })
+          .style("top", function(d) { return d.y0 + "px"; })
+          .style("width", function(d) { return x(d.x1 - d.x0) * 4 + "px"; })
+          .style("height", function(d) { return y(d.y1 - d.y0) * 2 + "px";})
+          .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n")); })
+          .on("mouseover", function(d) {    
+            div.transition()    
+               .duration(200)   
+               .style("opacity", .9);   
+            div.html(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase() + ": " + d.value) 
+               .style("left", (d3.event.pageX) + "px")    
+               .style("top", (d3.event.pageY) + "px");  
+          })          
+          .on("mouseout", function(d) {   
+             div.transition()   
+                .duration(500)    
+                .style("opacity", 0); 
+          })
+          .on("click", function(d){
+             selectedRegion = d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase();
+          });
+
+      return node;
+  }
+      
+  function color(id){
+      // jp, na, eu ,ot
+      var arr = ["#FFFFFF", "#B22234", "#003399", "#228B22"];
+      var reg = ['jp', 'na', 'eu', 'ot'];
+      return arr[reg.indexOf(id)];
   }
 }
