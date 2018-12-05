@@ -385,6 +385,202 @@ function gen_scatterplot() {
   }
 }
 
+var linechart = {
+  data: 0,
+
+  margin: {top: 50, right: 50, bottom: 50, left: 50},
+
+  // initialize with trash values!
+  width: 0,
+  height: 0,
+
+  // initialize with huge values
+  xMin: 10000.0,
+  xMax: -10000.0,
+  yMin: 10000.0,
+  yMax: -10000.0,
+
+  // initialize with trash values!
+  xScale: 0,
+  yScale: 0,
+  maxXValue: 0,
+  line: 0,
+  svg: 0
+};
+
+
+// TODO REMOVE THIS AFTER TREEMAP INTERACTION IS COMPLETE
+selectedRegion = "Global";
+
+function gen_linechart(){
+  linechart.width = 600 - linechart.margin.left - linechart.margin.right;
+  linechart.height = 400 - linechart.margin.top - linechart.margin.bottom;
+
+  linechart.data = linechart_data.filter(function(d){
+      return (d.Year >= year_filters[0] && d.Year <= year_filters[1])
+    })  
+    .sort(function(a,b){
+      return a.Score_diff - b.Score_diff;
+    });
+
+  linechart.data.forEach(function(d){
+    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMin;
+    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMax;
+
+    linechart.yMin = linechart.yMin > parseFloat(d.Global) ? d.Global : linechart.yMin;
+    linechart.yMax = linechart.yMax < parseFloat(d.Global) ? d.Global : linechart.yMax;
+  });
+
+  linechart.maxXValue = linechart.xMin > linechart.xMax ? linechart.xMin : linechart.xMax;
+  linechart.xMin = -linechart.maxXValue;
+  linechart.xMax = linechart.maxXValue;
+
+  linechart.xScale = d3.scaleLinear()
+    .domain([linechart.xMin, linechart.xMax]) // input
+    .range([0, linechart.width]); // output
+
+  linechart.yScale = d3.scaleLinear()
+    .domain([linechart.yMin, linechart.yMax]) // input 
+    .range([linechart.height, 0]); // output
+
+  linechart.line = d3.line()
+  .x(function(d) { return linechart.xScale(d.Score_diff); }) // set the x values for the line generator
+  .y(function(d) {
+    var value;
+    if(selectedRegion == "NA")
+      value = d.NA;
+    else if(selectedRegion == "EU")
+      value = d.EU;
+    else if(selectedRegion == "JP")
+      value = d.JP;
+    else if(selectedRegion == "OT")
+      value = d.OT;
+    else
+      value = d.Global;
+    return linechart.yScale(value); 
+  }) // set the y values for the line generator 
+  .curve(d3.curveMonotoneX) // apply smoothing to the line 
+
+  linechart.svg = d3.select("#linechart").append("svg")
+    .attr("width", linechart.width + linechart.margin.left + linechart.margin.right)
+    .attr("height", linechart.height + linechart.margin.top + linechart.margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + linechart.margin.left + "," + linechart.margin.top + ")");
+
+  linechart.svg.append("g")
+    .attr("class", "xAxis")
+    .attr("transform", "translate(0," + linechart.height + ")")
+    .call(d3.axisBottom(linechart.xScale));
+
+  linechart.svg.append("g")
+    .attr("class", "yAxis")
+    .attr("transform", "translate(" + linechart.width / 2 + ", 0)")
+    .call(d3.axisLeft(linechart.yScale));
+
+  linechart.svg.append("path")
+    .datum(linechart.data)
+    .attr("id", "valueline")
+    .attr("class", "line")
+    .attr("d", linechart.line)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1.5)
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round");
+}
+
+// code for using circles instead of a line
+/** /
+    // 12. Appends a circle for each datapoint 
+  svg.selectAll(".dot")
+      .data(linechart_data.filter(function(d){
+        return (d.Year >= year_filters[0] && d.Year <= year_filters[1])
+      }))
+    .enter().append("circle") // Uses the enter().append() method
+      .attr("class", "dot") // Assign a class for styling
+      .attr("cx", function(d) { return xScale(d.Score_diff) })
+      .attr("cy", function(d) { return yScale(d.Global) })
+      .attr("fill", scat_games_color_inner)
+      .attr("stroke", scat_games_color_outer)
+      .attr("r", 2)
+        .on("mouseover", function() { 
+      });
+  /**/
+
+function update_linechart() {
+  //console.log("Update linechart called");
+  // reset values
+  linechart.xMin = 10000.0;
+  linechart.xMax = -10000.0;
+  linechart.yMin = 10000.0;
+  linechart.yMax = -10000.0;
+
+  linechart.data = linechart_data.filter(function(d){
+    return (d.Year >= year_filters[0] && d.Year <= year_filters[1])
+  })  
+  .sort(function(a,b){
+    return a.Score_diff - b.Score_diff;
+  });
+
+  linechart.data.forEach(function(d){
+    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMin;
+    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMax;
+
+    linechart.yMin = linechart.yMin > parseFloat(d.Global) ? d.Global : linechart.yMin;
+    linechart.yMax = linechart.yMax < parseFloat(d.Global) ? d.Global : linechart.yMax;
+  });
+
+  linechart.maxXValue = linechart.xMin > linechart.xMax ? linechart.xMin : linechart.xMax;
+  linechart.xMin = -linechart.maxXValue;
+  linechart.xMax = linechart.maxXValue;
+
+  linechart.xScale = d3.scaleLinear()
+    .domain([linechart.xMin, linechart.xMax])
+    .range([0, linechart.width]);
+
+  linechart.yScale = d3.scaleLinear()
+    .domain([linechart.yMin, linechart.yMax])
+    .range([linechart.height, 0]);
+
+  linechart.line = d3.line()
+    .x(function(d) { return linechart.xScale(d.Score_diff); }) // set the x values for the line generator
+     .y(function(d) {
+      var value;
+      if(selectedRegion == "NA")
+        value = d.NA;
+      else if(selectedRegion == "EU")
+        value = d.EU;
+      else if(selectedRegion == "JP")
+        value = d.JP;
+      else if(selectedRegion == "OT")
+        value = d.OT;
+      else
+        value = d.Global;
+      return linechart.yScale(value); 
+    }) // set the y values for the line generator 
+    //.curve(d3.curveMonotoneX) // apply smoothing to the line 
+
+  linechart.svg.select("#valueline").remove();
+
+  linechart.svg.append("path")
+    .datum(linechart.data)
+    .transition().duration(750)
+    .attr("id", "valueline")
+    .attr("class", "line")
+    .attr("d", linechart.line)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 1.5)
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round");
+
+  linechart.svg.select(".xAxis")
+    .call(d3.axisBottom(linechart.xScale));
+
+  linechart.svg.select(".yAxis")
+    .call(d3.axisLeft(linechart.yScale));
+}
+
 function gen_timeline() {
   var margin = {left: 30, right: 30},
     width = 1910,
@@ -466,6 +662,7 @@ function gen_timeline() {
     })
     .on('drag', function () {
         dragging(d3.event.x);
+        update_linechart();
     });
 
   // this is the bar on top of above tracks with stroke = transparent and on which the drag behaviour is actually called
@@ -613,6 +810,7 @@ function gen_treemap(){
           })
           .on("click", function(d){
              selectedRegion = d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase();
+             update_linechart();
           });
 
       return node;
@@ -624,94 +822,4 @@ function gen_treemap(){
       var reg = ['jp', 'na', 'eu', 'ot'];
       return arr[reg.indexOf(id)];
   }
-}
-
-function gen_linechart(){
-  var margin = {top: 50, right: 50, bottom: 50, left: 50},
-  width = 400 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
-
-  // initialize with huge value
-  var data_count = 0;
-  var xMin = 10000.0;
-  var xMax = -10000.0;
-  var yMin = 10000.0;
-  var yMax = -10000.0;
-
-  // USING GLOBAL VALUES FOR NOW!!!
-
-  linechart_data.forEach(function(d){
-    if(d.Year >= 1996 && d.Year <= 1997){
-      data_count += 1;
-
-      xMin = xMin > parseFloat(d.Score_diff) ? d.Score_diff : xMin;
-      xMax = xMax < parseFloat(d.Score_diff) ? d.Score_diff : xMax;
-
-      yMin = yMin > parseFloat(d.Global) ? d.Global : yMin;
-      yMax = yMax < parseFloat(d.Global) ? d.Global : yMax;
-
-    }
-  });
-
-  console.log(xMin);
-  console.log(xMax);
-  console.log(yMin);
-  console.log(yMin);
-  console.log(data_count);
-
-/**/
-
-  var xScale = d3.scaleLinear()
-    .domain([xMin, xMax]) // input
-    .range([0, width]); // output
-
-  var yScale = d3.scaleLinear()
-    .domain([yMin, yMax]) // input 
-    .range([height, 0]); // output 
-
-  // 7. d3's line generator
-  var line = d3.line()
-    .x(function(d) { return xScale(d.Score_diff); }) // set the x values for the line generator
-    .y(function(d) { return yScale(d.Global); }) // set the y values for the line generator 
-    .curve(d3.curveMonotoneX) // apply smoothing to the line
-
-  var svg = d3.select("#linechart").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
-
-    // 4. Call the y axis in a group tag
-  svg.append("g")
-    .attr("class", "y axis")
-    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
-
-/** /
-  // 9. Append the path, bind the data, and call the line generator 
-  svg.append("path")
-    .datum(linechart_data) // 10. Binds data to the line 
-    .attr("class", "line") // Assign a class for styling 
-    .attr("d", line); // 11. Calls the line generator
-
-/**/
-
-    // 12. Appends a circle for each datapoint 
-  svg.selectAll(".dot")
-      .data(linechart_data.filter(function(d){
-        return (d.Year >= 1996 && d.Year <= 1997)
-      }))
-    .enter().append("circle") // Uses the enter().append() method
-      .attr("class", "dot") // Assign a class for styling
-      .attr("cx", function(d) { return xScale(d.Score_diff) })
-      .attr("cy", function(d) { return yScale(d.Global) })
-      .attr("r", 5)
-        .on("mouseover", function() { 
-      });
-
-  /**/
 }
