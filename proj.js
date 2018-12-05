@@ -1,5 +1,19 @@
-var game_titles, scores, regions;
+var game_titles, scores, regions, linechart_data;
 var selectedRegion;
+
+var scat_movies_enabled = true;
+var scat_games_enabled = true;
+
+var scat_games_color_inner = "#3fbcff";
+var scat_games_color_outer = "#325e82";
+
+var scat_movies_color_inner = "#32CD32";
+var scat_movies_color_outer = "#008000";
+
+var background_color = "#111111";
+
+var year_filters = [1996, 2016];
+var score_filters = new Array();
 
 d3.csv("region_sales_obj.csv").then(function (data){
     regions = data;
@@ -19,24 +33,16 @@ d3.csv("scores_by_year.csv").then(function (data){
     gen_heatmap();
 });
 
+d3.csv("linechart.csv").then(function (data){
+  linechart_data = data;
+  gen_linechart();
+});
+
+
 // utility function
 function clamp(value, min, max){
   return Math.min(Math.max(value, min), max);
 };
-
-var scat_movies_enabled = true;
-var scat_games_enabled = true;
-
-var scat_games_color_inner = "#3fbcff";
-var scat_games_color_outer = "#325e82";
-
-var scat_movies_color_inner = "#32CD32";
-var scat_movies_color_outer = "#008000";
-
-var background_color = "#111111";
-
-var year_filters = [1985, 2016];
-var score_filters = new Array();
 
 function gen_heatmap(){
     var margin = {top: 40, right: 50, bottom: 40, left:40};
@@ -182,7 +188,6 @@ function gen_heatmap(){
             });
           }
         drawHeatmap(years[currentYearIndex]);
-
 }
 
 function gen_scatterplot() {
@@ -384,7 +389,7 @@ function gen_timeline() {
   var margin = {left: 30, right: 30},
     width = 1910,
     height = 100,
-    range = [1985, 2016],
+    range = [1996, 2016],
     step = 1; // change the step and if null, it'll switch back to a normal slider
 
 
@@ -446,7 +451,7 @@ function gen_timeline() {
   /**/
 
   //min starts at first year
-  minHandle.attr('cx', xScale(1985));
+  minHandle.attr('cx', xScale(1996));
 
   //max starts at latest year
   maxHandle.attr('cx', xScale(2016));
@@ -525,8 +530,8 @@ function gen_timeline() {
     }
     // use xVal as drag value, e.g YEAR
     if(handleInUse == minHandle){
-      cx = clamp(cx, xScale(1985), maxHandle.attr('cx'));
-      xVal = clamp(xVal, 1985, year_filters[1]);
+      cx = clamp(cx, xScale(1996), maxHandle.attr('cx'));
+      xVal = clamp(xVal, 1996, year_filters[1]);
       year_filters[0] = xVal;
     }
     else {
@@ -619,4 +624,94 @@ function gen_treemap(){
       var reg = ['jp', 'na', 'eu', 'ot'];
       return arr[reg.indexOf(id)];
   }
+}
+
+function gen_linechart(){
+  var margin = {top: 50, right: 50, bottom: 50, left: 50},
+  width = 400 - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
+
+  // initialize with huge value
+  var data_count = 0;
+  var xMin = 10000.0;
+  var xMax = -10000.0;
+  var yMin = 10000.0;
+  var yMax = -10000.0;
+
+  // USING GLOBAL VALUES FOR NOW!!!
+
+  linechart_data.forEach(function(d){
+    if(d.Year >= 1996 && d.Year <= 1997){
+      data_count += 1;
+
+      xMin = xMin > parseFloat(d.Score_diff) ? d.Score_diff : xMin;
+      xMax = xMax < parseFloat(d.Score_diff) ? d.Score_diff : xMax;
+
+      yMin = yMin > parseFloat(d.Global) ? d.Global : yMin;
+      yMax = yMax < parseFloat(d.Global) ? d.Global : yMax;
+
+    }
+  });
+
+  console.log(xMin);
+  console.log(xMax);
+  console.log(yMin);
+  console.log(yMin);
+  console.log(data_count);
+
+/**/
+
+  var xScale = d3.scaleLinear()
+    .domain([xMin, xMax]) // input
+    .range([0, width]); // output
+
+  var yScale = d3.scaleLinear()
+    .domain([yMin, yMax]) // input 
+    .range([height, 0]); // output 
+
+  // 7. d3's line generator
+  var line = d3.line()
+    .x(function(d) { return xScale(d.Score_diff); }) // set the x values for the line generator
+    .y(function(d) { return yScale(d.Global); }) // set the y values for the line generator 
+    .curve(d3.curveMonotoneX) // apply smoothing to the line
+
+  var svg = d3.select("#linechart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale)); // Create an axis component with d3.axisBottom
+
+    // 4. Call the y axis in a group tag
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale)); // Create an axis component with d3.axisLeft
+
+/** /
+  // 9. Append the path, bind the data, and call the line generator 
+  svg.append("path")
+    .datum(linechart_data) // 10. Binds data to the line 
+    .attr("class", "line") // Assign a class for styling 
+    .attr("d", line); // 11. Calls the line generator
+
+/**/
+
+    // 12. Appends a circle for each datapoint 
+  svg.selectAll(".dot")
+      .data(linechart_data.filter(function(d){
+        return (d.Year >= 1996 && d.Year <= 1997)
+      }))
+    .enter().append("circle") // Uses the enter().append() method
+      .attr("class", "dot") // Assign a class for styling
+      .attr("cx", function(d) { return xScale(d.Score_diff) })
+      .attr("cy", function(d) { return yScale(d.Global) })
+      .attr("r", 5)
+        .on("mouseover", function() { 
+      });
+
+  /**/
 }
