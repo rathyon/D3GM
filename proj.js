@@ -569,7 +569,7 @@ function update_linechart() {
     .attr("class", "line")
     .attr("d", linechart.line)
     .attr("fill", "none")
-    .attr("stroke", "steelblue")
+    .attr("stroke", scat_games_color_inner)
     .attr("stroke-width", 1.5)
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round");

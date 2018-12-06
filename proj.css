@@ -173,4 +173,18 @@ div.tip {
 #treemap text{
     fill: #eeeeee;
     color: #eeeeee;
-} 
+}
+
+/*============== Timeline styling ==============*/
+
+#linechart svg .xAxis {
+	font: 12px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #eeeeee;
+}
+
+#linechart svg .yAxis {
+	font: 12px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #eeeeee;
+}
