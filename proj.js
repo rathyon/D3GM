@@ -1,5 +1,5 @@
 var game_titles, scores, regions, linechart_data;
-var selectedRegion;
+var selectedRegion, tempRegion;
 
 var scat_movies_enabled = true;
 var scat_games_enabled = true;
@@ -487,7 +487,7 @@ function gen_linechart(){
     .attr("class", "line")
     .attr("d", linechart.line)
     .attr("fill", "none")
-    .attr("stroke", "steelblue")
+    .attr("stroke", scat_games_color_inner)
     .attr("stroke-width", 1.5)
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round");
@@ -813,7 +813,12 @@ function gen_treemap(){
                 .style("opacity", 0); 
           })
           .on("click", function(d){
-             selectedRegion = d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase();
+             tempRegion = d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase();
+             if(tempRegion != selectedRegion){
+               selectedRegion = tempRegion;
+             } else{
+               selectedRegion = "Global";
+             }
              update_linechart();
           });
 
