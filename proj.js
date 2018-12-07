@@ -36,7 +36,11 @@ d3.csv("scores_by_year.csv").then(function (data){
 d3.csv("linechart.csv").then(function (data){
   linechart_data = data;
   gen_linechart();
+  init_radarchart();
 });
+
+
+
 
 
 // utility function
@@ -822,4 +826,381 @@ function gen_treemap(){
       var reg = ['jp', 'na', 'eu', 'ot'];
       return arr[reg.indexOf(id)];
   }
+}
+
+function init(){
+	
+}
+
+function init_radarchart(){
+	var w = 200;
+	var h = 200;
+/*
+	d3.csv("games.csv", function (data){
+		games = data;
+		return 0;
+		//gen_heatmap();
+	});
+*/
+
+	//Legend titles
+	var LegendOptions = ['Games'];
+	var LegendOptions2 = ['Movies'];
+
+	//Data
+	var movies_radar = [
+			  [
+				{axis:"Drama",value:20},
+				{axis:"Romance",value:35},
+				{axis:"War",value:8},
+				{axis:"Science Fiction",value:15},
+				{axis:"Thriller",value:18},
+				{axis:"Music",value:5},
+				{axis:"Action",value:42},
+				{axis:"History",value:9},
+				{axis:"Comedy",value:56},
+				{axis:"Adventure",value:48},
+				{axis:"Fantasy",value:34},
+				{axis:"Animation",value:28},
+				{axis:"Family",value:22},
+				{axis:"Mystery",value:23},
+				{axis:"Western",value:12},
+				{axis:"Crime",value:13},
+				{axis:"Horror",value:25},
+				{axis:"TV Movie",value:18},
+				{axis:"Foreign",value:4},
+				{axis:"Documentary",value:4}
+			  ]
+			];
+			
+	var games_radar = [
+			  [
+				{axis:"Action",value:25},
+				{axis:"Adventure",value:30},
+				{axis:"Fighting",value:18},
+				{axis:"Misc",value:16},
+				{axis:"Platform",value:15},
+				{axis:"Puzzle",value:5},
+				{axis:"Racing",value:22},
+				{axis:"Role-Playing",value:24},
+				{axis:"Shooter",value:42},
+				{axis:"Simulation",value:30},
+				{axis:"Sports",value:34},
+				{axis:"Strategy",value:28}
+			  ]
+			];
+
+	var cfg2 = {
+		 color: "green"
+		};
+	//Call function to draw the Radar chart
+	//Will expect that data is in %'s
+	gen_radarchart("#radarchart1", movies_radar);
+	gen_radarchart("#radarchart2", games_radar, cfg2);
+
+	////////////////////////////////////////////
+	/////////// Initiate legend ////////////////
+	////////////////////////////////////////////
+
+	var svg = d3.select('#radarchart1')
+		.selectAll('svg')
+		.append('svg')
+		.attr("width", w+100)
+		.attr("height", h)
+
+	//Create the title for the legend
+	var text = svg.append("text")
+		.attr("class", "title")
+		.attr('transform', 'translate(20,0)') 
+		.attr("x", w - 100)
+		.attr("y", 10)
+		.attr("font-size", "12px")
+		.attr("fill", "#404040")
+		.text("Number of Games sold(M)");
+			
+	//Initiate Legend	
+	var legend = svg.append("g")
+		.attr("class", "legend")
+		.attr("height", 100)
+		.attr("width", 200)
+		.attr('transform', 'translate(90,20)') 
+		;
+		//Create colour squares
+		legend.selectAll('rect')
+		  .data(LegendOptions)
+		  .enter()
+		  .append("rect")
+		  .attr("x", w - 65)
+		  .attr("y", function(d, i){ return i * 20;})
+		  .attr("width", 10)
+		  .attr("height", 10)
+		  .style("fill", "blue")//function(d, i){ return colorscale(3);})
+		  ;
+		//Create text next to squares
+		legend.selectAll('text')
+		  .data(LegendOptions)
+		  .enter()
+		  .append("text")
+		  .attr("x", w - 52)
+		  .attr("y", function(d, i){ return i * 20 + 9;})
+		  .attr("font-size", "11px")
+		  .attr("fill", "#737373")
+		  .text(function(d) { return d; })
+		  ;	
+		  
+	var svg2 = d3.select('#radarchart2')
+		.selectAll('svg')
+		.append('svg')
+		.attr("width", w+100)
+		.attr("height", h)
+
+	//Create the title for the legend
+	var text = svg2.append("text")
+		.attr("class", "title")
+		.attr('transform', 'translate(20,0)') 
+		.attr("x", w - 100)
+		.attr("y", 10)
+		.attr("font-size", "12px")
+		.attr("fill", "#404040")
+		.text("Number of Movies sold(M)");
+			
+	//Initiate Legend	
+	var legend = svg2.append("g")
+		.attr("class", "legend")
+		.attr("height", 100)
+		.attr("width", 200)
+		.attr('transform', 'translate(90,20)') 
+		;
+		//Create colour squares
+		legend.selectAll('rect')
+		  .data(LegendOptions2)
+		  .enter()
+		  .append("rect")
+		  .attr("x", w - 65)
+		  .attr("y", function(d, i){ return i * 20;})
+		  .attr("width", 10)
+		  .attr("height", 10)
+		  .style("fill", "green")//function(d, i){ return colorscale(3);})
+		  ;
+		//Create text next to squares
+		legend.selectAll('text')
+		  .data(LegendOptions2)
+		  .enter()
+		  .append("text")
+		  .attr("x", w - 52)
+		  .attr("y", function(d, i){ return i * 20 + 9;})
+		  .attr("font-size", "11px")
+		  .attr("fill", "#737373")
+		  .text(function(d) { return d; })
+		  ;	
+}
+
+function gen_radarchart(id, d, options){
+  var cfg = {
+	 radius: 5,
+	 w: 200,
+	 h: 200,
+	 factor: 1,
+	 factorLegend: .85,
+	 levels: 3,
+	 maxValue: 0,
+	 radians: 2 * Math.PI,
+	 opacityArea: 0.5,
+	 ToRight: 5,
+	 TranslateX: 90,
+	 TranslateY: 80,
+	 ExtraWidthX: 200,
+	 ExtraWidthY: 200,
+	 color: "blue"
+	};
+	
+	if('undefined' !== typeof options){
+	  for(var i in options){
+		if('undefined' !== typeof options[i]){
+		  cfg[i] = options[i];
+		}
+	  }
+	}
+	cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.value;}))}));
+	var allAxis = (d[0].map(function(i, j){return i.axis}));
+	var total = allAxis.length;
+	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+	var Format = d3.format('.2s');
+	d3.select(id).select("svg").remove();
+	
+	var g = d3.select(id)
+			.append("svg")
+			.attr("width", cfg.w+cfg.ExtraWidthX)
+			.attr("height", cfg.h+cfg.ExtraWidthY)
+			.append("g")
+			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+			;
+
+	var tooltip;
+	
+	//Circular segments
+	for(var j=0; j<cfg.levels-1; j++){
+	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+	  g.selectAll(".levels")
+	   .data(allAxis)
+	   .enter()
+	   .append("svg:line")
+	   .attr("x1", function(d, i){return levelFactor*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+	   .attr("y1", function(d, i){return levelFactor*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+	   .attr("x2", function(d, i){return levelFactor*(1-cfg.factor*Math.sin((i+1)*cfg.radians/total));})
+	   .attr("y2", function(d, i){return levelFactor*(1-cfg.factor*Math.cos((i+1)*cfg.radians/total));})
+	   .attr("class", "line")
+	   .style("stroke", "grey")
+	   .style("stroke-opacity", "0.75")
+	   .style("stroke-width", "0.3px")
+	   .attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
+	}
+
+	//Text indicating at what level(M) each line is
+	for(var j=0; j<cfg.levels; j++){
+	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+	  g.selectAll(".levels")
+	   .data([1]) //dummy data
+	   .enter()
+	   .append("svg:text")
+	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
+	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
+	   .attr("class", "legend")
+	   .style("font", "Helvetica, sans-serif")
+	   .style("font-size", "10px")
+	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
+	   .attr("fill", "#737373")
+	   .text(Format((j+1)*cfg.maxValue/cfg.levels));
+	}
+	
+	series = 0;
+
+	var axis = g.selectAll(".axis")
+			.data(allAxis)
+			.enter()
+			.append("g")
+			.attr("class", "axis");
+
+	axis.append("line")
+		.attr("x1", cfg.w/2)
+		.attr("y1", cfg.h/2)
+		.attr("x2", function(d, i){return cfg.w/2*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+		.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+		.attr("class", "line")
+		.style("stroke", "grey")
+		.style("stroke-width", "1px");
+
+	axis.append("text")
+		.attr("class", "legend")
+		.text(function(d){return d})
+		.style("font", "Helvetica, sans-serif")
+		.style("font-size", "11px")
+		.attr("text-anchor", "middle")
+		.attr("dy", "1.5em")
+		.attr("transform", function(d, i){return "translate(0, -10)"})
+		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
+		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
+
+ 
+	d.forEach(function(y, x){
+	  dataValues = [];
+	  g.selectAll(".nodes")
+		.data(y, function(j, i){
+		  dataValues.push([
+			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+		  ]);
+		});
+	  dataValues.push(dataValues[0]);
+	  g.selectAll(".area")
+					 .data([dataValues])
+					 .enter()
+					 .append("polygon")
+					 .attr("class", "radar-chart-serie"+series)
+					 .style("stroke-width", "2px")
+					 .style("stroke", cfg.color)
+					 .attr("points",function(d) {
+						 var str="";
+						 for(var pti=0;pti<d.length;pti++){
+							 str=str+d[pti][0]+","+d[pti][1]+" ";
+						 }
+						 return str;
+					  })
+					 .style("fill", cfg.color)
+					 .style("fill-opacity", cfg.opacityArea)
+					 .on('mouseover', function (d){
+										z = "polygon."+d3.select(this).attr("class");
+										g.selectAll("polygon")
+										 .transition(200)
+										 .style("fill-opacity", 0.1); 
+										g.selectAll(z)
+										 .transition(200)
+										 .style("fill-opacity", .7);
+									  })
+					 .on('mouseout', function(){
+										g.selectAll("polygon")
+										 .transition(200)
+										 .style("fill-opacity", cfg.opacityArea);
+					 });
+	  series++;
+	});
+	series=0;
+
+	d.forEach(function(y, x){
+	  g.selectAll(".nodes")
+		.data(y).enter()
+		.append("svg:circle")
+		.attr("class", "radar-chart-serie"+series)
+		.attr('r', cfg.radius)
+		.attr("alt", function(j){return Math.max(j.value, 0)})
+		.attr("cx", function(j, i){
+		  dataValues.push([
+			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
+			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+		]);
+		return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+		})
+		.attr("cy", function(j, i){
+		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+		})
+		.attr("data-id", function(j){return j.axis})
+		.style("fill", cfg.color).style("fill-opacity", .9)
+		.on('mouseover', function (d){
+					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+					
+					tooltip
+						.attr('x', newX)
+						.attr('y', newY)
+						.text(Format(d.value))
+						.transition(200)
+						.style('opacity', 1);
+						
+					z = "polygon."+d3.select(this).attr("class");
+					g.selectAll("polygon")
+						.transition(200)
+						.style("fill-opacity", 0.1); 
+					g.selectAll(z)
+						.transition(200)
+						.style("fill-opacity", .7);
+				  })
+		.on('mouseout', function(){
+					tooltip
+						.transition(200)
+						.style('opacity', 0);
+					g.selectAll("polygon")
+						.transition(200)
+						.style("fill-opacity", cfg.opacityArea);
+				  })
+		.append("svg:title")
+		.text(function(j){return Math.max(j.value, 0)});
+
+	  series++;
+	});
+	//Tooltip
+	tooltip = g.append('text')
+			   .style('opacity', 0)
+			   .style('font-family', 'sans-serif')
+			   .style('font-size', '13px');
+  
 }

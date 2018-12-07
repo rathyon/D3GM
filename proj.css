@@ -119,6 +119,18 @@ div.tip {
     /** /background-color: #ff0000; /**/
 }
 
+/*============== Radarchart styling ==============*/
+
+#radarchart1 {
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+    fill: #eeeeee;
+}
+#radarchart2 {
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+    fill: #eeeeee;
+}
 /*============== Timeline styling ==============*/
 
 #timeline {
