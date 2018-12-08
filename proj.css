@@ -177,6 +177,7 @@ div.tip {
     stroke: #444444;
 }
 
+/*============== Timeline styling ==============*/
 #treemap {
     font: 14px Helvetica, sans-serif;
     font-weight: bold;
@@ -185,6 +186,12 @@ div.tip {
 #treemap text{
     fill: #eeeeee;
     color: #eeeeee;
+}
+
+.node {
+    box-sizing: border-box;
+    position: absolute;
+    overflow: hidden;
 }
 
 /*============== Timeline styling ==============*/

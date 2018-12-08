@@ -747,11 +747,11 @@ function gen_timeline() {
 
 function gen_treemap(){
   var margin = {top: 20, right: 20, bottom: 20, left: 20}
-  var width = 300 - margin.right;
-  var height = 400 - margin.top - margin.bottom;
+  var width = 500 - margin.right - margin.left;
+  var height = 350 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
-  .domain([0, height])
+  .domain([0, width])
   .range([0, d3.max(regions, function(d){return d.value})]);
 
   var y = d3.scaleLinear()
@@ -768,11 +768,10 @@ function gen_treemap(){
       .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
   var treemap = d3.treemap()
-      .tile(d3.treemapSlice)
       .size([width, height]);
 
   // TODO: select year
-  var root = stratify(regions.slice(120,125))
+  var root = stratify(regions.slice(0,5))
       .sum(function(d) { return d.value; })
       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
 
@@ -796,8 +795,8 @@ function gen_treemap(){
           .attr("class", "node")
           .style("left", function(d) { return d.x0 + "px"; })
           .style("top", function(d) { return d.y0 + "px"; })
-          .style("width", function(d) { return x(d.x1 - d.x0) * 4 + "px"; })
-          .style("height", function(d) { return y(d.y1 - d.y0) * 2 + "px";})
+          .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+          .style("height", function(d) { return d.y1 - d.y0+ "px";})
           .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n")); })
           .on("mouseover", function(d) {    
             div.transition()    
