@@ -667,7 +667,11 @@ function gen_timeline() {
     .on('drag', function () {
         dragging(d3.event.x);
         update_linechart();
-    });
+    })
+    .on('end', function(){
+      d3.select("#treemap").selectAll("*").remove();
+      gen_treemap();
+    });;
 
   // this is the bar on top of above tracks with stroke = transparent and on which the drag behaviour is actually called
   // try removing above 2 tracks and play around with the CSS for this track overlay, you'll see the difference
@@ -770,8 +774,29 @@ function gen_treemap(){
   var treemap = d3.treemap()
       .size([width, height]);
 
-  // TODO: select year
-  var root = stratify(regions.slice(0,5))
+
+  function multiple_root(){
+    var arr = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+    var yArr = [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+    var start = arr[yArr.indexOf(year_filters[0])];
+    var end = arr[yArr.indexOf(year_filters[1])];
+    var na = 0; var eu = 0; var jp = 0; var ot = 0;
+
+    while(start <= end){
+      ya = regions.slice(start, start + 5)
+
+      na += parseFloat(ya[1].value)
+      eu += parseFloat(ya[2].value)
+      jp += parseFloat(ya[3].value)
+      ot += parseFloat(ya[4].value)
+
+      start += 5
+    }
+    var result = [{id: "range", value: ""}, {id: "range.na", value: na.toFixed(2)}, {id: "range.eu", value: eu.toFixed(2)}, {id: "range.jp", value: jp.toFixed(2)}, {id: "range.ot", value: ot.toFixed(2)}];
+    return result;
+  }
+
+  var root = stratify(multiple_root())
       .sum(function(d) { return d.value; })
       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
 
