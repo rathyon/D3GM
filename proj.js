@@ -72,13 +72,12 @@ function gen_heatmap(){
   	                .domain(d3.range(1, 11, 1))
                     .range(["#87cefa", "#86c6ef", "#85bde4", "#83b7d9", "#82afce", "#80a6c2", "#7e9fb8", "#7995aa", "#758b9e", "#708090"]);*/
 
-    var color = d3.scaleOrdinal()
-                    .domain(d3.range(9))
-                    .range(d3.schemeBlues[9].map(function(c){
-                        c = d3.rgb(c);
-                        c.opacity = 0.8;
-                        return c;
-                    }));
+    scores.forEach(function(d) {
+        d.year = +d.year;
+        d.x = +d.x;
+        d.y = +d.y;
+        d.val = +d.val;
+    });
                       
     var tensLabels = svg.selectAll(".tensLabel")
                        .data(labels)
@@ -126,32 +125,44 @@ function gen_heatmap(){
         .style("text-anchor", "middle")
         .text("Unit");
 
-    scores.forEach(function(d) {
-            d.year = +d.year;
-            d.x = +d.x;
-            d.y = +d.y;
-            d.val = +d.val;
-    });
-    
-        // group data by location
-        var nest = d3.nest()
-          .key(function(d) { return d.year; })
-          .entries(scores);
-    
-        // array of locations in the data
-        var years = nest.map(function(d) { return d.key; });
-        var currentYearIndex = 15;
-    
-        // function to create the initial heatmap
-        var drawHeatmap = function(year) {
-    
-          // filter the data to return object of location of interest
-          var selectYear = nest.find(function(d) {
-            return d.key == year;
-          });
-    
-          var heatmap = svg.selectAll(".score")
-            .data(selectYear.values)
+    function multiple_years(){
+      var arr = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000];
+      var yArr = [1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
+      var start = arr[yArr.indexOf(year_filters[0])];
+      var end = arr[yArr.indexOf(year_filters[1])];
+      var vals = Array.apply(null, Array(100)).map(function () {return 0;})
+      var result = [];
+      var count = 0;
+
+      while(start <= end){
+        ya = scores.slice(start, start + 100)
+        
+        for(var i = 0; i < 100; i++){
+          vals[i] += parseInt(ya[i].val);
+        }
+
+        start += 100
+      }
+
+      for(var j = 0; j < 10; j++){
+        for(var k = 0; k < 10; k++){
+            var index = j * 10 + k;
+            result.push({x: k, y: j, val: vals[index]});
+        }
+      }
+      return result;
+    }
+
+    var color = d3.scaleQuantile()
+                    .domain([0, 9, d3.max(multiple_years(), function (d) { return d.val; })])
+                    .range(d3.schemeGnBu[9].map(function(c){
+                        c = d3.rgb(c);
+                        c.opacity = 0.8;
+                        return c;
+                    }));
+
+    var heatmap = svg.selectAll(".score")
+            .data(multiple_years())
             .enter()
             .append("rect")
             .attr("id", function(d){
@@ -190,8 +201,7 @@ function gen_heatmap(){
               // redraw stuff ...
 
             });
-          }
-        drawHeatmap(years[currentYearIndex]);
+          
 }
 
 function gen_scatterplot() {
@@ -666,11 +676,15 @@ function gen_timeline() {
     })
     .on('drag', function () {
         dragging(d3.event.x);
-        update_linechart();
+        //update_linechart();
     })
     .on('end', function(){
       d3.select("#treemap").selectAll("*").remove();
+      d3.select("#heatmap").selectAll("*").remove();
+      //d3.select("#linechart").selectAll("*").remove();
       gen_treemap();
+      gen_heatmap();
+      update_linechart();
     });;
 
   // this is the bar on top of above tracks with stroke = transparent and on which the drag behaviour is actually called
