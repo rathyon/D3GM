@@ -407,6 +407,7 @@ var linechart = {
   // initialize with trash values!
   width: 0,
   height: 0,
+  linewidth: 2,
 
   // initialize with huge values
   xMin: 10000.0,
@@ -418,7 +419,6 @@ var linechart = {
   xScale: 0,
   yScale: 0,
   maxXValue: 0,
-  line: 0,
   svg: 0
 };
 
@@ -457,29 +457,47 @@ function gen_linechart(){
     .domain([linechart.yMin, linechart.yMax]) // input 
     .range([linechart.height, 0]); // output
 
-  linechart.line = d3.line()
-  .x(function(d) { return linechart.xScale(d.Score_diff); }) // set the x values for the line generator
-  .y(function(d) {
-    var value;
-    if(selectedRegion == "NA")
-      value = d.NA;
-    else if(selectedRegion == "EU")
-      value = d.EU;
-    else if(selectedRegion == "JP")
-      value = d.JP;
-    else if(selectedRegion == "OT")
-      value = d.OT;
-    else
-      value = d.Global;
-    return linechart.yScale(value); 
-  }) // set the y values for the line generator 
-  .curve(d3.curveMonotoneX) // apply smoothing to the line 
-
   linechart.svg = d3.select("#linechart").append("svg")
     .attr("width", linechart.width + linechart.margin.left + linechart.margin.right)
     .attr("height", linechart.height + linechart.margin.top + linechart.margin.bottom)
   .append("g")
     .attr("transform", "translate(" + linechart.margin.left + "," + linechart.margin.top + ")");
+
+  linechart.svg.append("g")
+  	.attr("fill", scat_games_color_inner)
+  	.selectAll("rect").data(linechart.data).enter().append("rect")
+  	.attr("x", function(d){
+  		return linechart.xScale(d.Score_diff);
+  	})
+  	.attr("y", function(d){
+  		var value;
+	    if(selectedRegion == "NA")
+	      value = d.NA;
+	    else if(selectedRegion == "EU")
+	      value = d.EU;
+	    else if(selectedRegion == "JP")
+	      value = d.JP;
+	    else if(selectedRegion == "OT")
+	      value = d.OT;
+	    else
+	      value = d.Global;
+	    return linechart.yScale(value); 
+  	})
+  	.attr("height", function(d){
+  		var value;
+	    if(selectedRegion == "NA")
+	      value = d.NA;
+	    else if(selectedRegion == "EU")
+	      value = d.EU;
+	    else if(selectedRegion == "JP")
+	      value = d.JP;
+	    else if(selectedRegion == "OT")
+	      value = d.OT;
+	    else
+	      value = d.Global;
+	    return linechart.yScale(0) - linechart.yScale(value); 
+  	})
+  	.attr("width", linechart.linewidth);
 
   linechart.svg.append("g")
     .attr("class", "xAxis")
@@ -490,36 +508,7 @@ function gen_linechart(){
     .attr("class", "yAxis")
     .attr("transform", "translate(" + linechart.width / 2 + ", 0)")
     .call(d3.axisLeft(linechart.yScale));
-
-  linechart.svg.append("path")
-    .datum(linechart.data)
-    .attr("id", "valueline")
-    .attr("class", "line")
-    .attr("d", linechart.line)
-    .attr("fill", "none")
-    .attr("stroke", scat_games_color_inner)
-    .attr("stroke-width", 1.5)
-    .attr("stroke-linejoin", "round")
-    .attr("stroke-linecap", "round");
 }
-
-// code for using circles instead of a line
-/** /
-    // 12. Appends a circle for each datapoint 
-  svg.selectAll(".dot")
-      .data(linechart_data.filter(function(d){
-        return (d.Year >= year_filters[0] && d.Year <= year_filters[1])
-      }))
-    .enter().append("circle") // Uses the enter().append() method
-      .attr("class", "dot") // Assign a class for styling
-      .attr("cx", function(d) { return xScale(d.Score_diff) })
-      .attr("cy", function(d) { return yScale(d.Global) })
-      .attr("fill", scat_games_color_inner)
-      .attr("stroke", scat_games_color_outer)
-      .attr("r", 2)
-        .on("mouseover", function() { 
-      });
-  /**/
 
 function update_linechart() {
   //console.log("Update linechart called");
@@ -556,42 +545,50 @@ function update_linechart() {
     .domain([linechart.yMin, linechart.yMax])
     .range([linechart.height, 0]);
 
-  linechart.line = d3.line()
-    .x(function(d) { return linechart.xScale(d.Score_diff); }) // set the x values for the line generator
-     .y(function(d) {
-      var value;
-      if(selectedRegion == "NA")
-        value = d.NA;
-      else if(selectedRegion == "EU")
-        value = d.EU;
-      else if(selectedRegion == "JP")
-        value = d.JP;
-      else if(selectedRegion == "OT")
-        value = d.OT;
-      else
-        value = d.Global;
-      return linechart.yScale(value); 
-    }) // set the y values for the line generator 
-    //.curve(d3.curveMonotoneX) // apply smoothing to the line 
+  	var rect = linechart.svg.select("g").selectAll("rect")
+  		.data(linechart.data);
 
-  linechart.svg.select("#valueline").remove();
+  	rect.exit().remove();
+  	rect.enter().append("rect")
+  	.attr("width", linechart.linewidth);
 
-  linechart.svg.append("path")
-    .datum(linechart.data)
-    .transition().duration(750)
-    .attr("id", "valueline")
-    .attr("class", "line")
-    .attr("d", linechart.line)
-    .attr("fill", "none")
-    .attr("stroke", scat_games_color_inner)
-    .attr("stroke-width", 1.5)
-    .attr("stroke-linejoin", "round")
-    .attr("stroke-linecap", "round");
+  	rect.transition().duration(1000)
+  	.attr("x", function(d){
+  		return linechart.xScale(d.Score_diff);
+  	})
+  	.attr("y", function(d){
+  		var value;
+	    if(selectedRegion == "NA")
+	      value = d.NA;
+	    else if(selectedRegion == "EU")
+	      value = d.EU;
+	    else if(selectedRegion == "JP")
+	      value = d.JP;
+	    else if(selectedRegion == "OT")
+	      value = d.OT;
+	    else
+	      value = d.Global;
+	    return linechart.yScale(value); 
+  	})
+  	.attr("height", function(d){
+  		var value;
+	    if(selectedRegion == "NA")
+	      value = d.NA;
+	    else if(selectedRegion == "EU")
+	      value = d.EU;
+	    else if(selectedRegion == "JP")
+	      value = d.JP;
+	    else if(selectedRegion == "OT")
+	      value = d.OT;
+	    else
+	      value = d.Global;
+	    return linechart.yScale(0) - linechart.yScale(value); 
+  	})
 
-  linechart.svg.select(".xAxis")
+  linechart.svg.select(".xAxis").transition().duration(750)
     .call(d3.axisBottom(linechart.xScale));
 
-  linechart.svg.select(".yAxis")
+  linechart.svg.select(".yAxis").transition().duration(750)
     .call(d3.axisLeft(linechart.yScale));
 }
 
@@ -636,6 +633,10 @@ function gen_timeline() {
 
   // this is a bar (steelblue) that's inside the main "track" to make it look like a rect with a border
   var trackInset = d3.select(slider.node().appendChild(track.node().cloneNode())).attr('class', 'track-inset');
+
+  var trackInterval = slider.append('line').attr('class', 'track-interval')
+  	.attr('x1', xScale.range()[0])
+    .attr('x2', xScale.range()[1]);
 
  var ticks = slider.append('g').attr('class', 'ticks').attr('transform', 'translate(0, 4)')
       .call(xAxis);
@@ -760,6 +761,10 @@ function gen_timeline() {
     }
 
     handleInUse.attr('cx', cx);
+
+    trackInterval
+  	.attr('x1', minHandle.attr('cx'))
+    .attr('x2', maxHandle.attr('cx'));
   }
 }
 
@@ -924,7 +929,7 @@ function init_radarchart(){
 			];
 
 	var cfg2 = {
-		 color: "green"
+		 color: scat_movies_color_inner
 		};
 	//Call function to draw the Radar chart
 	//Will expect that data is in %'s
@@ -988,7 +993,7 @@ function gen_radarchart(id, d, options){
 	 TranslateY: 80,
 	 ExtraWidthX: 280,
 	 ExtraWidthY: 120,
-	 color: "blue"
+	 color: scat_games_color_inner
 	};
 	
 	if('undefined' !== typeof options){

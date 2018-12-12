@@ -152,6 +152,11 @@ div.tip {
     stroke-width: 10px;
 }
 #timeline svg line.track-inset {
+    stroke: #444444;
+    stroke-width: 8px;
+}
+
+#timeline svg line.track-interval {
     stroke: steelblue;
     stroke-width: 8px;
 }
@@ -168,12 +173,12 @@ div.tip {
 }
 
 #timeline svg #minHandle {
-    fill: #00ff00;
+    fill: #057db5;
     stroke: #444444;
 }
 
 #timeline svg #maxHandle {
-    fill: #0000ff;
+    fill: #28c5ff;
     stroke: #444444;
 }
 
@@ -194,7 +199,7 @@ div.tip {
     overflow: hidden;
 }
 
-/*============== Timeline styling ==============*/
+/*============== Linechart styling ==============*/
 
 #linechart svg .xAxis {
 	font: 12px Helvetica, sans-serif;
