@@ -919,65 +919,15 @@ function gen_treemap(){
 
 
 function init_radarchart(){
-	var w = 300;
-	var h = 300;
-
-	//Legend titles
-	var LegendOptions = ['Games'];
-	var LegendOptions2 = ['Movies'];
-	
 	games_radarchart_data.forEach(function(d){
 		d.Year = +d.Year
 		if(!d.Critic_Score.includes("NA") && !d.User_Score.includes("NA")){
 				d.Critic_Score = +d.Critic_Score
 				d.User_Score = +d.User_Score
-				avgScore = (d.Critic_Score + d.User_Score)/20
-				
 			}
 	});
 	
-
-	update_radarchart();
-
-	////////////////////////////////////////////
-	/////////// Initiate legend ////////////////
-	////////////////////////////////////////////
-
-	var svg = d3.select('#radarchart1')
-		.selectAll('svg')
-		.append('svg')
-		.attr("width", w+100)
-		.attr("height", h)
-
-	//Create the title for the legend
-	var text = svg.append("text")
-		.attr("class", "title")
-		.attr('transform', 'translate(20,0)') 
-		.attr("x", w - 100)
-		.attr("y", 20)
-		.attr("font-size", "14px")
-		.attr("fill", "white")
-		.text("Games sold (Millions of units)");
-			
-	
-		  
-	var svg2 = d3.select('#radarchart2')
-		.selectAll('svg')
-		.append('svg')
-		.attr("width", w+100)
-		.attr("height", h)
-
-	//Create the title for the legend
-	var text = svg2.append("text")
-		.attr("class", "title")
-		.attr('transform', 'translate(20,0)') 
-		.attr("x", w - 100)
-		.attr("y", 20)
-		.attr("font-size", "14px")
-		.attr("fill", "white")
-		.text("Movies released");
-			
-	
+	update_radarchart();	
 }
 
 function update_radarchart(){
@@ -1119,6 +1069,50 @@ function update_radarchart(){
 	//Call function to draw the Radar chart
 	gen_radarchart("#radarchart1", games_radar);
 	gen_radarchart("#radarchart2", movies_radar, cfg2);
+	
+	////////////////////////////////////////////
+	/////////// Initiate legend ////////////////
+	////////////////////////////////////////////
+	var w = 300;
+	var h = 300;
+
+	//Legend titles
+	var LegendOptions = ['Games'];
+	var LegendOptions2 = ['Movies'];
+	
+	var svg = d3.select('#radarchart1')
+		.selectAll('svg')
+		.append('svg')
+		.attr("width", w+200)
+		.attr("height", h)
+
+	//Create the title for the legend
+	var text = svg.append("text")
+		.attr("class", "title")
+		.attr('transform', 'translate(20,0)') 
+		.attr("x", w - 100)
+		.attr("y", 20)
+		.attr("font-size", "14px")
+		.attr("fill", "white")
+		.text("Games sold (Millions of units)");
+			
+	
+		  
+	var svg2 = d3.select('#radarchart2')
+		.selectAll('svg')
+		.append('svg')
+		.attr("width", w+100)
+		.attr("height", h)
+
+	//Create the title for the legend
+	var text = svg2.append("text")
+		.attr("class", "title")
+		.attr('transform', 'translate(20,0)') 
+		.attr("x", w - 100)
+		.attr("y", 20)
+		.attr("font-size", "14px")
+		.attr("fill", "white")
+		.text("Movies released");
 }
 
 function gen_radarchart(id, d, options){
