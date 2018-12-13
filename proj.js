@@ -36,9 +36,16 @@ d3.csv("scores_by_year.csv").then(function (data){
 d3.csv("linechart.csv").then(function (data){
   linechart_data = data;
   gen_linechart();
-  init_radarchart();
 });
 
+d3.csv("games_radarchart.csv").then(function (data1){
+	d3.csv("movies_processed.csv").then(function (data2){
+	  games_radarchart_data = data1;
+	  movies_radarchart_data = data2;
+	  init_radarchart();
+
+	});
+});
 
 
 
@@ -204,6 +211,7 @@ function gen_heatmap(){
                 score_filters.splice(score_filters.indexOf(score), 1);
               }
               console.log(score_filters);
+			  update_radarchart();
               // redraw stuff ...
 
             });
@@ -706,6 +714,7 @@ function gen_timeline() {
       gen_treemap();
       gen_heatmap();
       update_linechart();
+	  update_radarchart();
     });;
 
   // this is the bar on top of above tracks with stroke = transparent and on which the drag behaviour is actually called
@@ -916,57 +925,19 @@ function init_radarchart(){
 	//Legend titles
 	var LegendOptions = ['Games'];
 	var LegendOptions2 = ['Movies'];
+	
+	games_radarchart_data.forEach(function(d){
+		d.Year = +d.Year
+		if(!d.Critic_Score.includes("NA") && !d.User_Score.includes("NA")){
+				d.Critic_Score = +d.Critic_Score
+				d.User_Score = +d.User_Score
+				avgScore = (d.Critic_Score + d.User_Score)/20
+				
+			}
+	});
+	
 
-	//Data
-	var movies_radar = [
-			  [
-				{axis:"Drama",value:20},
-				{axis:"Romance",value:35},
-				{axis:"War",value:8},
-				{axis:"Science Fiction",value:15},
-				{axis:"Thriller",value:18},
-				{axis:"Music",value:5},
-				{axis:"Action",value:42},
-				{axis:"History",value:9},
-				{axis:"Comedy",value:56},
-				{axis:"Adventure",value:48},
-				{axis:"Fantasy",value:34},
-				{axis:"Animation",value:28},
-				{axis:"Family",value:22},
-				{axis:"Mystery",value:23},
-				{axis:"Western",value:12},
-				{axis:"Crime",value:13},
-				{axis:"Horror",value:25},
-				{axis:"TV Movie",value:18},
-				{axis:"Foreign",value:4},
-				{axis:"Documentary",value:4}
-			  ]
-			];
-			
-	var games_radar = [
-			  [
-				{axis:"Action",value:25},
-				{axis:"Adventure",value:30},
-				{axis:"Fighting",value:18},
-				{axis:"Misc",value:16},
-				{axis:"Platform",value:15},
-				{axis:"Puzzle",value:5},
-				{axis:"Racing",value:22},
-				{axis:"Role-Playing",value:24},
-				{axis:"Shooter",value:42},
-				{axis:"Simulation",value:30},
-				{axis:"Sports",value:34},
-				{axis:"Strategy",value:28}
-			  ]
-			];
-
-	var cfg2 = {
-		 color: scat_movies_color_inner
-		};
-	//Call function to draw the Radar chart
-	//Will expect that data is in %'s
-	gen_radarchart("#radarchart1", games_radar);
-	gen_radarchart("#radarchart2", movies_radar, cfg2);
+	update_radarchart();
 
 	////////////////////////////////////////////
 	/////////// Initiate legend ////////////////
@@ -1007,6 +978,147 @@ function init_radarchart(){
 		.text("Movies released");
 			
 	
+}
+
+function update_radarchart(){
+	//Data
+	var movies_radar = [
+			  [
+				{axis:"Action",value:0},
+				{axis:"Adventure",value:0},
+				{axis:"Animation",value:0},	
+				{axis:"Comedy",value:0},	
+				{axis:"Crime",value:0},	
+				{axis:"Documentary",value:0},	
+				{axis:"Drama",value:0},	
+				{axis:"Family",value:0},	
+				{axis:"Fantasy",value:0},	
+				{axis:"Foreign",value:0},	
+				{axis:"History",value:0},	
+				{axis:"Horror",value:0},	
+				{axis:"Music",value:0},	
+				{axis:"Mystery",value:0},	
+				{axis:"Romance",value:0},	
+				{axis:"Science Fiction",value:0},	
+				{axis:"TV Movie",value:0},	
+				{axis:"Thriller",value:0},	
+				{axis:"War",value:0},
+				{axis:"Western",value:0}
+			  ]  
+			];
+			
+	var games_radar = [
+			  [
+				{axis:"Action",value:0},
+				{axis:"Adventure",value:0},
+				{axis:"Fighting",value:0},
+				{axis:"Misc",value:0},
+				{axis:"Platform",value:0},
+				{axis:"Puzzle",value:0},
+				{axis:"Racing",value:0},
+				{axis:"Role-Playing",value:0},
+				{axis:"Shooter",value:0},
+				{axis:"Simulation",value:0},
+				{axis:"Sports",value:0},
+				{axis:"Strategy",value:0}
+			  ]
+			];
+
+	var cfg2 = {
+		 color: scat_movies_color_inner
+		};
+
+	
+	//populate values with filtered data 
+	//check selected year and score
+	var avgScore = 0
+	
+	games_radarchart_data.forEach(function(d){
+		if(d.Year >= year_filters[0] && d.Year <= year_filters[1]){
+			avgScore = (d.Critic_Score + d.User_Score)/20		
+			if(score_filters.includes(avgScore.toFixed(1))  || score_filters.length == 0){
+				if(d.Genre.includes("Action"))
+					games_radar[0][0].value += 1
+				else if(d.Genre.includes("Adventure"))
+					games_radar[0][1].value += 1
+				else if(d.Genre.includes("Fighting"))
+					games_radar[0][2].value += 1
+				else if(d.Genre.includes("Misc"))
+					games_radar[0][3].value += 1
+				else if(d.Genre.includes("Platform"))
+					games_radar[0][4].value += 1
+				else if(d.Genre.includes("Puzzle"))
+					games_radar[0][5].value += 1
+				else if(d.Genre.includes("Racing"))
+					games_radar[0][6].value += 1
+				else if(d.Genre.includes("Role-Playing"))
+					games_radar[0][7].value += 1
+				else if(d.Genre.includes("Shooter"))
+					games_radar[0][8].value += 1
+				else if(d.Genre.includes("Simulation"))
+					games_radar[0][9].value += 1
+				else if(d.Genre.includes("Sports"))
+					games_radar[0][10].value += 1
+				else if(d.Genre.includes("Strategy"))
+					games_radar[0][11].value += 1
+			}
+		}	
+	});
+	
+	avgScore = 0
+	movies_radarchart_data.forEach(function(d){
+		if(d.Year >= year_filters[0] && d.Year <= year_filters[1]){
+			avgScore = (d.Score)/10		
+			if(score_filters.includes(avgScore.toFixed(1))  || score_filters.length == 0){
+				if(d.Genre.includes("Action"))
+					movies_radar[0][0].value += 1
+				else if(d.Genre.includes("Adventure"))
+					movies_radar[0][1].value += 1
+				else if(d.Genre.includes("Animation"))
+					movies_radar[0][2].value += 1
+				else if(d.Genre.includes("Comedy"))
+					movies_radar[0][3].value += 1
+				else if(d.Genre.includes("Crime"))
+					movies_radar[0][4].value += 1
+				else if(d.Genre.includes("Documentary"))
+					movies_radar[0][5].value += 1
+				else if(d.Genre.includes("Drama"))
+					movies_radar[0][6].value += 1
+				else if(d.Genre.includes("Family"))
+					movies_radar[0][7].value += 1
+				else if(d.Genre.includes("Fantasy"))
+					movies_radar[0][8].value += 1
+				else if(d.Genre.includes("Foreign"))
+					movies_radar[0][9].value += 1
+				else if(d.Genre.includes("History"))
+					movies_radar[0][10].value += 1
+				else if(d.Genre.includes("Horror"))
+					movies_radar[0][11].value += 1
+				else if(d.Genre.includes("Music"))
+					movies_radar[0][12].value += 1
+				else if(d.Genre.includes("Mystery"))
+					movies_radar[0][13].value += 1
+				else if(d.Genre.includes("Romance"))
+					movies_radar[0][14].value += 1
+				else if(d.Genre.includes("Sci-Fi"))
+					movies_radar[0][15].value += 1
+				else if(d.Genre.includes("TV"))
+					movies_radar[0][16].value += 1
+				else if(d.Genre.includes("Thriller"))
+					movies_radar[0][17].value += 1
+				else if(d.Genre.includes("War"))
+					movies_radar[0][18].value += 1
+				else if(d.Genre.includes("Western"))
+					movies_radar[0][19].value += 1
+			}
+		}	
+	});
+	
+	console.log(games_radar)
+	console.log(movies_radar)
+	//Call function to draw the Radar chart
+	gen_radarchart("#radarchart1", games_radar);
+	gen_radarchart("#radarchart2", movies_radar, cfg2);
 }
 
 function gen_radarchart(id, d, options){
