@@ -99,6 +99,12 @@ function gen_heatmap(){
                        .style("text-anchor", "middle")
                        .attr("transform", "translate(" + gridSize / 2 + ", -6)");
 
+    var title = svg.append("text")
+    	.attr("class", "title")
+    	.attr("transform", "translate(30, 370)")
+    	.text("Number of games/movies by score")
+
+
     svg.append('g')
         .attr('transform', 'translate(0,' + h + ')')
         .attr('class', 'xAxis')
@@ -462,6 +468,20 @@ function gen_linechart(){
     .attr("height", linechart.height + linechart.margin.top + linechart.margin.bottom)
   .append("g")
     .attr("transform", "translate(" + linechart.margin.left + "," + linechart.margin.top + ")");
+
+    linechart.svg.append("text")
+    	.attr("class", "title")
+    	.text("User vs Critic score");
+
+    linechart.svg.append("text")
+    	.attr("class", "axisLabel")
+    	.attr("transform", "translate(220,-20)")
+    	.text("Revenue");
+
+    linechart.svg.append("text")
+    	.attr("class", "axisLabel")
+    	.attr("transform", "translate(190,340)")
+    	.text("Score difference");
 
   linechart.svg.append("g")
   	.attr("fill", scat_games_color_inner)
@@ -828,6 +848,12 @@ function gen_treemap(){
       .style("height", (height + margin.top + margin.bottom) + "px")
       .style("left", margin.left + "px")
       .style("top", margin.top + "px");
+
+  svg.append("text")
+  		.attr("class", "title")
+  		.attr("translate", 'translate(500,0)')
+  		.attr("fill", "#0000ff")
+		.text("Game sales by region");
       
       
   draw(root);  
@@ -846,7 +872,7 @@ function gen_treemap(){
             div.transition()    
                .duration(200)   
                .style("opacity", .9);   
-            div.html(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase() + ": " + d.value) 
+            div.html(/*d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase() + ": " + */ d.value + " million dollars") 
                .style("left", (d3.event.pageX) + "px")    
                .style("top", (d3.event.pageY) + "px");  
           })          
@@ -863,7 +889,13 @@ function gen_treemap(){
                selectedRegion = "Global";
              }
              update_linechart();
-          });
+          })
+          .append("text")
+          .attr("class", "label")
+		  //.attr('transform', 'translate(20,0)') 
+		  //.attr("x", w - 100)
+		  //.attr("y", 20)
+		  .text("Region");
 
       return node;
   }
@@ -954,7 +986,7 @@ function init_radarchart(){
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Number of Games sold(M)");
+		.text("Games sold (Millions of units)");
 			
 	
 		  
@@ -972,7 +1004,7 @@ function init_radarchart(){
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Number of Movies sold(M)");
+		.text("Movies released");
 			
 	
 }

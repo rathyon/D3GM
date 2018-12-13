@@ -115,7 +115,7 @@ div.tip {
     font: 14px Helvetica, sans-serif;
     font-weight: bold;
     fill: #eeeeee;
-
+    color: #eeeeee;
     /** /background-color: #ff0000; /**/
 }
 
@@ -201,6 +201,20 @@ div.tip {
 
 /*============== Linechart styling ==============*/
 
+#linechart .title{
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    fill: #ffffff;
+}
+
+#linechart .axisLabel{
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    fill: #ffffff;
+}
+
 #linechart svg .xAxis {
 	font: 12px Helvetica, sans-serif;
     font-weight: bold;
@@ -211,4 +225,17 @@ div.tip {
 	font: 12px Helvetica, sans-serif;
     font-weight: bold;
     color: #eeeeee;
+}
+
+/*============== Treemap styling ==============*/
+#treemap text{
+    color: #ffffff;
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#treemap .label{
+    color: #111111;
+    font: 14px Helvetica, sans-serif;
+    font-weight: bold;
 }
