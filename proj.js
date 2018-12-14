@@ -187,7 +187,7 @@ function gen_heatmap(){
             .attr("height", gridSize)
             .style("stroke", "white")
             .style("stroke-opacity", 0.6)
-            .style("fill", function(d) { return color(d.val); })
+            .style("fill", function(d) { return color(0); })
             .on("mouseover", function(d) {		
                 div.transition()		
                     .duration(200)		
@@ -206,15 +206,27 @@ function gen_heatmap(){
               var score = this.getAttribute("id"); //format #.#
               if(!score_filters.includes(score)){
                 score_filters.push(score);
+				d3.select(this).style("stroke", "black")
+					.style("stroke-width", 4)
+					.style("stroke-opacity", 0.9)
               }
               else{
                 score_filters.splice(score_filters.indexOf(score), 1);
+				d3.select(this).style("stroke", "white")
+					.style("stroke-opacity", 0.6)
+					.style("stroke-width", 1)
               }
               console.log(score_filters);
 			  update_radarchart();
               // redraw stuff ...
 
             });
+	heatmap.transition()
+		.style("fill", function(d) { return color(d.val); })
+		.duration(800)
+		.delay(function(d, i){
+			return i*20
+		})
           
 }
 
@@ -326,6 +338,7 @@ function gen_scatterplot() {
     .style('stroke', function(d){
       return d.Type==="Games" ? scat_games_color_outer : scat_movies_color_outer; 
     })
+	.style("opacity",0)
     .on("mouseover", function(d) {	
       div.transition()		
         .duration(200)		
@@ -339,7 +352,14 @@ function gen_scatterplot() {
         .duration(500)		
         .style("opacity", 0);	
     });
-
+	
+	bubble.transition()
+		.style("opacity",1)
+		.duration(800)
+		.delay(function(d, i){
+			return i*20
+		})
+	
   var legend = svg.selectAll(".legend")
     .data(["Games", "Movies"])
     .enter().append("g")
@@ -623,7 +643,7 @@ function update_linechart() {
 function gen_timeline() {
   var margin = {left: 30, right: 30},
     width = 1910,
-    height = 100,
+    height = 60,
     range = [1996, 2016],
     step = 1; // change the step and if null, it'll switch back to a normal slider
 
@@ -1232,7 +1252,7 @@ function gen_radarchart(id, d, options){
 		  ]);
 		});
 	  dataValues.push(dataValues[0]);
-	  g.selectAll(".area")
+	  var radar_area = g.selectAll(".area")
 					 .data([dataValues])
 					 .enter()
 					 .append("polygon")
@@ -1317,6 +1337,8 @@ function gen_radarchart(id, d, options){
 
 	  series++;
 	});
+	
+	
 	//Tooltip
 	tooltip = g.append('text')
 			   .style('opacity', 0)
