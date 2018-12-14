@@ -472,11 +472,11 @@ function gen_linechart(){
     });
 
   linechart.data.forEach(function(d){
-    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMin;
-    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMax;
+    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? parseFloat(d.Score_diff) : linechart.xMin;
+    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? parseFloat(d.Score_diff) : linechart.xMax;
 
-    linechart.yMin = linechart.yMin > parseFloat(d.Global) ? d.Global : linechart.yMin;
-    linechart.yMax = linechart.yMax < parseFloat(d.Global) ? d.Global : linechart.yMax;
+    linechart.yMin = linechart.yMin > parseFloat(d.Global) ? parseFloat(d.Global) : linechart.yMin;
+    linechart.yMax = linechart.yMax < parseFloat(d.Global) ? parseFloat(d.Global) : linechart.yMax;
   });
 
   linechart.maxXValue = linechart.xMin > linechart.xMax ? linechart.xMin : linechart.xMax;
@@ -485,11 +485,11 @@ function gen_linechart(){
 
   linechart.xScale = d3.scaleLinear()
     .domain([linechart.xMin, linechart.xMax]) // input
-    .range([0, linechart.width]); // output
+    .range([0.0, linechart.width]); // output
 
   linechart.yScale = d3.scaleLinear()
-    .domain([linechart.yMin, linechart.yMax]) // input 
-    .range([linechart.height, 0]); // output
+    .domain([0.0, linechart.yMax]) // input 
+    .range([linechart.height, 0.0]); // output
 
   linechart.svg = d3.select("#linechart").append("svg")
     .attr("width", linechart.width + linechart.margin.left + linechart.margin.right)
@@ -515,7 +515,7 @@ function gen_linechart(){
   	.attr("fill", scat_games_color_inner)
   	.selectAll("rect").data(linechart.data).enter().append("rect")
   	.attr("x", function(d){
-  		return linechart.xScale(d.Score_diff);
+  		return linechart.xScale(parseFloat(d.Score_diff));
   	})
   	.attr("y", function(d){
   		var value;
@@ -574,24 +574,39 @@ function update_linechart() {
   });
 
   linechart.data.forEach(function(d){
-    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMin;
-    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? d.Score_diff : linechart.xMax;
+  	var sales;
+  	if(selectedRegion == "NA")
+      sales = d.NA;
+    else if(selectedRegion == "EU")
+      sales = d.EU;
+    else if(selectedRegion == "JP")
+      sales = d.JP;
+    else if(selectedRegion == "OT")
+      sales = d.OT;
+    else
+      sales = d.Global;
 
-    linechart.yMin = linechart.yMin > parseFloat(d.Global) ? d.Global : linechart.yMin;
-    linechart.yMax = linechart.yMax < parseFloat(d.Global) ? d.Global : linechart.yMax;
+    linechart.xMin = linechart.xMin > parseFloat(d.Score_diff) ? parseFloat(d.Score_diff) : linechart.xMin;
+    linechart.xMax = linechart.xMax < parseFloat(d.Score_diff) ? parseFloat(d.Score_diff) : linechart.xMax;
+
+    linechart.yMin = linechart.yMin > parseFloat(sales) ? parseFloat(sales) : linechart.yMin;
+    linechart.yMax = linechart.yMax < parseFloat(sales) ? parseFloat(sales) : linechart.yMax;
   });
 
   linechart.maxXValue = linechart.xMin > linechart.xMax ? linechart.xMin : linechart.xMax;
   linechart.xMin = -linechart.maxXValue;
   linechart.xMax = linechart.maxXValue;
 
+  console.log(linechart.maxXValue)
+  console.log(linechart.yMax)
+
   linechart.xScale = d3.scaleLinear()
     .domain([linechart.xMin, linechart.xMax])
-    .range([0, linechart.width]);
+    .range([0.0, linechart.width]);
 
   linechart.yScale = d3.scaleLinear()
-    .domain([linechart.yMin, linechart.yMax])
-    .range([linechart.height, 0]);
+    .domain([0.0, linechart.yMax])
+    .range([linechart.height, 0.0]);
 
   	var rect = linechart.svg.select("g").selectAll("rect")
   		.data(linechart.data);
@@ -602,7 +617,7 @@ function update_linechart() {
 
   	rect.transition().duration(1000)
   	.attr("x", function(d){
-  		return linechart.xScale(d.Score_diff);
+  		return linechart.xScale(parseFloat(d.Score_diff));
   	})
   	.attr("y", function(d){
   		var value;
@@ -616,7 +631,7 @@ function update_linechart() {
 	      value = d.OT;
 	    else
 	      value = d.Global;
-	    return linechart.yScale(value); 
+	    return linechart.yScale(parseFloat(value)); 
   	})
   	.attr("height", function(d){
   		var value;
@@ -630,7 +645,7 @@ function update_linechart() {
 	      value = d.OT;
 	    else
 	      value = d.Global;
-	    return linechart.yScale(0) - linechart.yScale(value); 
+	    return linechart.yScale(0.0) - linechart.yScale(parseFloat(value)); 
   	})
 
   linechart.svg.select(".xAxis").transition().duration(750)
@@ -771,7 +786,12 @@ function gen_timeline() {
         xVal = x.toFixed(3);
     }
 
-    handleInUse = Math.abs(minPos - cx) < Math.abs(maxPos - cx) ? minHandle : maxHandle;
+    if(year_filters[0] == 1996 && year_filters[0] == year_filters[1])
+    	handleInUse = maxHandle;
+    else if(year_filters[1] == 2016 && year_filters[0] == year_filters[1])
+    	handleInUse = minHandle;
+    else
+    	handleInUse = Math.abs(minPos - cx) < Math.abs(maxPos - cx) ? minHandle : maxHandle;
   }
 
   function dragging(value) {
@@ -901,7 +921,7 @@ function gen_treemap(){
             div.transition()    
                .duration(200)   
                .style("opacity", .9);   
-            div.html(/*d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase() + ": " + */ d.value + " million dollars") 
+            div.html(/*d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase() + ": " + */ d.value + " million units") 
                .style("left", (d3.event.pageX) + "px")    
                .style("top", (d3.event.pageY) + "px");  
           })          
@@ -924,7 +944,9 @@ function gen_treemap(){
 		  //.attr('transform', 'translate(20,0)') 
 		  //.attr("x", w - 100)
 		  //.attr("y", 20)
-		  .text("Region");
+		  .text(function(d){
+		  	return region(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n"))
+		  });
 
       return node;
   }
@@ -934,6 +956,12 @@ function gen_treemap(){
       var arr = ["#FFFFFF", "#B22234", "#003399", "#228B22"];
       var reg = ['jp', 'na', 'eu', 'ot'];
       return arr[reg.indexOf(id)];
+  }
+
+  function region(id){
+  	var arr = ["Japan", "North America", "Europe", "Other regions"]
+  	var reg = ['jp', 'na', 'eu', 'ot'];
+  	return arr[reg.indexOf(id)];
   }
 }
 
