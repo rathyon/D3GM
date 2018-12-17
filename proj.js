@@ -56,7 +56,7 @@ function clamp(value, min, max){
 };
 
 function gen_heatmap(){
-    var margin = {top: 40, right: 50, bottom: 40, left:40};
+    var margin = {top: 100, right: 50, bottom: 40, left:60};
     var w = 400 - margin.right - margin.left;
     var h = 420 - margin.top - margin.bottom;
     var gridSize = 30;
@@ -108,12 +108,12 @@ function gen_heatmap(){
 
     var title = svg.append("text")
     	.attr("class", "title")
-    	.attr("transform", "translate(30, 370)")
+    	.attr("transform", "translate(30, -70)")
     	.text("Number of games/movies by score")
 
 
     svg.append('g')
-        .attr('transform', 'translate(0,' + h + ')')
+        .attr('transform', 'translate(0,0)')
         .attr('class', 'xAxis')
         .append("text")
         .classed("label", true)
@@ -192,7 +192,7 @@ function gen_heatmap(){
                 div.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
-                div	.html(d.val.toFixed(0))	
+                div	.html("Units: " + d.val.toFixed(0) + "<br>Score: " + this.getAttribute("id") )	
                     .style("left", (d3.event.pageX) + "px")		
                     .style("top", (d3.event.pageY) + "px");	
                 })					
@@ -231,9 +231,9 @@ function gen_heatmap(){
 }
 
 function gen_scatterplot() {
-  var margin = {top: 30, right: 50, bottom: 40, left:70};
-  var width = 620 - margin.left - margin.right;
-  var height = 390 - margin.top - margin.bottom;
+  var margin = {top: 60, right: 80, bottom: 40, left:80};
+  var width = 600 - margin.left - margin.right;
+  var height = 380 - margin.top - margin.bottom;
   var radius = 4;
     
   game_titles.forEach(function(d) {
@@ -260,11 +260,11 @@ function gen_scatterplot() {
     .attr("height", height);
 
   var xScale = d3.scaleLinear()
-    .domain([0,game_titles[game_titles.length-1].Average])
+    .domain([0,52])
     .range([0, width]);
 
   var yScale = d3.scaleLinear()
-    .domain([d3.max(game_titles, function(d){return d.Sales}),0])
+    .domain([900,0])
     .range([0,height]);
     
   var xAxis = d3.axisBottom()
@@ -343,7 +343,7 @@ function gen_scatterplot() {
       div.transition()		
         .duration(200)		
         .style("opacity", .9);		
-      div	.html("Sales: " + d.Sales.toFixed(2) + "<br>" + "Length: " + d.Average)	
+      div	.html("Sales: " + d.Sales.toFixed(2) + "M $<br>" + "Title length: " + d.Average)	
         .style("left", (d3.event.pageX) + "px")		
         .style("top", (d3.event.pageY) + "px");	
       })			
@@ -360,12 +360,23 @@ function gen_scatterplot() {
 			return i*20
 		})
 	
+	//Create the title for the legend
+	var text = svg.append("text")
+		.attr("class", "title")
+		.attr('transform', 'translate(20,0)') 
+		.attr("x", 60)
+		.attr("y", -30)
+		.style("font", "14px Helvetica")
+    .style("font-weight", "bold")
+		.attr("fill", "white")
+		.text("Average sales (Millions of dollars) per title length");
+		
   var legend = svg.selectAll(".legend")
     .data(["Games", "Movies"])
     .enter().append("g")
     .classed("legend", true)
     .attr("transform", function(d, i) {
-      return "translate(0," + i * 26 + ")";
+      return "translate(40," + i * 26 + ")";
     });
 
   legend.append("circle")
@@ -838,9 +849,9 @@ function gen_timeline() {
 }
 
 function gen_treemap(){
-  var margin = {top: 20, right: 20, bottom: 20, left: 20}
-  var width = 500 - margin.right - margin.left;
-  var height = 350 - margin.top - margin.bottom;
+  var margin = {top: 60, right: 80, bottom: 20, left: 80}
+  var width = 550 - margin.right - margin.left;
+  var height = 360 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
   .domain([0, width])
@@ -892,15 +903,21 @@ function gen_treemap(){
 
       
   var svg = d3.select("#treemap").append("div")
-      .style("position", "relative")
+      .style("position", "absolute")
       .style("width", (width + margin.left + margin.right) + "px")
       .style("height", (height + margin.top + margin.bottom) + "px")
       .style("left", margin.left + "px")
       .style("top", margin.top + "px");
 
-  svg.append("text")
+	var svgTitle = d3.select("#treemap").append("div")
+			.style("position", "absolute")
+			.style("width", 200 + "px")
+			.style("height", 20 + "px")
+			.style("left", 220 + "px")
+			.style("top", 20 + "px");
+  
+	svgTitle.append("text")
   		.attr("class", "title")
-  		.attr("translate", 'translate(500,0)')
   		.attr("fill", "#0000ff")
 		.text("Game sales by region");
       
@@ -915,7 +932,7 @@ function gen_treemap(){
           .style("left", function(d) { return d.x0 + "px"; })
           .style("top", function(d) { return d.y0 + "px"; })
           .style("width", function(d) { return d.x1 - d.x0 + "px"; })
-          .style("height", function(d) { return d.y1 - d.y0+ "px";})
+					.style("height", function(d) { return d.y1 - d.y0+ "px";})
           .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n")); })
           .on("mouseover", function(d) {    
             div.transition()    
@@ -948,6 +965,9 @@ function gen_treemap(){
 		  	return region(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n"))
 		  });
 
+			
+			
+			
       return node;
   }
       
@@ -1138,29 +1158,29 @@ function update_radarchart(){
 	var text = svg.append("text")
 		.attr("class", "title")
 		.attr('transform', 'translate(20,0)') 
-		.attr("x", w - 100)
+		.attr("x", w - 160)
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Games sold (Millions of units)");
+		.text("Number of Games released for each genre");
 			
 	
 		  
 	var svg2 = d3.select('#radarchart2')
 		.selectAll('svg')
 		.append('svg')
-		.attr("width", w+100)
+		.attr("width", w+200)
 		.attr("height", h)
 
 	//Create the title for the legend
 	var text = svg2.append("text")
 		.attr("class", "title")
 		.attr('transform', 'translate(20,0)') 
-		.attr("x", w - 100)
+		.attr("x", w - 160)
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Movies released");
+		.text("Number of Movies released for each genre");
 }
 
 function gen_radarchart(id, d, options){
@@ -1340,9 +1360,9 @@ function gen_radarchart(id, d, options){
 					tooltip
 						.attr('x', newX)
 						.attr('y', newY)
-						.text(Format(d.value))
+						.text("Units released: "+Format(d.value))
 						.transition(200)
-						.style('opacity', 1);
+						.style('opacity', 0.9);
 						
 					z = "polygon."+d3.select(this).attr("class");
 					g.selectAll("polygon")
@@ -1369,8 +1389,9 @@ function gen_radarchart(id, d, options){
 	
 	//Tooltip
 	tooltip = g.append('text')
-			   .style('opacity', 0)
-			   .style('font-family', 'sans-serif')
-			   .style('font-size', '13px');
+				.style('opacity', 0)
+				.style("font", "12px Helvetica")
+				.style("text-anchor", "middle")
+				.style("font-weight", "bold")
   
 }

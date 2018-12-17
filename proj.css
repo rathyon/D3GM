@@ -80,7 +80,7 @@ div.tooltip {
 div.tip {   
     position: absolute;         
     text-align: center;         
-    width: 30px;                    
+    width: 80px;                    
     height: 30px;                   
     padding: 2px;               
     font: 12px Helvetica, sans-serif;
