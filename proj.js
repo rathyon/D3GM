@@ -109,7 +109,7 @@ function gen_heatmap(){
     var title = svg.append("text")
     	.attr("class", "title")
     	.attr("transform", "translate(30, -70)")
-    	.text("Number of games/movies by score")
+    	.text("Number of games and movies by score")
 
 
     svg.append('g')
@@ -166,9 +166,14 @@ function gen_heatmap(){
       return result;
     }
 
+    // #03bfac #10e5cf #1af4de #4bfcea #7afff1 #94fcf1 #b2fff6 #ccfcf6 #eff9f8
+
+
+    var colorArray = ["#ffffff", "#ccfff5", "#b3fff0", "#80ffe5", "#33ffd6", "#00ffcc", "#00cca3", "#00b38f", "#008066", ]
+
     var color = d3.scaleQuantile()
                     .domain([0, 9, d3.max(multiple_years(), function (d) { return d.val; })])
-                    .range(d3.schemeGnBu[9].map(function(c){
+                    .range(colorArray.map(function(c){
                         c = d3.rgb(c);
                         c.opacity = 0.8;
                         return c;
@@ -369,7 +374,7 @@ function gen_scatterplot() {
 		.style("font", "14px Helvetica")
     .style("font-weight", "bold")
 		.attr("fill", "white")
-		.text("Average sales (Millions of dollars) per title length");
+		.text("Sales average by title length");
 		
   var legend = svg.selectAll(".legend")
     .data(["Games", "Movies"])
@@ -608,9 +613,6 @@ function update_linechart() {
   linechart.xMin = -linechart.maxXValue;
   linechart.xMax = linechart.maxXValue;
 
-  console.log(linechart.maxXValue)
-  console.log(linechart.yMax)
-
   linechart.xScale = d3.scaleLinear()
     .domain([linechart.xMin, linechart.xMax])
     .range([0.0, linechart.width]);
@@ -619,14 +621,15 @@ function update_linechart() {
     .domain([0.0, linechart.yMax])
     .range([linechart.height, 0.0]);
 
-  	var rect = linechart.svg.select("g").selectAll("rect")
-  		.data(linechart.data);
+  	linechart.svg.select("g").selectAll("rect")
+  	.data(linechart.data).exit().remove();
 
-  	rect.exit().remove();
-  	rect.enter().append("rect")
+  	linechart.svg.select("g").selectAll("rect")
+  	.data(linechart.data).enter().append("rect")
   	.attr("width", linechart.linewidth);
 
-  	rect.transition().duration(1000)
+  	linechart.svg.select("g").selectAll("rect")
+  	.data(linechart.data).transition().duration(1000)
   	.attr("x", function(d){
   		return linechart.xScale(parseFloat(d.Score_diff));
   	})
@@ -1162,7 +1165,7 @@ function update_radarchart(){
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Number of Games released for each genre");
+		.text("Games released for each genre");
 			
 	
 		  
@@ -1180,7 +1183,7 @@ function update_radarchart(){
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Number of Movies released for each genre");
+		.text("Movies released for each genre");
 }
 
 function gen_radarchart(id, d, options){
