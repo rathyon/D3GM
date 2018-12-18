@@ -968,9 +968,8 @@ function gen_treemap(){
 		  	return region(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n"))
 		  });
 
-			
-			
-			
+		
+				
       return node;
   }
       
@@ -1313,7 +1312,7 @@ function gen_radarchart(id, d, options){
 					 .attr("points",function(d) {
 						 var str="";
 						 for(var pti=0;pti<d.length;pti++){
-							 str=str+d[pti][0]+","+d[pti][1]+" ";
+							 str=str+150+","+150+" ";
 						 }
 						 return str;
 					  })
@@ -1334,28 +1333,33 @@ function gen_radarchart(id, d, options){
 										 .style("fill-opacity", cfg.opacityArea);
 					 });
 	  series++;
+		radar_area.transition()
+			.duration(800)
+			.attr('points', function(d) {
+				var str="";
+				for(var pti=0;pti<d.length;pti++){
+					str=str+d[pti][0]+","+d[pti][1]+" ";
+				}
+				return str;
+			})
 	});
 	series=0;
 
 	d.forEach(function(y, x){
-	  g.selectAll(".nodes")
+	  var radar_nodes = g.selectAll(".nodes")
 		.data(y).enter()
 		.append("svg:circle")
 		.attr("class", "radar-chart-serie"+series)
 		.attr('r', cfg.radius)
 		.attr("alt", function(j){return Math.max(j.value, 0)})
 		.attr("cx", function(j, i){
-		  dataValues.push([
-			cfg.w/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)), 
-			cfg.h/2*(1-(parseFloat(Math.max(j.value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
-		]);
-		return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+			return cfg.w/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
 		})
 		.attr("cy", function(j, i){
 		  return cfg.h/2*(1-(Math.max(j.value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
 		})
 		.attr("data-id", function(j){return j.axis})
-		.style("fill", cfg.color).style("fill-opacity", .9)
+		.style("fill", cfg.color).style("fill-opacity", 0.9)
 		.on('mouseover', function (d){
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
@@ -1384,9 +1388,9 @@ function gen_radarchart(id, d, options){
 						.style("fill-opacity", cfg.opacityArea);
 				  })
 		.append("svg:title")
-		.text(function(j){return Math.max(j.value, 0)});
 
 	  series++;
+		
 	});
 	
 	
