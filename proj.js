@@ -179,6 +179,9 @@ function gen_heatmap(){
                         return c;
                     }));
 
+    var select_drag = false;
+    var temp_filters = [];
+
     var heatmap = svg.selectAll(".score")
             .data(multiple_years())
             .enter()
@@ -199,33 +202,63 @@ function gen_heatmap(){
                     .style("opacity", .9);		
                 div	.html("Units: " + d.val.toFixed(0) + "<br>Score: " + this.getAttribute("id") )	
                     .style("left", (d3.event.pageX) + "px")		
-                    .style("top", (d3.event.pageY) + "px");	
-                })					
+                    .style("top", (d3.event.pageY) + "px");
+                if(select_drag){
+                	var score = this.getAttribute("id"); //format #.#
+                	if(!temp_filters.includes(score)){
+                		temp_filters.push(score);
+		              if(!score_filters.includes(score)){
+		                score_filters.push(score);
+						d3.select(this).style("stroke", "black")
+							.style("stroke-width", 4)
+							.style("stroke-opacity", 0.9);
+						console.log("added");
+		              }
+		              else{
+		                score_filters.splice(score_filters.indexOf(score), 1);
+						d3.select(this).style("stroke", "white")
+							.style("stroke-opacity", 0.6)
+							.style("stroke-width", 1);
+							console.log("removed");
+		              }
+		          }
+		              console.log(score_filters);
+		              if(score_filters.length == 0){
+		              	temp_filters = [];
+		              }
+                }
+            })					
             .on("mouseout", function(d) {		
                 div.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
             })
-            .on("click", function(d){
-              // add / remove filter ...
-              var score = this.getAttribute("id"); //format #.#
-              if(!score_filters.includes(score)){
-                score_filters.push(score);
-				d3.select(this).style("stroke", "black")
-					.style("stroke-width", 4)
-					.style("stroke-opacity", 0.9)
-              }
-              else{
-                score_filters.splice(score_filters.indexOf(score), 1);
-				d3.select(this).style("stroke", "white")
-					.style("stroke-opacity", 0.6)
-					.style("stroke-width", 1)
-              }
-              console.log(score_filters);
-			  update_radarchart();
-              // redraw stuff ...
-
+            .on("mousedown", function(d){
+            	select_drag = true;
+            	var score = this.getAttribute("id"); //format #.#
+            	temp_filters.push(score);
+	              if(!score_filters.includes(score)){
+	                score_filters.push(score);
+					d3.select(this).style("stroke", "black")
+						.style("stroke-width", 4)
+						.style("stroke-opacity", 0.9);
+						console.log("init added");
+	              }
+	              else{
+	                score_filters.splice(score_filters.indexOf(score), 1);
+					d3.select(this).style("stroke", "white")
+						.style("stroke-opacity", 0.6)
+						.style("stroke-width", 1);
+						console.log("init removed");
+	              }
+	              console.log(score_filters);
+            })
+            .on("mouseup", function(d){
+            	temp_filters = [];
+            	select_drag = false;
+            	update_radarchart();
             });
+
 	heatmap.transition()
 		.style("fill", function(d) { return color(d.val); })
 		.duration(800)
@@ -348,8 +381,8 @@ function gen_scatterplot() {
       div.transition()		
         .duration(200)		
         .style("opacity", .9);		
-      div	.html("Sales: " + d.Sales.toFixed(2) + "M $<br>" + "Title length: " + d.Average)	
-        .style("left", (d3.event.pageX) + "px")		
+      div	.html(d.Sales.toFixed(2) + " mil<br>" + "Length: " + d.Average)	
+        .style("left", clamp(d3.event.pageX, 0, 1780) + "px")		
         .style("top", (d3.event.pageY) + "px");	
       })			
     .on("mouseout", function(d) {		
@@ -368,11 +401,12 @@ function gen_scatterplot() {
 	//Create the title for the legend
 	var text = svg.append("text")
 		.attr("class", "title")
-		.attr('transform', 'translate(20,0)') 
+		.attr('transform', 'translate(80,0)') 
 		.attr("x", 60)
 		.attr("y", -30)
 		.style("font", "14px Helvetica")
     .style("font-weight", "bold")
+    .style("text-align", "center")
 		.attr("fill", "white")
 		.text("Sales average by title length");
 		
@@ -452,6 +486,10 @@ function gen_scatterplot() {
 var linechart = {
   data: 0,
 
+  color_pos: scat_games_color_inner,
+
+  color_neg: "#ff0000",
+
   margin: {top: 50, right: 50, bottom: 50, left: 50},
 
   // initialize with trash values!
@@ -524,11 +562,20 @@ function gen_linechart(){
 
     linechart.svg.append("text")
     	.attr("class", "axisLabel")
-    	.attr("transform", "translate(190,340)")
+    	.attr("transform", "translate(0,340)") // 190 340 old
+    	.text("User");
+
+    linechart.svg.append("text")
+    	.attr("class", "axisLabel")
+    	.attr("transform", "translate(190,340)") // 190 340 old
     	.text("Score difference");
 
+    linechart.svg.append("text")
+    	.attr("class", "axisLabel")
+    	.attr("transform", "translate(460,340)") // 190 340 old
+    	.text("Critic");
+
   linechart.svg.append("g")
-  	.attr("fill", scat_games_color_inner)
   	.selectAll("rect").data(linechart.data).enter().append("rect")
   	.attr("x", function(d){
   		return linechart.xScale(parseFloat(d.Score_diff));
@@ -561,7 +608,15 @@ function gen_linechart(){
 	      value = d.Global;
 	    return linechart.yScale(0) - linechart.yScale(value); 
   	})
-  	.attr("width", linechart.linewidth);
+  	.attr("width", linechart.linewidth)
+  	.attr("fill", function(d){
+  		if(linechart.xScale(parseFloat(d.Score_diff)) >= linechart.width/2 ){
+  			return linechart.color_pos;
+  		}
+  		else{
+  			return linechart.color_neg;
+  		}
+  	});
 
   linechart.svg.append("g")
     .attr("class", "xAxis")
@@ -661,6 +716,14 @@ function update_linechart() {
 	      value = d.Global;
 	    return linechart.yScale(0.0) - linechart.yScale(parseFloat(value)); 
   	})
+  	.attr("fill", function(d){
+  		if(linechart.xScale(parseFloat(d.Score_diff)) >= linechart.width/2 ){
+  			return linechart.color_pos;
+  		}
+  		else{
+  			return linechart.color_neg;
+  		}
+  	});
 
   linechart.svg.select(".xAxis").transition().duration(750)
     .call(d3.axisBottom(linechart.xScale));
@@ -853,7 +916,7 @@ function gen_timeline() {
 
 function gen_treemap(){
   var margin = {top: 60, right: 80, bottom: 20, left: 80}
-  var width = 550 - margin.right - margin.left;
+  var width = 600 - margin.right - margin.left;
   var height = 360 - margin.top - margin.bottom;
 
   var x = d3.scaleLinear()
@@ -1134,8 +1197,8 @@ function update_radarchart(){
 		}	
 	});
 	
-	console.log(games_radar)
-	console.log(movies_radar)
+	//console.log(games_radar)
+	//console.log(movies_radar)
 	//Call function to draw the Radar chart
 	gen_radarchart("#radarchart1", games_radar);
 	gen_radarchart("#radarchart2", movies_radar, cfg2);
@@ -1159,12 +1222,13 @@ function update_radarchart(){
 	//Create the title for the legend
 	var text = svg.append("text")
 		.attr("class", "title")
-		.attr('transform', 'translate(20,0)') 
+		.attr('transform', 'translate(50,0)') 
 		.attr("x", w - 160)
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Games released for each genre");
+		.text("Games released for each genre")
+		.style("text-align", "center");
 			
 	
 		  
@@ -1177,12 +1241,13 @@ function update_radarchart(){
 	//Create the title for the legend
 	var text = svg2.append("text")
 		.attr("class", "title")
-		.attr('transform', 'translate(20,0)') 
+		.attr('transform', 'translate(50,0)') 
 		.attr("x", w - 160)
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Movies released for each genre");
+		.text("Movies released for each genre")
+		.style("text-align", "center");
 }
 
 function gen_radarchart(id, d, options){

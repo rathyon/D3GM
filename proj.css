@@ -1,5 +1,5 @@
 body{
-    background-color: #222222 !important; /* overrides bootstrap setting */
+    background-color: #101010 !important; /* overrides bootstrap setting */
 }
 
 .container {
@@ -17,7 +17,7 @@ body{
 }
 
 #title{
-	width:500px;
+	width:23%;
 	font: 18px Helvetica, sans-serif;
     font-weight: bold;
 	
@@ -49,12 +49,13 @@ body{
 }
 
 
-
+/**/
 .col-4 {
     background-clip: content-box;
     background-color: #111111;
     box-shadow: 0 0 1px 1px #222222;
 }
+/**/
 
 /*div {
     border-radius: 25px;
@@ -94,6 +95,7 @@ div.tip {
 
 /*============== Scatterplot styling ==============*/
 #sale-title{
+    text-align: center;
     /** /background-color: #ffffff; /**/
 }
 
@@ -128,6 +130,7 @@ div.tip {
     font-weight: bold;
     fill: #eeeeee;
     color: #eeeeee;
+    text-align: center;
     /** /background-color: #ff0000; /**/
 }
 
@@ -149,7 +152,6 @@ div.tip {
     font: 14px Helvetica, sans-serif;
     font-weight: bold;
     fill: #eeeeee;
-    border: 1px solid #ccc;
     color: #eeeeee;
 }
 
@@ -240,6 +242,10 @@ div.tip {
 }
 
 /*============== Treemap styling ==============*/
+#treemap {
+    text-align: center;
+}
+
 #treemap text{
     color: #ffffff;
     font: 14px Helvetica, sans-serif;
@@ -250,4 +256,14 @@ div.tip {
     color: #111111;
     font: 14px Helvetica, sans-serif;
     font-weight: bold;
+}
+
+/*============== Radarchart styling ==============*/
+
+#radarchart1 {
+    text-align: center;
+}
+
+#radarchart2 {
+    text-align: center;
 }
