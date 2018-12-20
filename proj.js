@@ -381,7 +381,7 @@ function gen_scatterplot() {
       div.transition()		
         .duration(200)		
         .style("opacity", .9);		
-      div	.html(d.Sales.toFixed(2) + " mil<br>" + "Length: " + d.Average)	
+      div	.html(d.Sales.toFixed(2) + " million dollars<br>" + "Length: " + d.Average)	
         .style("left", clamp(d3.event.pageX, 0, 1780) + "px")		
         .style("top", (d3.event.pageY) + "px");	
       })			
