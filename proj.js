@@ -196,7 +196,8 @@ function gen_heatmap(){
             .style("stroke", "white")
             .style("stroke-opacity", 0.6)
             .style("fill", function(d) { return color(0); })
-            .on("mouseover", function(d) {		
+            .on("mouseover", function(d) {	
+							d3.select(this).style("cursor", "pointer");	
                 div.transition()		
                     .duration(200)		
                     .style("opacity", .9);		
@@ -229,6 +230,7 @@ function gen_heatmap(){
                 }
             })					
             .on("mouseout", function(d) {		
+							d3.select(this).style("cursor", "default");
                 div.transition()		
                     .duration(500)		
                     .style("opacity", 0);	
@@ -786,11 +788,23 @@ function gen_timeline() {
   // drag handles
   var minHandle = slider.append('circle').classed('handle', true)
       .attr('r', 12)
-      .attr("id", "minHandle");
+			.attr("id", "minHandle")
+			.on("mouseover", function(d){
+				d3.select(this).style("cursor", "pointer");
+			})
+			.on("mouseout", function(d){
+				d3.select(this).style("cursor", "default");
+			});
 
   var maxHandle = slider.append('circle').classed('handle', true)
       .attr('r', 8)
-      .attr("id", "maxHandle");
+			.attr("id", "maxHandle")
+			.on("mouseover", function(d){
+				d3.select(this).style("cursor", "pointer");
+			})
+			.on("mouseout", function(d){
+				d3.select(this).style("cursor", "default");
+			});;
 
   // optional initial transition
   /** /
@@ -1002,7 +1016,8 @@ function gen_treemap(){
           .style("width", function(d) { return d.x1 - d.x0 + "px"; })
 					.style("height", function(d) { return d.y1 - d.y0+ "px";})
           .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n")); })
-          .on("mouseover", function(d) {    
+          .on("mouseover", function(d) {  
+						d3.select(this).style("cursor", "pointer");  
             div.transition()    
                .duration(200)   
                .style("opacity", .9);   
@@ -1011,6 +1026,7 @@ function gen_treemap(){
                .style("top", (d3.event.pageY) + "px");  
           })          
           .on("mouseout", function(d) {   
+						d3.select(this).style("cursor", "default");
              div.transition()   
                 .duration(500)    
                 .style("opacity", 0); 
