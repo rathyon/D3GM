@@ -1002,6 +1002,19 @@ function gen_treemap(){
   		.attr("class", "title")
   		.attr("fill", "#0000ff")
 		.text("Game sales by region");
+
+	var svgSelected = d3.select("#treemap").append("div")
+		.style("position", "absolute")
+		.style("width", 250 + "px")
+		.style("height", 20 + "px")
+		.style("left", 370 + "px")
+		.style("top", 360 + "px")
+		.style("color", "#eeeeee")
+		.style("fill", "#eeeeee");
+
+	svgSelected.append("text")
+		.attr("class", "title")
+		.text("Selected region: " + "none");
       
       
   draw(root);  
@@ -1035,8 +1048,23 @@ function gen_treemap(){
              tempRegion = d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n").toUpperCase();
              if(tempRegion != selectedRegion){
                selectedRegion = tempRegion;
+               switch(selectedRegion) {
+               	case "NA":
+               		svgSelected.text("Selected region: North America");
+               		break;
+               	case "EU":
+               		svgSelected.text("Selected region: Europe");
+               		break;
+               	case "JP":
+               		svgSelected.text("Selected region: Japan");
+               		break;
+               	case "OT":
+               		svgSelected.text("Selected region: Other regions");
+               		break;
+               }
              } else{
                selectedRegion = "Global";
+               svgSelected.text("Selected region: none");
              }
              update_linechart();
 			 update_radarchart();
