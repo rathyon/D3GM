@@ -1435,7 +1435,6 @@ function gen_radarchart(id, d, options){
 			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
 			;
 
-	var tooltip;
 	
 	//Circular segments
 	for(var j=0; j<cfg.levels-1; j++){
@@ -1459,7 +1458,7 @@ function gen_radarchart(id, d, options){
 	for(var j=0; j<cfg.levels; j++){
 	  var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
 	  g.selectAll(".levels")
-	   .data([1]) //dummy data
+	   .data([1]) //data
 	   .enter()
 	   .append("svg:text")
 	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
@@ -1469,10 +1468,9 @@ function gen_radarchart(id, d, options){
 	   .style("font-size", "10px")
 	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
 	   .attr("fill", "#737373")
-	   .text(Format((j+1)*cfg.maxValue/cfg.levels));
+	   .text(Format((j+1)*cfg.maxValue/cfg.levels).replace("G", "B"));
 	}
 	
-	series = 0;
 
 	var axis = g.selectAll(".axis")
 			.data(allAxis)
@@ -1515,7 +1513,7 @@ function gen_radarchart(id, d, options){
 					 .data([dataValues])
 					 .enter()
 					 .append("polygon")
-					 .attr("class", "radar-chart-serie"+series)
+					 .attr("class", "radar-chart-serie")
 					 .style("stroke-width", "2px")
 					 .style("stroke", cfg.color)
 					 .attr("points",function(d) {
@@ -1541,7 +1539,7 @@ function gen_radarchart(id, d, options){
 										 .transition(200)
 										 .style("fill-opacity", cfg.opacityArea);
 					 });
-	  series++;
+	 
 		radar_area.transition()
 			.duration(800)
 			.attr('points', function(d) {
@@ -1552,13 +1550,13 @@ function gen_radarchart(id, d, options){
 				return str;
 			})
 	});
-	series=0;
+	
 
 	d.forEach(function(y, x){
 	  var radar_nodes = g.selectAll(".nodes")
 		.data(y).enter()
 		.append("svg:circle")
-		.attr("class", "radar-chart-serie"+series)
+		.attr("class", "radar-chart-serie")
 		.attr('r', cfg.radius)
 		.attr("alt", function(j){return Math.max(j.value, 0)})
 		.attr("cx", function(j, i){
@@ -1578,7 +1576,7 @@ function gen_radarchart(id, d, options){
 						.duration(200)		
 						.style("opacity", .9);	
 					if(cfg.mode == 0){
-						div	.html("Total Units sold: "+Format(d.value)+"<br>"+d.axis+" games released: "+Format(d.rel))	
+						div	.html("Total Units sold: "+Format(d.value).replace("G", "B")+"<br>"+d.axis+" games released: "+Format(d.rel))	
 							.style("left", (d3.event.pageX) + "px")		
 							.style("top", (d3.event.pageY) + "px");
 					}
@@ -1606,16 +1604,7 @@ function gen_radarchart(id, d, options){
 				  })
 		.append("svg:title")
 
-	  series++;
 		
 	});
-	
-	
-	//Tooltip
-	tooltip = g.append('text')
-				.style('opacity', 0)
-				.style("font", "12px Helvetica")
-				.style("text-anchor", "middle")
-				.style("font-weight", "bold")
-  
+	  
 }
