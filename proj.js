@@ -38,8 +38,8 @@ d3.csv("linechart.csv").then(function (data){
   gen_linechart();
 });
 
-d3.csv("games_radarchart.csv").then(function (data1){
-	d3.csv("movies_processed.csv").then(function (data2){
+d3.csv("games_sorted.csv").then(function (data1){
+	d3.csv("movies_starplot.csv").then(function (data2){
 	  games_radarchart_data = data1;
 	  movies_radarchart_data = data2;
 	  init_radarchart();
@@ -563,7 +563,8 @@ function gen_linechart(){
     linechart.svg.append("text")
     	.attr("class", "axisLabel")
     	.attr("transform", "translate(0,340)") // 190 340 old
-    	.text("User");
+		.style("fill", linechart.color_neg)
+    	.text("Higher User score");
 
     linechart.svg.append("text")
     	.attr("class", "axisLabel")
@@ -572,8 +573,9 @@ function gen_linechart(){
 
     linechart.svg.append("text")
     	.attr("class", "axisLabel")
-    	.attr("transform", "translate(460,340)") // 190 340 old
-    	.text("Critic");
+    	.attr("transform", "translate(400,340)") // 190 340 old
+		.style("fill", linechart.color_pos)
+    	.text("Higher Critic score");
 
   linechart.svg.append("g")
   	.selectAll("rect").data(linechart.data).enter().append("rect")
@@ -1021,6 +1023,7 @@ function gen_treemap(){
                selectedRegion = "Global";
              }
              update_linechart();
+			 update_radarchart();
           })
           .append("text")
           .attr("class", "label")
@@ -1054,6 +1057,11 @@ function gen_treemap(){
 function init_radarchart(){
 	games_radarchart_data.forEach(function(d){
 		d.Year = +d.Year
+		d.NA_Sales = +d.NA_Sales
+		d.EU_Sales = +d.EU_Sales
+		d.JP_Sales = +d.JP_Sales
+		d.Other_Sales = +d.Other_Sales
+		d.Global_Sales = +d.Global_Sales
 		if(!d.Critic_Score.includes("NA") && !d.User_Score.includes("NA")){
 				d.Critic_Score = +d.Critic_Score
 				d.User_Score = +d.User_Score
@@ -1075,15 +1083,13 @@ function update_radarchart(){
 				{axis:"Documentary",value:0},	
 				{axis:"Drama",value:0},	
 				{axis:"Family",value:0},	
-				{axis:"Fantasy",value:0},	
-				{axis:"Foreign",value:0},	
+				{axis:"Fantasy",value:0},		
 				{axis:"History",value:0},	
 				{axis:"Horror",value:0},	
 				{axis:"Music",value:0},	
 				{axis:"Mystery",value:0},	
 				{axis:"Romance",value:0},	
-				{axis:"Science Fiction",value:0},	
-				{axis:"TV Movie",value:0},	
+				{axis:"Science Fiction",value:0},		
 				{axis:"Thriller",value:0},	
 				{axis:"War",value:0},
 				{axis:"Western",value:0}
@@ -1092,58 +1098,192 @@ function update_radarchart(){
 			
 	var games_radar = [
 			  [
-				{axis:"Action",value:0},
-				{axis:"Adventure",value:0},
-				{axis:"Fighting",value:0},
-				{axis:"Misc",value:0},
-				{axis:"Platform",value:0},
-				{axis:"Puzzle",value:0},
-				{axis:"Racing",value:0},
-				{axis:"Role-Playing",value:0},
-				{axis:"Shooter",value:0},
-				{axis:"Simulation",value:0},
-				{axis:"Sports",value:0},
-				{axis:"Strategy",value:0}
+				{axis:"Action",value:0,rel:0},
+				{axis:"Adventure",value:0,rel:0},
+				{axis:"Fighting",value:0,rel:0},
+				{axis:"Misc",value:0,rel:0},
+				{axis:"Platform",value:0,rel:0},
+				{axis:"Puzzle",value:0,rel:0},
+				{axis:"Racing",value:0,rel:0},
+				{axis:"Role-Playing",value:0,rel:0},
+				{axis:"Shooter",value:0,rel:0},
+				{axis:"Simulation",value:0,rel:0},
+				{axis:"Sports",value:0,rel:0},
+				{axis:"Strategy",value:0,rel:0}
 			  ]
 			];
 
 	var cfg2 = {
-		 color: scat_movies_color_inner
+		 color: scat_movies_color_inner,
+		 mode:1
 		};
 
 	
 	//populate values with filtered data 
 	//check selected year and score
 	var avgScore = 0
-	
+	var action, adventure, fighting, misc, platform, puzzle, racing, rpg, shooter, sim, sports, strategy;
+	action = adventure = fighting = misc = platform = puzzle = racing = rpg = shooter = sim = sports = strategy = 0;
 	games_radarchart_data.forEach(function(d){
 		if(d.Year >= year_filters[0] && d.Year <= year_filters[1]){
 			avgScore = (d.Critic_Score + d.User_Score)/20		
 			if(score_filters.includes(avgScore.toFixed(1))  || score_filters.length == 0){
-				if(d.Genre.includes("Action"))
-					games_radar[0][0].value += 1
-				else if(d.Genre.includes("Adventure"))
-					games_radar[0][1].value += 1
-				else if(d.Genre.includes("Fighting"))
-					games_radar[0][2].value += 1
-				else if(d.Genre.includes("Misc"))
-					games_radar[0][3].value += 1
-				else if(d.Genre.includes("Platform"))
-					games_radar[0][4].value += 1
-				else if(d.Genre.includes("Puzzle"))
-					games_radar[0][5].value += 1
-				else if(d.Genre.includes("Racing"))
-					games_radar[0][6].value += 1
-				else if(d.Genre.includes("Role-Playing"))
-					games_radar[0][7].value += 1
-				else if(d.Genre.includes("Shooter"))
-					games_radar[0][8].value += 1
-				else if(d.Genre.includes("Simulation"))
-					games_radar[0][9].value += 1
-				else if(d.Genre.includes("Sports"))
-					games_radar[0][10].value += 1
-				else if(d.Genre.includes("Strategy"))
-					games_radar[0][11].value += 1
+				if(d.Genre.includes("Action")){
+					games_radar[0][0].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][0].value += (d.Global_Sales - d.EU_Sales - d.JP_Sales - d.Other_Sales)*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][0].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][0].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][0].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][0].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Adventure")){
+					games_radar[0][1].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][1].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][1].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][1].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][1].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][1].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Fighting")){
+					games_radar[0][2].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][2].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][2].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][2].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][2].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][2].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Misc")){
+					games_radar[0][3].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][3].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][3].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][3].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][3].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][3].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Platform")){
+					games_radar[0][4].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][4].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][4].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][4].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][4].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][4].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Puzzle")){
+					games_radar[0][5].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][5].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][5].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][5].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][5].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][5].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Racing")){
+					games_radar[0][6].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][6].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][6].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][6].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][6].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][6].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Role-Playing")){
+					games_radar[0][7].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][7].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][7].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][7].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][7].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][7].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Shooter")){
+					games_radar[0][8].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][8].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][8].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][8].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][8].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][8].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Simulation")){
+					games_radar[0][9].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][9].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][9].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][9].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][9].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][9].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Sports")){
+					games_radar[0][10].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][10].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][10].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][10].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][10].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][10].value += d.Global_Sales*1000000
+				}	
+				else if(d.Genre.includes("Strategy")){
+					games_radar[0][11].rel +=1;
+					if(selectedRegion == "NA")
+					  games_radar[0][11].value += d.NA_Sales*1000000
+					else if(selectedRegion == "EU")
+					  games_radar[0][11].value += d.EU_Sales*1000000
+					else if(selectedRegion == "JP")
+					  games_radar[0][11].value += d.JP_Sales*1000000
+					else if(selectedRegion == "OT")
+					  games_radar[0][11].value += d.Other_Sales*1000000
+					else
+					  games_radar[0][11].value += d.Global_Sales*1000000
+				}	
 			}
 		}	
 	});
@@ -1153,46 +1293,43 @@ function update_radarchart(){
 		if(d.Year >= year_filters[0] && d.Year <= year_filters[1]){
 			avgScore = (d.Score)/10		
 			if(score_filters.includes(avgScore.toFixed(1))  || score_filters.length == 0){
-				if(d.Genre.includes("Action"))
+				if(d.Genre1.includes("Action")||d.Genre2.includes("Action") ||d.Genre3.includes("Action") ||d.Genre4.includes("Action") ||d.Genre5.includes("Action") ||d.Genre6.includes("Action") ||d.Genre7.includes("Action"))
 					movies_radar[0][0].value += 1
-				else if(d.Genre.includes("Adventure"))
+				if(d.Genre1.includes("Adventure")||d.Genre2.includes("Adventure") ||d.Genre3.includes("Adventure") ||d.Genre4.includes("Adventure") ||d.Genre5.includes("Adventure") ||d.Genre6.includes("Adventure") ||d.Genre7.includes("Adventure"))
 					movies_radar[0][1].value += 1
-				else if(d.Genre.includes("Animation"))
+				if(d.Genre1.includes("Animation") ||d.Genre2.includes("Animation") ||d.Genre3.includes("Animation") ||d.Genre4.includes("Animation") ||d.Genre5.includes("Animation") ||d.Genre6.includes("Animation") ||d.Genre7.includes("Animation"))
 					movies_radar[0][2].value += 1
-				else if(d.Genre.includes("Comedy"))
+				if(d.Genre1.includes("Comedy")||d.Genre2.includes("Comedy") ||d.Genre3.includes("Comedy") ||d.Genre4.includes("Comedy") ||d.Genre5.includes("Comedy") ||d.Genre6.includes("Comedy") ||d.Genre7.includes("Comedy"))
 					movies_radar[0][3].value += 1
-				else if(d.Genre.includes("Crime"))
+				if(d.Genre1.includes("Crime")||d.Genre2.includes("Crime") ||d.Genre3.includes("Crime") ||d.Genre4.includes("Crime") ||d.Genre5.includes("Crime") ||d.Genre6.includes("Crime") ||d.Genre7.includes("Crime"))
 					movies_radar[0][4].value += 1
-				else if(d.Genre.includes("Documentary"))
+				if(d.Genre1.includes("Documentary")||d.Genre2.includes("Documentary") ||d.Genre3.includes("Documentary") ||d.Genre4.includes("Documentary") ||d.Genre5.includes("Documentary") ||d.Genre6.includes("Documentary") ||d.Genre7.includes("Documentary"))
 					movies_radar[0][5].value += 1
-				else if(d.Genre.includes("Drama"))
+				if(d.Genre1.includes("Drama")||d.Genre2.includes("Drama") ||d.Genre3.includes("Drama") ||d.Genre4.includes("Drama") ||d.Genre5.includes("Drama") ||d.Genre6.includes("Drama") ||d.Genre7.includes("Drama"))
 					movies_radar[0][6].value += 1
-				else if(d.Genre.includes("Family"))
+				if(d.Genre1.includes("Family")||d.Genre2.includes("Family") ||d.Genre3.includes("Family") ||d.Genre4.includes("Family") ||d.Genre5.includes("Family") ||d.Genre6.includes("Family") ||d.Genre7.includes("Family"))
 					movies_radar[0][7].value += 1
-				else if(d.Genre.includes("Fantasy"))
+				if(d.Genre1.includes("Fantasy")||d.Genre2.includes("Fantasy") ||d.Genre3.includes("Fantasy") ||d.Genre4.includes("Fantasy") ||d.Genre5.includes("Fantasy") ||d.Genre6.includes("Fantasy") ||d.Genre7.includes("Fantasy"))
 					movies_radar[0][8].value += 1
-				else if(d.Genre.includes("Foreign"))
+				if(d.Genre1.includes("History")||d.Genre2.includes("History") ||d.Genre3.includes("History") ||d.Genre4.includes("History") ||d.Genre5.includes("History") ||d.Genre6.includes("History") ||d.Genre7.includes("History"))
 					movies_radar[0][9].value += 1
-				else if(d.Genre.includes("History"))
+				if(d.Genre1.includes("Horror")||d.Genre2.includes("Horror") ||d.Genre3.includes("Horror") ||d.Genre4.includes("Horror") ||d.Genre5.includes("Horror") ||d.Genre6.includes("Horror") ||d.Genre7.includes("Horror"))
 					movies_radar[0][10].value += 1
-				else if(d.Genre.includes("Horror"))
+				if(d.Genre1.includes("Music")||d.Genre2.includes("Music") ||d.Genre3.includes("Music") ||d.Genre4.includes("Music") ||d.Genre5.includes("Music") ||d.Genre6.includes("Music") ||d.Genre7.includes("Music"))
 					movies_radar[0][11].value += 1
-				else if(d.Genre.includes("Music"))
+				if(d.Genre1.includes("Mystery")||d.Genre2.includes("Mystery") ||d.Genre3.includes("Mystery") ||d.Genre4.includes("Mystery") ||d.Genre5.includes("Mystery") ||d.Genre6.includes("Mystery") ||d.Genre7.includes("Mystery"))
 					movies_radar[0][12].value += 1
-				else if(d.Genre.includes("Mystery"))
+				if(d.Genre1.includes("Romance")||d.Genre2.includes("Romance") ||d.Genre3.includes("Romance") ||d.Genre4.includes("Romance") ||d.Genre5.includes("Romance") ||d.Genre6.includes("Romance") ||d.Genre7.includes("Romance"))
 					movies_radar[0][13].value += 1
-				else if(d.Genre.includes("Romance"))
+				if(d.Genre1.includes("Science Fiction")||d.Genre2.includes("Science Fiction") ||d.Genre3.includes("Science Fiction") ||d.Genre4.includes("Science Fiction") ||d.Genre5.includes("Science Fiction") ||d.Genre6.includes("Science Fiction") ||d.Genre7.includes("Science Fiction"))
 					movies_radar[0][14].value += 1
-				else if(d.Genre.includes("Sci-Fi"))
+				if(d.Genre1.includes("Thriller")||d.Genre2.includes("Thriller") ||d.Genre3.includes("Thriller") ||d.Genre4.includes("Thriller") ||d.Genre5.includes("Thriller") ||d.Genre6.includes("Thriller") ||d.Genre7.includes("Thriller"))
 					movies_radar[0][15].value += 1
-				else if(d.Genre.includes("TV"))
+				if(d.Genre1.includes("War")||d.Genre2.includes("War") ||d.Genre3.includes("War") ||d.Genre4.includes("War") ||d.Genre5.includes("War") ||d.Genre6.includes("War") ||d.Genre7.includes("War"))
 					movies_radar[0][16].value += 1
-				else if(d.Genre.includes("Thriller"))
+				if(d.Genre1.includes("Western")||d.Genre2.includes("Western") ||d.Genre3.includes("Western") ||d.Genre4.includes("Western") ||d.Genre5.includes("Western") ||d.Genre6.includes("Western") ||d.Genre7.includes("Western"))
 					movies_radar[0][17].value += 1
-				else if(d.Genre.includes("War"))
-					movies_radar[0][18].value += 1
-				else if(d.Genre.includes("Western"))
-					movies_radar[0][19].value += 1
+				
 			}
 		}	
 	});
@@ -1227,7 +1364,7 @@ function update_radarchart(){
 		.attr("y", 20)
 		.attr("font-size", "14px")
 		.attr("fill", "white")
-		.text("Games released for each genre")
+		.text("Game units sold for each genre")
 		.style("text-align", "center");
 			
 	
@@ -1266,7 +1403,8 @@ function gen_radarchart(id, d, options){
 	 TranslateY: 80,
 	 ExtraWidthX: 280,
 	 ExtraWidthY: 120,
-	 color: scat_games_color_inner
+	 color: scat_games_color_inner,
+	 mode: 0
 	};
 	
 	if('undefined' !== typeof options){
@@ -1282,6 +1420,12 @@ function gen_radarchart(id, d, options){
 	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
 	var Format = d3.format('.2s');
 	d3.select(id).select("svg").remove();
+	
+	 var div = d3.select("body").append("div")	
+		.attr("class", "tooltip2")
+		.style("left", 0)
+		.style("top", 0)	
+		.style("opacity", 0);
 	
 	var g = d3.select(id)
 			.append("svg")
@@ -1429,12 +1573,20 @@ function gen_radarchart(id, d, options){
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
 					
-					tooltip
-						.attr('x', newX)
-						.attr('y', newY)
-						.text("Units released: "+Format(d.value))
-						.transition(200)
-						.style('opacity', 0.9);
+					
+					div.transition()		
+						.duration(200)		
+						.style("opacity", .9);	
+					if(cfg.mode == 0){
+						div	.html("Total Units sold: "+Format(d.value)+"<br>"+d.axis+" games released: "+Format(d.rel))	
+							.style("left", (d3.event.pageX) + "px")		
+							.style("top", (d3.event.pageY) + "px");
+					}
+					if(cfg.mode == 1){
+						div	.html(d.axis+" movies released: "+Format(d.value))	
+							.style("left", (d3.event.pageX) + "px")		
+							.style("top", (d3.event.pageY) + "px");
+					}
 						
 					z = "polygon."+d3.select(this).attr("class");
 					g.selectAll("polygon")

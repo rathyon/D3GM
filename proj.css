@@ -77,6 +77,22 @@ div.tooltip {
     overflow: hidden;           
 }
 
+div.tooltip2 {   
+    position: absolute;         
+    text-align: center;         
+    width: 220px;                    
+    height: 30px;                   
+    padding: 2px;               
+    font: 12px Helvetica, sans-serif;
+    font-weight: bold;
+    color: #eeeeee;      
+    background: #111111; 
+    border: 0px;        
+    border-radius: 8px;         
+    pointer-events: none;
+    overflow: hidden;           
+}
+
 
 div.tip {   
     position: absolute;         
