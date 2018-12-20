@@ -261,7 +261,7 @@ function gen_heatmap(){
 
 	heatmap.transition()
 		.style("fill", function(d) { return color(d.val); })
-		.duration(800)
+		.duration(200)
 		.delay(function(d, i){
 			return i*20
 		})
@@ -1597,11 +1597,11 @@ function gen_radarchart(id, d, options){
 						.style("fill-opacity", .7);
 				  })
 		.on('mouseout', function(){
-					tooltip
-						.transition(200)
+					div
+						.transition(500)
 						.style('opacity', 0);
 					g.selectAll("polygon")
-						.transition(200)
+						.transition(500)
 						.style("fill-opacity", cfg.opacityArea);
 				  })
 		.append("svg:title")
